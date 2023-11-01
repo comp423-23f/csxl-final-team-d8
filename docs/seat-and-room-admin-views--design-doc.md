@@ -6,6 +6,22 @@
 
     This feature will make it so that managers can add, delete, and edit rooms and seats. This is valuable for managers to be able to represent changes in availability for seats and rooms.
 
+## 2. Personas
+
+# Amy Ambassador
+
+    An ambassador of CSXL who works at the front desk of the space, assisting in maintaining the XL as an essential worker with special permissions.
+
+# Rhonda Root
+
+    An administrator of CSXL with the ability to manage rooms and seats. Rhonda works to ensure the XL is run efficiently and professionally.
+
+## 3. User Stories
+
+As Amy Ambassador, I want to manage the rooms and seats along with their features, so that I can list, add, edit, and delete rooms & seats.
+
+As Rhonda Root, I want to manage all rooms and seats as an administrator, so that I can easily keep things organized and be flexible for CSXL members.
+
 ## 4. Wireframes / Mockups
 
     Figma Mockups:
