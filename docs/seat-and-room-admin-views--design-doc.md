@@ -18,9 +18,9 @@
 
 ## 3. User Stories
 
-As Amy Ambassador, I want to manage the rooms and seats along with their features, so that I can list, add, edit, and delete rooms & seats.
+    As Amy Ambassador, I want to manage the rooms and seats along with their features, so that I can list, add, edit, and delete rooms & seats.
 
-As Rhonda Root, I want to manage all rooms and seats as an administrator, so that I can easily keep things organized and be flexible for CSXL members.
+    As Rhonda Root, I want to manage all rooms and seats as an administrator, so that I can easily keep things organized and be flexible for CSXL members.
 
 ## 4. Wireframes / Mockups
 
