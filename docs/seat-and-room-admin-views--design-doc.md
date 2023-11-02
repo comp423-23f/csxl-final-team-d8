@@ -8,13 +8,9 @@
 
 ## 2. Personas
 
-# Amy Ambassador
+    Amy Ambassador: An ambassador of CSXL who works at the front desk of the space, assisting in maintaining the XL as an essential worker with special permissions.
 
-    An ambassador of CSXL who works at the front desk of the space, assisting in maintaining the XL as an essential worker with special permissions.
-
-# Rhonda Root
-
-    An administrator of CSXL with the ability to manage rooms and seats. Rhonda works to ensure the XL is run efficiently and professionally.
+    Rhonda Root: An administrator of CSXL with the ability to manage rooms and seats. Rhonda works to ensure the XL is run efficiently and professionally.
 
 ## 3. User Stories
 
