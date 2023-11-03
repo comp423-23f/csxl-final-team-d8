@@ -40,6 +40,7 @@ import { ProfileEditorComponent } from './profile/profile-editor/profile-editor.
 import { RoomCard } from './room/widgets/room-card.widget';
 
 import { EventFilterPipe } from './event/event-filter/event-filter.pipe';
+
 import { SeatModule } from './seat/seat.module';
 import { RoomModule } from './room/room.module';
 
