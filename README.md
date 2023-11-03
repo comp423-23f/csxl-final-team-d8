@@ -12,5 +12,3 @@ The Experience Labs' (XL) mission is to accelerate technical experience and buil
 ## Feature Docs
 
 - [Github Integration](docs/github_integration.md)
-
-.
