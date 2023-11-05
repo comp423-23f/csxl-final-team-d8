@@ -32,3 +32,4 @@ As Rhonda Root, I want to manage all rooms and seats as an administrator, so tha
     On the Rooms page, admins or ambassadors can see and search through the list of rooms. If they click Add Room or Edit Room on a specific room, they will be brought to a new page where they can create a new room/edit the room. If they click Delete Room, the room will be deleted. If they click on the room number, they will be redirected to that room’s seats page.
 
     On the Seat page, admins or ambassadors can see a list of the seats in a specific room. If they click Add Seat or Edit Seat on a specific seat, they will be taken to a new page where they can create a new seat, add features, and connect it to a room, or edit the seat’s fields. If they click a Delete Seat, the seat will be deleted.
+
