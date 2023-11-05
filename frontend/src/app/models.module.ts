@@ -47,3 +47,34 @@ export interface RoleDetails {
   permissions: Permission[];
   users: Profile[];
 }
+
+/** Interface for the Seat Type */
+export interface Seat {
+  title: string;
+  shorthand: string;
+  reservable: boolean;
+  has_monitor: boolean;
+  sit_stand: boolean;
+  x: number;
+  y: number;
+}
+
+/** Interface for the SeatDetails Type */
+export interface SeatDetails {
+  room: Room;
+}
+
+/** Interface for the Room Type */
+export interface Room {
+  id: string;
+  nickname: string | null;
+}
+
+/** Interface for the RoomDetails Type */
+export interface RoomDetails {
+  building: string;
+  room: string;
+  capacity: number;
+  reservable: boolean;
+  seats: Seat[];
+}
