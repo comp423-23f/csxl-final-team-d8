@@ -52,3 +52,6 @@ class RoomService:
 
             # Return added object
             return room_entity.to_model()
+
+
+# TODO Services method for getting all rooms, deleting a room, inserting a room
