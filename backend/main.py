@@ -4,6 +4,8 @@
 from pathlib import Path
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
+
+from backend.services import room
 from .api import (
     events,
     health,
@@ -12,6 +14,7 @@ from .api import (
     profile,
     authentication,
     user,
+    rooms,
 )
 from .api.coworking import status, reservation, ambassador
 from .api.admin import users as admin_users
@@ -38,6 +41,7 @@ app = FastAPI(
         events.openapi_tags,
         reservation.openapi_tags,
         reservation.openapi_tags,
+        rooms.openapi_tags,
         health.openapi_tags,
         admin_users.openapi_tags,
         admin_roles.openapi_tags,
@@ -53,6 +57,7 @@ feature_apis = [
     profile,
     organizations,
     health,
+    rooms,
     ambassador,
     authentication,
     admin_users,
