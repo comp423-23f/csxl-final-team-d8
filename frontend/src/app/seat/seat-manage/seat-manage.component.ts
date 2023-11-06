@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './seat-manage.component.html',
   styleUrls: ['./seat-manage.component.css']
 })
-export class SeatManageComponent {
-
-}
+export class SeatManageComponent {}

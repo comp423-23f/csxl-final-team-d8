@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { ProfileEditorComponent } from './profile/profile-editor/profile-editor.component';
 import { CoworkingPageComponent } from './coworking/coworking-home/coworking-home.component';
 import { AmbassadorPageComponent } from './coworking/ambassador-home/ambassador-home.component';
+import { RoomPageComponent } from './room/room-page/room-page.component';
 import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   GateComponent.Route,
   CoworkingPageComponent.Route,
   AmbassadorPageComponent.Route,
+  RoomPageComponent.Route,
   {
     path: 'coworking',
     title: 'Cowork in the XL',
@@ -40,6 +42,11 @@ const routes: Routes = [
     title: 'Experimental',
     loadChildren: () =>
       import('./event/event.module').then((m) => m.EventModule)
+  },
+  {
+    path: 'rooms',
+    title: 'Room Admin View',
+    loadChildren: () => import('./room/room.module').then((m) => m.RoomModule)
   }
 ];
 
