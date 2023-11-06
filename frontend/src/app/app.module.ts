@@ -37,6 +37,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { GateComponent } from './gate/gate.component';
 import { ProfileEditorComponent } from './profile/profile-editor/profile-editor.component';
+
 import { EventFilterPipe } from './event/event-filter/event-filter.pipe';
 import { SeatModule } from './seat/seat.module';
 import { RoomModule } from './room/room.module';
