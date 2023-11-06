@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Room } from 'src/app/models.module';
 import { profileResolver } from 'src/app/profile/profile.resolver';
 
 @Component({
@@ -16,5 +15,4 @@ export class RoomPageComponent {
     canActivate: [],
     resolve: { profile: profileResolver }
   };
-  rooms: any;
 }
