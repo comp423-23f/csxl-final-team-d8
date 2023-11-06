@@ -12,6 +12,6 @@ import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [RoomManageComponent, RoomPageComponent, RoomCard],
-  imports: [CommonModule, RoomRoutingModule, MatCardModule, SharedModule]
+  imports: [CommonModule, RoomRoutingModule]
 })
 export class RoomModule {}
