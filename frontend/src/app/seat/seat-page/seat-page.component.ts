@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './seat-page.component.html',
   styleUrls: ['./seat-page.component.css']
 })
-export class SeatPageComponent {
 
-}
+export class SeatPageComponent {}
+
