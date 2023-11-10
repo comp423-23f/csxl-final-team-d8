@@ -29,6 +29,7 @@ export const roomDetailResolver: ResolveFn<Room | undefined> = (
       capacity: null,
       reservable: false,
       seats: null
+      //includes fields from both room model and room details model, which are separated right now
     };
   }
 };
