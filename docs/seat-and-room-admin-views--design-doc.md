@@ -18,9 +18,9 @@
 
     As Amy Ambassador or Rhonda Root, I want to be able to select any given room and view its list of seats, so that I can quickly see all seats and their accompanying features in that room.
 
-    As Amy Ambassador or Rhonda Root, I want to be able to edit a room, so that I can easily update a room's information (ID number and nickname).
+    As Amy Ambassador or Rhonda Root, I want to be able to edit a room, so that I can easily update a room's information (ID number, nickname, building, room, capacity, reservable).
 
-    As Amy Ambassador or Rhonda Root, I want to be able to edit a seat, so that I can easily make changes to a seat's information (ID number and available features).
+    As Amy Ambassador or Rhonda Root, I want to be able to edit a seat, so that I can easily make changes to a seat's information (various features).
 
     As Rhonda Root, I want to be able to add a room to the list of rooms, so that I can easily keep track of any new CSXL spaces.
 
