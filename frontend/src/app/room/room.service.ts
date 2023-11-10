@@ -10,10 +10,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class RoomService {
   constructor(
+    //protected snackBar: MatSnackBar
     protected http: HttpClient,
-    protected auth: AuthenticationService,
-    //not sure why need snackBar
-    protected snackBar: MatSnackBar
+    protected auth: AuthenticationService
   ) {}
 
   /** Returns all room entries from the backend database table using the backend HTTP get request.
