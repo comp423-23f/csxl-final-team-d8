@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthenticationService } from '../authentication.service';
 import { Observable } from 'rxjs';
 import { Room } from './room.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -10,22 +11,39 @@ import { Room } from './room.model';
 export class RoomService {
   constructor(
     protected http: HttpClient,
-    protected auth: AuthenticationService
+    protected auth: AuthenticationService,
+    //not sure why need snackBar
+    protected snackBar: MatSnackBar
   ) {}
 
+  /** Returns all room entries from the backend database table using the backend HTTP get request.
+   * @returns {Observable<Room[]>}
+   */
   getRooms(): Observable<Room[]> {
     return this.http.get<Room[]>('/api/rooms');
   }
 
+  /** Returns the room object from the backend database table using the backend HTTP get request.
+   * @param id: String representing the organization id
+   * @returns {Observable<Room[]>}
+   */
   getRoom(id: String): Observable<Room> {
     return this.http.get<Room>('/api/rooms/' + id);
   }
 
-  createSeat(room: Room): Observable<Room> {
+  /** Returns the new room object from the backend database table using the backend HTTP post request.
+   * @param room: RoomSummary representing the new room
+   * @returns {Observable<Room>}
+   */
+  createRoom(room: Room): Observable<Room> {
     return this.http.post<Room>('/api/rooms', room);
   }
 
-  updateSeat(room: Room): Observable<Room> {
+  /** Returns the updated room object from the backend database table using the backend HTTP put request.
+   * @param room: RoomSummary representing the updated room
+   * @returns {Observable<Room>}
+   */
+  updateRoom(room: Room): Observable<Room> {
     return this.http.put<Room>('/api/rooms', room);
   }
 }
