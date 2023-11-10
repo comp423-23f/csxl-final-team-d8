@@ -2,6 +2,7 @@ import { Seat } from '../seat/seat.model';
 
 /** Interface for the Room Type */
 export interface Room {
+  slug: any;
   id: string;
   nickname: string | null;
 }
