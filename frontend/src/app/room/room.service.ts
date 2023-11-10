@@ -17,8 +17,8 @@ export class RoomService {
     return this.http.get<Room[]>('/api/rooms');
   }
 
-  getRoom(title: String): Observable<Room> {
-    return this.http.get<Room>('/api/rooms/' + title);
+  getRoom(id: String): Observable<Room> {
+    return this.http.get<Room>('/api/rooms/' + id);
   }
 
   createSeat(room: Room): Observable<Room> {
