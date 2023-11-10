@@ -10,7 +10,7 @@ export interface Room {
 export interface RoomDetails {
   building: string;
   room: string;
-  capacity: number;
+  capacity: number | null;
   reservable: boolean;
-  seats: Seat[];
+  seats: Seat[] | null;
 }
