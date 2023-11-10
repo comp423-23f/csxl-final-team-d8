@@ -1,10 +1,10 @@
 ## 0. Title & Team
 
-    > Team D8 - Seat & Room Administration
+    Team D8 - Seat & Room Administration
 
 ## 1. Overview
 
-    > This feature will make it so that managers can add, delete, and edit rooms and seats. This is valuable for managers to be able to represent changes in availability for seats and rooms.
+    This feature will make it so that managers can add, delete, and edit rooms and seats. This is valuable for managers to be able to represent changes in availability for seats and rooms.
 
 ## 2. Personas
 
