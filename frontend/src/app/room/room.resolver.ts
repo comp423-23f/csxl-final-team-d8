@@ -5,8 +5,8 @@
 
 import { inject } from '@angular/core';
 import { ResolveFn } from '@angular/router';
-import { Room } from './room.model.ts';
-import { RoomService } from './room.service.ts';
+import { Room } from './room.model';
+import { RoomService } from './room.service';
 
 /** This resolver injects the list of rooms into the room component. */
 export const roomResolver: ResolveFn<Room[] | undefined> = (route, state) => {
