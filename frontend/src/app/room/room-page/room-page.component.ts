@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Room } from 'src/app/models.module';
 import { profileResolver } from 'src/app/profile/profile.resolver';
 import { roomResolver } from '../room.resolver';
 import { Room } from '../room.model';
