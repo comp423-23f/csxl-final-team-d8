@@ -1,8 +1,3 @@
-<mat-card> 
-</mat-card-header>
-    <mat-card-title>Room Details</mat-card-title>
-</mat-card-header>
-</mat-card-content>
-<p><strong>Room Nickname:</strong> {{ room }} </p>
-</mat-card-content>
+<mat-card>
+  <button (click)="joinButtonPressed.emit(room)">View Seats</button>
 </mat-card>

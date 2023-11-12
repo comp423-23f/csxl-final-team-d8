@@ -5,15 +5,13 @@ import { RoomRoutingModule } from './room-routing.module';
 import { RoomManageComponent } from './room-manage/room-manage.component';
 import { RoomPageComponent } from './room-page/room-page.component';
 
+import { MatCardModule } from '@angular/material/card';
+/* UI Widgets */
+import { RoomCard } from './widgets/room-card.widget';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [
-    RoomManageComponent,
-    RoomPageComponent
-  ],
-  imports: [
-    CommonModule,
-    RoomRoutingModule
-  ]
+  declarations: [RoomManageComponent, RoomPageComponent, RoomCard],
+  imports: [CommonModule, RoomRoutingModule, MatCardModule, SharedModule]
 })
-export class RoomModule { }
+export class RoomModule {}
