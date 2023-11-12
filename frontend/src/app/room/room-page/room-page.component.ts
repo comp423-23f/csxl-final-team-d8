@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { profileResolver } from 'src/app/profile/profile.resolver';
-// import { roomResolver } from '../room.resolver';
+import { roomResolver } from '../room.resolver';
 import { Room } from '../room.model';
 import { Profile } from '/workspace/frontend/src/app/profile/profile.service';
 import { ActivatedRoute } from '@angular/router';
