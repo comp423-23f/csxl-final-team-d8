@@ -17,8 +17,11 @@ export class RoomPageComponent {
     path: '',
     title: 'Rooms',
     component: RoomPageComponent,
-    canActivate: []
+
+    canActivate: [],
+    resolve: { profile: profileResolver } // Add back later: , rooms: roomResolver }
   };
+
   /** Store Observable list of Rooms */
   public rooms: Room[];
 
