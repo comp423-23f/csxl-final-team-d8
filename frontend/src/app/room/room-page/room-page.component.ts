@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Room } from 'src/app/models.module';
 import { profileResolver } from 'src/app/profile/profile.resolver';
 import { roomResolver } from '../room.resolver';
 import { Room } from '../room.model';
@@ -21,7 +22,6 @@ export class RoomPageComponent {
     canActivate: [],
     resolve: { profile: profileResolver } // Add back later: , rooms: roomResolver }
   };
-
   /** Store Observable list of Rooms */
   public rooms: Room[];
 
