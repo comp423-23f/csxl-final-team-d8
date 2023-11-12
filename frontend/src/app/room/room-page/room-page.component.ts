@@ -17,6 +17,7 @@ export class RoomPageComponent {
     path: '',
     title: 'Rooms',
     component: RoomPageComponent,
+
     canActivate: [],
     resolve: { profile: profileResolver } // Add back later: , rooms: roomResolver }
   };

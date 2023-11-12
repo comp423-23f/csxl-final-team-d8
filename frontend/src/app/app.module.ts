@@ -85,8 +85,8 @@ import { RoomModule } from './room/room.module';
         }
       }
     }),
-    SeatModule,
-    RoomModule
+    RoomModule,
+    SeatModule
   ],
   providers: [
     {
