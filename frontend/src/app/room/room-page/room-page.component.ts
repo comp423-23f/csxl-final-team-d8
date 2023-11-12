@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { profileResolver } from 'src/app/profile/profile.resolver';
-// import { roomResolver } from '../room.resolver';
+import { roomResolver } from '../room.resolver';
 import { Room } from '../room.model';
 import { Profile } from '/workspace/frontend/src/app/profile/profile.service';
 import { ActivatedRoute } from '@angular/router';
@@ -17,8 +17,7 @@ export class RoomPageComponent {
     path: '',
     title: 'Rooms',
     component: RoomPageComponent,
-    canActivate: [],
-    resolve: { profile: profileResolver, rooms: roomResolver }
+    canActivate: []
   };
   /** Store Observable list of Rooms */
   public rooms: Room[];
