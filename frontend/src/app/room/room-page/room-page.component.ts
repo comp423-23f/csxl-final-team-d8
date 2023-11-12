@@ -18,7 +18,7 @@ export class RoomPageComponent {
     title: 'Rooms',
     component: RoomPageComponent,
     canActivate: [],
-    resolve: { profile: profileResolver, rooms: roomResolver }
+    resolve: { profile: profileResolver } // Add back later: , rooms: roomResolver }
   };
 
   /** Store Observable list of Rooms */
