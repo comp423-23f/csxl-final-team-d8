@@ -1,8 +1,11 @@
-
 <!-- Search Bar -->
 
 <!-- Display card for each room, potentially filtered based on the search query. -->
 <div class="page-container">
+  <!-- Button to be routed to room-manage page -->
+  <a [routerLink]="['rooms/room-manage']">
+    <button>ADD ROOM</button>
+  </a>
   <div class="room-cards">
     <mat-card class="room">
       <mat-card-header>
