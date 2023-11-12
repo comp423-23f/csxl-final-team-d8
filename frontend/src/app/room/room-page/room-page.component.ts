@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Room } from 'src/app/models.module';
 import { profileResolver } from 'src/app/profile/profile.resolver';
 import { roomResolver } from '../room.resolver';
 import { Room } from '../room.model';
@@ -20,33 +21,4 @@ export class RoomPageComponent {
     canActivate: [],
     resolve: { profile: profileResolver } // Add back later: , rooms: roomResolver }
   };
-
-  /** Store Observable list of Rooms */
-  public rooms: Room[];
-
-  /** Store searchBarQuery */
-  public searchBarQuery = '';
-
-  /** Store the currently-logged-in user's profile.  */
-  public profile: Profile;
-
-  /** Stores the user permission value for current room. */
-  public permValues: Map<number, number> = new Map();
-
-  constructor(
-    private route: ActivatedRoute,
-    protected snackBar: MatSnackBar
-  ) {
-    /** Initialize data from resolvers. */
-    const data = this.route.snapshot.data as {
-      profile: Profile;
-      rooms: Room[];
-    };
-    this.profile = data.profile;
-    this.rooms = data.rooms;
-  }
-
-  //TODO createRoom()
-
-  //TODO deleteRoom()
 }
