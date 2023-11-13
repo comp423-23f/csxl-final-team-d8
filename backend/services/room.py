@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 from backend.entities.coworking.room_entity import RoomEntity
 
 from backend.models.coworking.room import Room
-from backend.models.coworking.room_details import NewRoom, RoomDetails
+from backend.models.coworking.room_details import RoomDetails
 
 from ..database import db_session
 from ..models import User
