@@ -1,15 +1,15 @@
-### Technical Specification Document
+# Technical Specification Document
 
 ## API Routes
 
-# backend/api/rooms.py
+### backend/api/rooms.py
 
 - get: get_rooms to return a list of rooms
 - post: new_room to generate a new room
 
 ## Backend Service Functions
 
-# backend/services/room.py
+### backend/services/room.py
 
 - all() to return list of rooms in database
 - create() to create a room and add it to database
@@ -20,7 +20,7 @@
 
 ## Development Concerns
 
-# Frontend
+### Frontend
 
 Room- represented in navigation; not yet filtered for authorization
 
@@ -40,7 +40,7 @@ Seat- very skeletal so far, not implemented or represented in navigation
 - seat module
 - seat service
 
-# Backend
+### Backend
 
 - so far have implemented the API and service methods detailed above
 - models and entities were available to us in the code base; we have not yet found anything we need to add
