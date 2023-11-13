@@ -15,7 +15,9 @@ import { roomResolver } from '../room.resolver';
   templateUrl: './room-manage.component.html',
   styleUrls: ['./room-manage.component.css']
 })
+
 export class RoomManageComponent implements OnInit {
+
   /** Route information to be used in Room Routing Module */
   public static Route = {
     path: 'rooms/room-manage',
