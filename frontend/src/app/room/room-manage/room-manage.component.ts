@@ -22,7 +22,7 @@ export class RoomManageComponent implements OnInit {
     title: 'Create New/Edit Room',
     component: RoomManageComponent,
     canActivate: [],
-    resolve: { profile: profileResolver, rooms: roomResolver } // Add back later: , rooms: roomResolver }
+    resolve: { profile: profileResolver } // Add back later: , rooms: roomResolver }
   };
 
   public room: Room;
@@ -44,6 +44,8 @@ export class RoomManageComponent implements OnInit {
     protected snackBar: MatSnackBar
   ) {
     const form = this.roomForm;
+    form.get('id')?.addValidators(Validators.required);
+    form.get('nickname')?.addValidators(Validators.required);
 
     const data = route.snapshot.data as { room: Room };
     this.room = data.room;
