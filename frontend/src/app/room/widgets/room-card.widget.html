@@ -1,7 +1,29 @@
-<mat-card class="room">
-  <mat-card-header>
-    <mat-card-title>Room 1</mat-card-title>
-    <mat-card-subtitle>20/20 Seats Available</mat-card-subtitle>
+<mat-card class="room" appearance="outlined">
+  <!-- Card Header Row (Room Name) -->
+  <mat-card-header class="header">
+    <mat-card-title
+      class="name"
+      [matTooltip]="room.id"
+      matTooltipPosition="above"
+      [matTooltipDisabled]="room.id.length < 25">
+      {{ room.id.length < 25 ? room.id : room.nickname }}
+    </mat-card-title>
   </mat-card-header>
-  <button mat-button>View Seats</button></mat-card
+
+  <!-- View Seats, Edit Room, and Delete Room Buttons -->
+  <!-- Will need to add router links later -->
+  <mat-card-actions class="buttons">
+    <!-- Link to View Seats -->
+    <a class="view-seats">
+      <button mat-stroked-button>View Seats</button>
+    </a>
+    <!-- Link to Edit Room -->
+    <a class="edit-room">
+      <button mat-stroked-button>Edit Room</button>
+    </a>
+    <!-- Link to Delete Room -->
+    <a class="delete-room">
+      <button mat-stroked-button>Delete Room</button>
+    </a>
+  </mat-card-actions></mat-card
 >
