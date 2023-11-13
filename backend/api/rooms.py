@@ -31,7 +31,7 @@ def get_rooms(
     """
     return room_service.all()
 
-
+  
 @api.post("", response_model=Room, tags=["Rooms"])
 def new_room(
     room: Room,

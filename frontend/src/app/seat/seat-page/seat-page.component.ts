@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Seat } from '../seat.model';
+import { ActivatedRoute } from '@angular/router';
+import { SeatService } from '../seat.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-seat-page',
@@ -7,4 +11,3 @@ import { Component } from '@angular/core';
 })
 export class SeatPageComponent {
 
-}
