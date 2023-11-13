@@ -7,6 +7,8 @@ import { RoomService } from '../room.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 //import { Profile, ProfileService } from 'src/app/profile/profile.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { roomResolver } from '../room.resolver';
 
 @Component({
   selector: 'app-room-manage',
@@ -20,7 +22,7 @@ export class RoomManageComponent implements OnInit {
     title: 'Create New/Edit Room',
     component: RoomManageComponent,
     canActivate: [],
-    resolve: { profile: profileResolver } // Add back later: , rooms: roomResolver }
+    resolve: { profile: profileResolver, rooms: roomResolver } // Add back later: , rooms: roomResolver }
   };
 
   public room: Room;
@@ -43,8 +45,8 @@ export class RoomManageComponent implements OnInit {
   ) {
     const form = this.roomForm;
 
-    //const data = route.snapshot.data as { profile: Profile };
-    //this.profile = data.profile;
+    const data = route.snapshot.data as { room: Room };
+    this.room = data.room;
   }
 
   ngOnInit(): void {
@@ -63,8 +65,8 @@ export class RoomManageComponent implements OnInit {
   onSubmit(): void {
     if (this.roomForm.valid) {
       Object.assign(this.room, this.roomForm.value);
-      this.roomService.put(this.room).subscribe({
-        next: (user) => this.onSuccess(user),
+      this.roomService.createRoom(this.room).subscribe({
+        next: (room) => this.onSuccess(room),
         error: (err) => this.onError(err)
       });
     }
