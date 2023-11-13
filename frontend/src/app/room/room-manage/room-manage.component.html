@@ -1,1 +1,83 @@
 <p>Manage Room</p>
+
+<!-- Update Organization Form -->
+<form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
+  <!-- Update Room Card -->
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Create Room</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- Room ID Field -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Room ID</mat-label>
+        <input
+          matInput
+          placeholder="ID"
+          formControlName="id"
+          name="id"
+          required />
+      </mat-form-field>
+      <!-- Nickname Field -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Nickname</mat-label>
+        <input
+          matInput
+          placeholder="Nickname"
+          formControlName="nickname"
+          name="nickname"
+          required />
+      </mat-form-field>
+      <!-- Building Field -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Building</mat-label>
+        <input
+          matInput
+          placeholder="Building"
+          formControlName="building"
+          name="building" />
+      </mat-form-field>
+      <!-- Room Field -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Room</mat-label>
+        <input matInput placeholder="Room" formControlName="room" name="room" />
+      </mat-form-field>
+      <!-- Capacity Field -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Capacity</mat-label>
+        <input
+          matInput
+          placeholder="Capacity"
+          formControlName="capacity"
+          name="capacity"
+          required />
+      </mat-form-field>
+      <!-- Reservable Field -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Reservable</mat-label>
+        <input
+          matInput
+          placeholder="Reservable"
+          formControlName="reservable"
+          name="reservable"
+          required />
+      </mat-form-field>
+      <!-- Seats Field -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Seats</mat-label>
+        <input
+          matInput
+          placeholder="Seats"
+          formControlName="seats"
+          name="seats"
+          required />
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <!-- Submit Button -->
+      <button mat-stroked-button type="submit" [disabled]="roomForm.invalid">
+        SAVE
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>
