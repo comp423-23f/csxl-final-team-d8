@@ -15,6 +15,7 @@ import { Room } from '../room.model';
 })
 export class RoomCard {
   /** The room to show */
+  @Input() room!: Room;
 
   constructor() {}
 }

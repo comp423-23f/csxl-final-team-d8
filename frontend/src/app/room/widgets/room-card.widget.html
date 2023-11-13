@@ -1,6 +1,12 @@
 <mat-card class="room">
   <mat-card-header>
-    <mat-card-title>Room 1</mat-card-title>
+    <mat-card-title
+      class="name"
+      [matTooltip]="room.id"
+      matTooltipPosition="above"
+      [matTooltipDisabled]="room.id.length < 25">
+      {{ room.id.length < 25 ? room.id : room.nickname }}
+    </mat-card-title>
     <mat-card-subtitle>20/20 Seats Available</mat-card-subtitle>
   </mat-card-header>
   <button mat-button>View Seats</button></mat-card

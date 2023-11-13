@@ -1,42 +1,12 @@
 <!-- Search Bar -->
 
-<!-- Display card for each room, potentially filtered based on the search query. -->
 <div class="page-container">
   <!-- Button to be routed to room-manage page -->
   <a [routerLink]="['rooms/room-manage']">
     <button>ADD ROOM</button>
   </a>
+  <!-- Display card for each room, potentially filtered based on the search query. -->
   <div class="room-cards">
-    <mat-card class="room">
-      <mat-card-header>
-        <mat-card-title>Room 1</mat-card-title>
-        <mat-card-subtitle>20/20 Seats Available</mat-card-subtitle>
-      </mat-card-header>
-      <button mat-button>View Seats</button>
-    </mat-card>
-
-    <mat-card class="room">
-      <mat-card-header>
-        <mat-card-title>Room 2</mat-card-title>
-        <mat-card-subtitle>30/40 Seats Available</mat-card-subtitle>
-      </mat-card-header>
-      <button mat-button>View Seats</button>
-    </mat-card>
-
-    <mat-card class="room">
-      <mat-card-header>
-        <mat-card-title>Room 3</mat-card-title>
-        <mat-card-subtitle>70/100 Seats Available</mat-card-subtitle>
-      </mat-card-header>
-      <button mat-button>View Seats</button>
-    </mat-card>
-
-    <mat-card class="room">
-      <mat-card-header>
-        <mat-card-title>Room 4</mat-card-title>
-        <mat-card-subtitle>0/20 Seats Available</mat-card-subtitle>
-      </mat-card-header>
-      <button mat-button>View Seats</button>
-    </mat-card>
+    <room-card class="room" [room]="room" *ngFor="let room of rooms" />
   </div>
 </div>
