@@ -32,7 +32,8 @@ import { SharedModule } from '../shared/shared.module';
     MatCardModule,
     SharedModule,
     ReactiveFormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTooltipModule
   ]
 })
 export class RoomModule {}

@@ -9,47 +9,50 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { roomResolver } from '../room.resolver';
+import { Profile } from 'src/app/models.module';
 
 @Component({
   selector: 'app-room-manage',
   templateUrl: './room-manage.component.html',
   styleUrls: ['./room-manage.component.css']
 })
-
 export class RoomManageComponent implements OnInit {
-
   /** Route information to be used in Room Routing Module */
   public static Route = {
     path: 'rooms/room-manage',
     title: 'Create New/Edit Room',
     component: RoomManageComponent,
     canActivate: [],
-    resolve: { profile: profileResolver } // Add back later: , rooms: roomResolver }
+    resolve: { profile: profileResolver, rooms: roomResolver } // Add back later: , rooms: roomResolver }
   };
 
   public room: Room;
+  public profile: Profile | null = null;
+  room_id: string = 'new';
 
   public roomForm = this.formBuilder.group({
     id: '',
     nickname: '',
     building: '',
     room: '',
-    capacity: '',
-    reservable: '',
-    seats: ''
+    capacity: null,
+    reservable: null,
+    seats: null
   });
 
   constructor(
-    route: ActivatedRoute,
+    private route: ActivatedRoute,
     protected formBuilder: FormBuilder,
     protected roomService: RoomService,
-    protected snackBar: MatSnackBar
+    protected snackBar: MatSnackBar,
+    private router: Router
   ) {
-    const form = this.roomForm;
-    form.get('id')?.addValidators(Validators.required);
-    form.get('nickname')?.addValidators(Validators.required);
+    //const form = this.roomForm;
+    //form.get('id')?.addValidators(Validators.required);
+    //form.get('nickname')?.addValidators(Validators.required);
 
-    const data = route.snapshot.data as { room: Room };
+    const data = route.snapshot.data as { profile: Profile; room: Room };
+    this.profile = data.profile;
     this.room = data.room;
   }
 

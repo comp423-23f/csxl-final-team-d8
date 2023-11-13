@@ -6,6 +6,11 @@
   <a [routerLink]="['rooms/room-manage']">
     <button>ADD ROOM</button>
   </a>
+  <!-- Organizations -->
+  <div class="room-cards">
+    <!-- Display card for each organization, potentially filtered based on the search query. -->
+    <room-card class="room" [room]="room" *ngFor="let room of rooms" />
+  </div>
   <div class="room-cards">
     <mat-card class="room">
       <mat-card-header>
