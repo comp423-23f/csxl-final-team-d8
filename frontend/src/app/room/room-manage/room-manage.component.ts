@@ -28,7 +28,7 @@ export class RoomManageComponent implements OnInit {
   public room: Room;
 
   /** Store the currently-logged-in user's profile.  */
-  public profile: Profile | null = null;
+  public profile: Profile;
 
   /** Store the room id. */
   //room_id: string = 'new';
