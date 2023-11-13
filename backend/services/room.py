@@ -23,6 +23,22 @@ class RoomService:
         """Initializes the `RoomService` session"""
         self._session = session
 
+        
+    def all(self) -> list[Room]:
+        """
+        Retrieves all rooms from the table
+
+        Returns:
+            list[Room]: List of all `Room`
+        """
+        # Select all entries in `Room` table
+        query = select(RoomEntity)
+        entities = self._session.scalars(query).all()
+
+        # Convert entries to a model and return
+        return [entity.to_model() for entity in entities]
+
+
     def create(self, subject: User, room: Room) -> Room:  # type: ignore
         """
         Creates a room based on the input object and adds it to the table.
@@ -54,4 +70,4 @@ class RoomService:
             return room_entity.to_model()
 
 
-# TODO Services method for getting all rooms, deleting a room, inserting a room
+# TODO Services method for deleting a room, inserting a room

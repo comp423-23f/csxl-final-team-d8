@@ -12,10 +12,26 @@ from ..models.user import User
 api = APIRouter(prefix="/api/rooms")
 openapi_tags = {
     "name": "Rooms",
-    "description": "Create CSXL Rooms.",
+    "description": "Create and retrieve CSXL Rooms.",
 }
 
 
+@api.get("", response_model=list[Room], tags=["Rooms"])
+def get_rooms(
+    room_service: RoomService = Depends(),
+) -> list[Room]:
+    """
+    Get all rooms
+
+    Parameters:
+        room_service: a valid RoomService
+
+    Returns:
+        list[Room]: All Rooms in the Room database table
+    """
+    return room_service.all()
+
+  
 @api.post("", response_model=Room, tags=["Rooms"])
 def new_room(
     room: Room,

@@ -9,17 +9,5 @@ import { Observable } from 'rxjs';
   templateUrl: './seat-page.component.html',
   styleUrls: ['./seat-page.component.css']
 })
-
 export class SeatPageComponent {
-  public seats: Observable<Seat[]>;
-  constructor(
-    private route: ActivatedRoute,
-    private seatService: SeatService
-  ) {
-    /** Initialize data from resolvers. */
-    const data = this.route.snapshot.data as {
-      seats: Seat[];
-    };
-    this.seats = seatService.getSeats();
-  }
-}
+
