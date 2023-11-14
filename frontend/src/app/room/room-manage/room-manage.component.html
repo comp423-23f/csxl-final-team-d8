@@ -1,14 +1,25 @@
-<p>Manage Room</p>
+<!-- HTML Structure of Create Room Page -->
 
-<!-- Update Organization Form -->
+<!-- Create Room Form -->
 <form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
-  <!-- Update Room Card -->
+  <!-- Header -->
   <mat-card>
-    <mat-card-header>
+    <mat-card-header *ngIf="profile.id; else roomregistration">
       <mat-card-title>Create Room</mat-card-title>
     </mat-card-header>
+
+    <ng-template #roomregistration>
+      <mat-card-header>
+        <mat-card-title>Hello!! Please create a new room below.</mat-card-title>
+        <mat-card-subtitle>
+          Once the room is setup you can begin editing seats!
+        </mat-card-subtitle>
+      </mat-card-header>
+    </ng-template>
+
+    <!-- Room Input Fields -->
     <mat-card-content>
-      <!-- Room ID Field -->
+      <!-- ID Field -->
       <mat-form-field appearance="outline" color="accent">
         <mat-label>Room ID</mat-label>
         <input
@@ -73,8 +84,9 @@
           required />
       </mat-form-field>
     </mat-card-content>
+
+    <!-- Submit Button -->
     <mat-card-actions>
-      <!-- Submit Button -->
       <button mat-stroked-button type="submit" [disabled]="roomForm.invalid">
         SAVE
       </button>
