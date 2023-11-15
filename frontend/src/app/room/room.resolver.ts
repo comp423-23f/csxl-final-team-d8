@@ -26,7 +26,7 @@ export const roomDetailResolver: ResolveFn<Room | undefined> = (
       nickname: '',
       building: '',
       room: '',
-      capacity: null,
+      capacity: 0,
       reservable: false,
       seats: null
       //includes fields from both room model and room details model, which are separated right now

@@ -25,7 +25,7 @@ export class RoomManageComponent {
   };
 
   /** Store the room.  */
-  public room: Room;
+  public the_room: Room;
 
   /** Store the currently-logged-in user's profile.  */
   public profile: Profile;
@@ -37,18 +37,18 @@ export class RoomManageComponent {
   id = new FormControl('', [Validators.required]);
   nickname = new FormControl('', [Validators.required]);
   building = new FormControl('', [Validators.required]);
-  //room = new FormControl('', [Validators.required]);
+  room = new FormControl('', [Validators.required]);
   capacity = new FormControl(0);
   reservable = new FormControl(false);
-  seats = new FormControl('');
+  seats = new FormControl(null);
 
   /** Create a Room Editor Form */
   public roomForm = this.formBuilder.group({
     id: this.id,
     nickname: this.nickname,
     building: this.building,
-    //room: this.room,
-    room: '',
+    room: this.room,
+    //room: '',
     capacity: this.capacity,
     reservable: this.reservable,
     seats: this.seats
@@ -82,9 +82,9 @@ export class RoomManageComponent {
     console.log(data.room);
 
     if (data.room) {
-      this.room = data.room;
+      this.the_room = data.room;
     } else {
-      this.room = {
+      this.the_room = {
         id: '',
         nickname: '',
         building: '',
@@ -100,10 +100,10 @@ export class RoomManageComponent {
     this.roomForm.setValue({
       id: '2',
       nickname: 'nickname',
-      building: null,
-      room: null,
-      capacity: null,
-      reservable: null,
+      building: '',
+      room: '',
+      capacity: 0,
+      reservable: false,
       seats: null
     });
   }
@@ -132,10 +132,12 @@ export class RoomManageComponent {
     // pass room object into roomService.createRoom below
 
     if (this.roomForm.valid) {
-      console.log(this.room);
-      Object.assign(this.room, this.roomForm.value);
-      this.roomService.createRoom(this.room).subscribe({
-        next: (room) => this.onSuccess(room),
+      console.log(this.the_room);
+      console.log('reached onsubmit');
+      Object.assign(this.the_room, this.roomForm.value);
+      console.log(this.the_room);
+      this.roomService.createRoom(this.the_room).subscribe({
+        next: (the_room) => this.onSuccess(the_room),
         error: (err) => this.onError(err)
       });
     }

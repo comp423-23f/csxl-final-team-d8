@@ -15,12 +15,24 @@ import { Seat } from '../seat/seat.model';
 //   seats: Seat[] | null;
 // }
 
+// export interface Room {
+//   //not sure which of these still need | null
+//   id: string;
+//   nickname: string | null;
+//   building: string;
+//   room: string;
+//   capacity: number | null;
+//   reservable: boolean;
+//   seats: Seat[] | null;
+// }
+
 export interface Room {
+  //not sure which of these still need | null
   id: string;
-  nickname: string | null;
+  nickname: string;
   building: string;
   room: string;
-  capacity: number | null;
+  capacity: number;
   reservable: boolean;
   seats: Seat[] | null;
 }

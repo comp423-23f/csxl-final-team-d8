@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 from backend.entities.coworking.room_entity import RoomEntity
 
 from backend.models.coworking.room import Room
-from backend.models.coworking.room_details import NewRoom
+from backend.models.coworking.room_details import NewRoom, RoomDetails
 
 from ..database import db_session
 from ..models import User
@@ -37,6 +37,15 @@ class RoomService:
 
         # Convert entries to a model and return
         return [entity.to_model() for entity in entities]
+
+    # def all(self) -> list[RoomDetails]:
+    #     """Returns all rooms in the coworking space.
+
+    #     Returns:
+    #         list[RoomDetails]: All rooms in the coworking space ordered by increasing capacity.
+    #     """
+    #     entities = self._session.query(RoomEntity).order_by(RoomEntity.capacity).all()
+    #     return [entity.to_details_model() for entity in entities]
 
     def create(self, subject: User, room: NewRoom) -> Room:  # type: ignore
         """
