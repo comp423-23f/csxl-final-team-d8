@@ -20,10 +20,10 @@ openapi_tags = {
 }
 
 
-@api.get("", response_model=list[Room], tags=["Rooms"])
+@api.get("", response_model=list[RoomDetails], tags=["Rooms"])
 def get_rooms(
     room_service: RoomService = Depends(),
-) -> list[Room]:
+) -> list[RoomDetails]:
     """
     Get all rooms
 
@@ -33,7 +33,7 @@ def get_rooms(
     Returns:
         list[Room]: All Rooms in the Room database table
     """
-    return room_service.all()
+    return room_service.list()
 
 
 @api.post("", response_model=RoomDetails, tags=["Rooms"])
