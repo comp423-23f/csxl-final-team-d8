@@ -4,6 +4,7 @@ from sqlalchemy import Integer, String, Boolean
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from ..entity_base import EntityBase
 from ...models.coworking import Room, RoomDetails
+from ...models.coworking.room_details import NewRoom
 from typing import Self
 
 __authors__ = ["Kris Jordan"]
@@ -67,4 +68,15 @@ class RoomEntity(EntityBase):
             room=model.room,
             capacity=model.capacity,
             reservable=model.reservable,
+        )
+
+    @classmethod
+    def from_new_model(cls, new_model: NewRoom) -> Self:
+        return cls(
+            id=new_model.id,
+            nickname=new_model.nickname,
+            building=new_model.building,
+            room=new_model.room,
+            capacity=new_model.capacity,
+            reservable=new_model.reservable,
         )

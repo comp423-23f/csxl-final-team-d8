@@ -11,11 +11,14 @@ __copyright__ = "Copyright 2023"
 __license__ = "MIT"
 
 
-class RoomDetails(Room):
+class NewRoom(Room):
     building: str
     room: str
     capacity: int
     reservable: bool
+
+
+class RoomDetails(NewRoom):
     seats: list[Seat] = []
 
     def to_room(self) -> Room:
@@ -24,3 +27,18 @@ class RoomDetails(Room):
         Returns:
             Room: The model representation of the entity."""
         return Room(id=self.id, nickname=self.nickname)
+
+
+# class RoomDetails(Room):
+#     building: str
+#     room: str
+#     capacity: int
+#     reservable: bool
+#     seats: list[Seat] = []
+
+#     def to_room(self) -> Room:
+#         """Converts the details model to a room model.
+
+#         Returns:
+#             Room: The model representation of the entity."""
+#         return Room(id=self.id, nickname=self.nickname)

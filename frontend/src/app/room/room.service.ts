@@ -19,6 +19,7 @@ export class RoomService {
    * @returns {Observable<Room[]>}
    */
   getRooms(): Observable<Room[]> {
+    console.log('get room resolver');
     return this.http.get<Room[]>('/api/rooms');
   }
 

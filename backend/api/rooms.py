@@ -5,6 +5,7 @@ Room route used to create Rooms."""
 from fastapi import APIRouter, Depends, HTTPException
 
 from backend.models.coworking.room import Room
+from backend.models.coworking.room_details import NewRoom
 from backend.services.room import RoomService
 from ..api.authentication import registered_user
 from ..models.user import User
@@ -31,10 +32,10 @@ def get_rooms(
     """
     return room_service.all()
 
-  
+
 @api.post("", response_model=Room, tags=["Rooms"])
 def new_room(
-    room: Room,
+    room: NewRoom,
     subject: User = Depends(registered_user),
     room_service: RoomService = Depends(),
 ) -> Room:

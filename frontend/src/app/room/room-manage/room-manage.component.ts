@@ -14,7 +14,7 @@ import { Profile } from 'src/app/profile/profile.service';
   templateUrl: './room-manage.component.html',
   styleUrls: ['./room-manage.component.css']
 })
-export class RoomManageComponent implements OnInit {
+export class RoomManageComponent {
   /** Route information to be used in Room Routing Module */
   public static Route = {
     path: 'rooms/room-manage',
@@ -31,18 +31,37 @@ export class RoomManageComponent implements OnInit {
   public profile: Profile;
 
   /** Store the room id. */
-  //room_id: string = 'new';
+  room_id: string = 'new';
 
+  /** Add validators to the form */
+  id = new FormControl('', [Validators.required]);
+  nickname = new FormControl('', [Validators.required]);
+  building = new FormControl('', [Validators.required]);
+  //room = new FormControl('', [Validators.required]);
+  capacity = new FormControl(0);
+  reservable = new FormControl(false);
+  seats = new FormControl('');
+
+  /** Create a Room Editor Form */
   public roomForm = this.formBuilder.group({
-    id: '',
-    nickname: '',
-    building: '',
+    id: this.id,
+    nickname: this.nickname,
+    building: this.building,
+    //room: this.room,
     room: '',
-    capacity: null,
-    reservable: null,
-    seats: null
+    capacity: this.capacity,
+    reservable: this.reservable,
+    seats: this.seats
+    // id: '',
+    // nickname: '',
+    // building: '',
+    // room: '',
+    // capacity: null,
+    // reservable: null,
+    // seats: null
   });
 
+  /** Constructs the room editor component */
   constructor(
     //private or protected?
     private route: ActivatedRoute,
@@ -51,20 +70,36 @@ export class RoomManageComponent implements OnInit {
     protected snackBar: MatSnackBar,
     private router: Router
   ) {
-    // const form = this.roomForm;
-    // form.get('id')?.addValidators(Validators.required);
-    // form.get('nickname')?.addValidators(Validators.required);
-
-    const data = route.snapshot.data as { profile: Profile; room: Room };
+    /** Initialize data from resolvers. */
+    const data = this.route.snapshot.data as {
+      profile: Profile;
+      room: Room;
+    };
+    console.log('line 78' + data.profile.pid);
     this.profile = data.profile;
-    this.room = data.room;
-  }
 
-  ngOnInit(): void {
-    let room = this.room;
+    console.log('!!!');
+    console.log(data.room);
+
+    if (data.room) {
+      this.room = data.room;
+    } else {
+      this.room = {
+        id: '',
+        nickname: '',
+        building: '',
+        room: '',
+        capacity: 0,
+        reservable: false,
+        seats: null
+      };
+    }
+
+    /** Set room form data */
+    //do I need this??
     this.roomForm.setValue({
-      id: room.id,
-      nickname: room.nickname,
+      id: '2',
+      nickname: 'nickname',
       building: null,
       room: null,
       capacity: null,
@@ -73,8 +108,31 @@ export class RoomManageComponent implements OnInit {
     });
   }
 
+  // ngOnInit(): void {
+  //   let room = this.room;
+  //   this.roomForm.setValue({
+  //     id: room.id,
+  //     nickname: room.nickname,
+  //     building: null,
+  //     room: null,
+  //     capacity: null,
+  //     reservable: null,
+  //     seats: null
+  //   });
+  // }
+
+  /** Event handler to handle submitting the Update Organization Form.
+   * @returns {void}
+   */
   onSubmit(): void {
+    console.log('hi');
+    console.log(this.roomForm.value);
+    //console.log(this.room);
+    // make new room object using form vals above
+    // pass room object into roomService.createRoom below
+
     if (this.roomForm.valid) {
+      console.log(this.room);
       Object.assign(this.room, this.roomForm.value);
       this.roomService.createRoom(this.room).subscribe({
         next: (room) => this.onSuccess(room),
@@ -83,11 +141,21 @@ export class RoomManageComponent implements OnInit {
     }
   }
 
-  private onSuccess(room: Room) {
-    this.snackBar.open('Room Saved', '', { duration: 2000 });
+  /** Opens a confirmation snackbar when a room is successfully updated.
+   * @returns {void}
+   */
+  private onSuccess(room: Room): void {
+    //this.router.navigate(['/room/', room.id]);
+    this.snackBar.open('Room Created', '', { duration: 2000 });
   }
 
-  private onError(err: any) {
-    console.error('How to handle this?');
+  /** Opens a snackbar when there is an error updating a room.
+   * @returns {void}
+   */
+  private onError(err: any): void {
+    console.error('Error: Room Not Created');
+    this.snackBar.open('Error: Room Not Created', '', {
+      duration: 2000
+    });
   }
 }
