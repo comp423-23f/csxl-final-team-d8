@@ -19,7 +19,6 @@ export class RoomService {
    * @returns {Observable<Room[]>}
    */
   getRooms(): Observable<Room[]> {
-    console.log('get room resolver');
     return this.http.get<Room[]>('/api/rooms');
   }
 
@@ -36,6 +35,8 @@ export class RoomService {
    * @returns {Observable<Room>}
    */
   createRoom(room: Room): Observable<Room> {
+    console.log('creating room');
+    console.log(room);
     return this.http.post<Room>('/api/rooms', room);
   }
 

@@ -40,7 +40,7 @@ export class RoomManageComponent {
   room = new FormControl('', [Validators.required]);
   capacity = new FormControl(0);
   reservable = new FormControl(false);
-  seats = new FormControl(null);
+  //seats = new FormControl(null);
 
   /** Create a Room Editor Form */
   public roomForm = this.formBuilder.group({
@@ -50,8 +50,9 @@ export class RoomManageComponent {
     room: this.room,
     //room: '',
     capacity: this.capacity,
-    reservable: this.reservable,
-    seats: this.seats
+    reservable: this.reservable
+    //seats: this.seats
+
     // id: '',
     // nickname: '',
     // building: '',
@@ -75,11 +76,7 @@ export class RoomManageComponent {
       profile: Profile;
       room: Room;
     };
-    console.log('line 78' + data.profile.pid);
     this.profile = data.profile;
-
-    console.log('!!!');
-    console.log(data.room);
 
     if (data.room) {
       this.the_room = data.room;
@@ -98,13 +95,14 @@ export class RoomManageComponent {
     /** Set room form data */
     //do I need this??
     this.roomForm.setValue({
-      id: '2',
-      nickname: 'nickname',
-      building: '',
-      room: '',
-      capacity: 0,
-      reservable: false,
-      seats: null
+      id: this.the_room.id,
+      nickname: this.the_room.nickname,
+      building: this.the_room.building,
+      room: this.the_room.room,
+      capacity: this.the_room.capacity,
+      reservable: this.the_room.reservable
+      //seats: this.the_room.seats
+      //seats: null
     });
   }
 

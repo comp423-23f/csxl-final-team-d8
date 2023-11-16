@@ -3,6 +3,7 @@
 Room route used to create Rooms."""
 
 from fastapi import APIRouter, Depends, HTTPException
+from pytest import console_main
 
 from backend.models.coworking.room import Room
 from backend.models.coworking.room_details import NewRoom
@@ -53,9 +54,9 @@ def new_room(
     Raises:
         HTTPException 422 if create() raises an Exception
     """
-
     try:
         # Try to create and return new room
+        print("in api")
         return room_service.create(subject, room)
     except Exception as e:
         # Raise 422 exception if creation fails (request body is shaped incorrectly / not authorized)
