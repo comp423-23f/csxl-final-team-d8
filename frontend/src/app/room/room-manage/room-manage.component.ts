@@ -18,6 +18,7 @@ export class RoomManageComponent {
   /** Route information to be used in Room Routing Module */
   public static Route = {
     path: 'rooms/room-manage',
+    //path: ':id/edit',
     title: 'Create New/Edit Room',
     component: RoomManageComponent,
     canActivate: [],
@@ -87,8 +88,8 @@ export class RoomManageComponent {
         building: '',
         room: '',
         capacity: 0,
-        reservable: false,
-        seats: null
+        reservable: false
+        // seats: null
       };
     }
 
@@ -104,6 +105,10 @@ export class RoomManageComponent {
       //seats: this.the_room.seats
       //seats: null
     });
+
+    /** Get id from the url */
+    // let room_id = this.route.snapshot.params['id'];
+    // this.room_id = room_id;
   }
 
   // ngOnInit(): void {

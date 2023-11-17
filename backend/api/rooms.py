@@ -6,7 +6,9 @@ from fastapi import APIRouter, Depends, HTTPException
 from pytest import console_main
 
 from backend.models.coworking.room import Room
+from backend.models.coworking.room import Test
 from backend.models.coworking.room_details import NewRoom
+from backend.models.coworking.room_details import RoomDetails
 from backend.services.room import RoomService
 from ..api.authentication import registered_user
 from ..models.user import User
@@ -34,12 +36,13 @@ def get_rooms(
     return room_service.all()
 
 
-@api.post("", response_model=Room, tags=["Rooms"])
+@api.post("", response_model=RoomDetails, tags=["Rooms"])
 def new_room(
+    # room: NewRoom,
     room: NewRoom,
     subject: User = Depends(registered_user),
     room_service: RoomService = Depends(),
-) -> Room:
+) -> RoomDetails:
     """
     Create room
 
@@ -58,6 +61,15 @@ def new_room(
         # Try to create and return new room
         print("in api")
         return room_service.create(subject, room)
+        # return RoomDetails(
+        #     id="nome",
+        #     nickname="str",
+        #     building="str",
+        #     capacity=0,
+        #     reservable=False,
+        #     room="somethign",
+        # )
+        # return "something"
     except Exception as e:
         # Raise 422 exception if creation fails (request body is shaped incorrectly / not authorized)
         raise HTTPException(status_code=422, detail=str(e))

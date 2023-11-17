@@ -47,7 +47,7 @@ class RoomService:
     #     entities = self._session.query(RoomEntity).order_by(RoomEntity.capacity).all()
     #     return [entity.to_details_model() for entity in entities]
 
-    def create(self, subject: User, room: NewRoom) -> Room:  # type: ignore
+    def create(self, subject: User, room: NewRoom) -> RoomDetails:  # type: ignore
         """
         Creates a room based on the input object and adds it to the table.
         If the room's ID is unique to the table, a new entry is added.
@@ -75,7 +75,9 @@ class RoomService:
             self._session.commit()
 
             # Return added object
-            return room_entity.to_model()
+            # return room_entity.to_model()
+            # an_entity = room_entity.t
+            return room_entity.to_details_model()
 
 
 # TODO Services method for deleting a room, inserting a room

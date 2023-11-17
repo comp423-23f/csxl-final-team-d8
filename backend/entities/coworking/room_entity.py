@@ -19,11 +19,11 @@ class RoomEntity(EntityBase):
 
     # Room Model Fields
     id: Mapped[str] = mapped_column(String, primary_key=True)
-    capacity: Mapped[int] = mapped_column(Integer, index=True)
     # RoomDetails Model Fields Follow
     building: Mapped[str] = mapped_column(String)
     room: Mapped[str] = mapped_column(String)
     nickname: Mapped[str] = mapped_column(String)
+    capacity: Mapped[int] = mapped_column(Integer, index=True)
     reservable: Mapped[bool] = mapped_column(Boolean)
 
     seats: Mapped[list["SeatEntity"]] = relationship(  # type: ignore
@@ -49,7 +49,7 @@ class RoomEntity(EntityBase):
             room=self.room,
             capacity=self.capacity,
             reservable=self.reservable,
-            seats=[seat.to_model() for seat in self.seats],
+            # seats=[seat.to_model() for seat in self.seats],
         )
 
     @classmethod

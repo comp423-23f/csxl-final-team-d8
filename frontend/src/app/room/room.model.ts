@@ -34,5 +34,5 @@ export interface Room {
   room: string;
   capacity: number;
   reservable: boolean;
-  seats: Seat[] | null;
+  // seats: Seat[] | null;
 }
