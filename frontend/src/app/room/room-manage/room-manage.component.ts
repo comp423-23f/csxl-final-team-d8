@@ -75,12 +75,13 @@ export class RoomManageComponent {
     /** Initialize data from resolvers. */
     const data = this.route.snapshot.data as {
       profile: Profile;
-      room: Room;
+      the_room: Room;
     };
     this.profile = data.profile;
+    this.the_room = data.the_room;
 
-    if (data.room) {
-      this.the_room = data.room;
+    if (data.the_room) {
+      this.the_room = data.the_room;
     } else {
       this.the_room = {
         id: '',

@@ -55,27 +55,3 @@ class RoomService:
 
         # Return added object
         return room_entity.to_model()
-
-    def create(self, room: Room) -> Room:  # type: ignore
-        """
-        Creates a room based on the input object and adds it to the table.
-        If the room's ID is unique to the table, a new entry is added.
-        If the room's ID already exists in the table, it raises an error.
-
-        Parameters:
-            subject: a valid User model representing the currently logged in User
-            room (Room): room to add to table
-
-        Returns:
-            Room: Object added to table
-        """
-
-        # Checks if the room already exists in the table
-        room_entity = RoomEntity.from_model(room)  # type: ignore
-
-        # Add new object to table and commit changes
-        self._session.add(room_entity)
-        self._session.commit()
-
-        # Return added object
-        return room_entity.to_model()

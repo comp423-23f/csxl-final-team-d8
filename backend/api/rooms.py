@@ -10,6 +10,7 @@ from backend.models.coworking.room import Test
 from backend.models.coworking.room_details import RoomDetails
 from backend.models.coworking.room_details import NewRoom
 from backend.services.coworking.room import RoomDetails
+from backend.services.coworking.room import RoomService
 from ..api.authentication import registered_user
 from ..models.user import User
 
@@ -39,8 +40,7 @@ def get_rooms(
 @api.post("", response_model=RoomDetails, tags=["Rooms"])
 def new_room(
     # room: NewRoom,
-    room: NewRoom,
-    subject: User = Depends(registered_user),
+    room: RoomDetails,
     room_service: RoomService = Depends(),
 ) -> RoomDetails:
     """
@@ -60,7 +60,7 @@ def new_room(
     try:
         # Try to create and return new room
         print("in api")
-        return room_service.create(subject, room)
+        return room_service.create(room)  # type: ignore
         # return RoomDetails(
         #     id="nome",
         #     nickname="str",
