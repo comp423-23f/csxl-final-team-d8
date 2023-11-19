@@ -7,9 +7,9 @@ from pytest import console_main
 
 from backend.models.coworking.room import Room
 from backend.models.coworking.room import Test
-from backend.models.coworking.room_details import NewRoom
 from backend.models.coworking.room_details import RoomDetails
-from backend.services.room import RoomService
+from backend.models.coworking.room_details import NewRoom
+from backend.services.coworking.room import RoomDetails
 from ..api.authentication import registered_user
 from ..models.user import User
 
