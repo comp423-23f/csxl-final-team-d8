@@ -5,6 +5,7 @@ from pathlib import Path
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
+from backend.services import room
 from .api import (
     events,
     health,
@@ -38,6 +39,7 @@ app = FastAPI(
         user.openapi_tags,
         organizations.openapi_tags,
         events.openapi_tags,
+        reservation.openapi_tags,
         reservation.openapi_tags,
         rooms.openapi_tags,
         health.openapi_tags,
