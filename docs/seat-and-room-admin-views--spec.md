@@ -16,23 +16,27 @@
 
 ## Technical/ User Experience Design
 
-- We decided to include a button in the room page that routes the user to a room manage page where they can add and edit rooms. The alternative would be to have this link in the navigation sidebar, which wouldn't be as clean.
+- We decided to include a button in the room page that routes the user to a room manage page where they can add and edit rooms. The alternative would be to have this link in the navigation sidebar, which wouldn't be as user friendly.
 
 ## Development Concerns
 
 ### Frontend
 
-Room- represented in navigation; not yet filtered for authorization
+Room- represented in navigation sidebar; not yet filtered for authorization
 
-- room-page component (view of rooms)
-  - contains link to room-manage page
+- room-page component
+  - displays list of rooms in database
+  - contains link to room-manage page (ADD ROOM button)
 - room-manage component (place to edit/add rooms)
-- room card widget for displaying room info
+  - contains a form that allows users to add a room to the database
+- room card widget
+  - displays room info
+  - has "view seats", "edit room", "delete room" (not yet connected)
 - room model
 - room module
 - room service
 
-Seat- very skeletal so far, not implemented or represented in navigation
+Seat- very skeletal so far, will eventually contain seat information for each room
 
 - seat-page component
 - seat-manage component
