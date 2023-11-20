@@ -63,6 +63,16 @@ pair_a = RoomDetails(
 
 rooms = [the_xl, group_a, group_b, group_c, pair_a]
 
+add_to = RoomDetails(
+    id="SN150",
+    building="Sitterson",
+    room="150",
+    nickname="ADD_TO",
+    capacity=5,
+    reservable=True,
+    seats=[],
+)
+
 
 def insert_fake_data(session: Session):
     for room in rooms:

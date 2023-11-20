@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 from backend.entities.coworking.room_entity import RoomEntity
 
 from backend.models.coworking.room import Room
+from backend.models.coworking.room_details import RoomDetails
 
 from ..database import db_session
 from ..models import User
@@ -39,7 +40,7 @@ class RoomService:
         return [entity.to_model() for entity in entities]
 
 
-    def create(self, subject: User, room: Room) -> Room:  # type: ignore
+    def create(self, room: Room) -> Room:  # type: ignore
         """
         Creates a room based on the input object and adds it to the table.
         If the room's ID is unique to the table, a new entry is added.
