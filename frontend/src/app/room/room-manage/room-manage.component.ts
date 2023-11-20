@@ -9,16 +9,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { roomResolver } from '../room.resolver';
 import { Profile } from 'src/app/profile/profile.service';
 
+//not sure if need below
+import { Observable } from 'rxjs';
+import { PermissionService } from 'src/app/permission.service';
+import { permissionGuard } from 'src/app/permission.guard';
+
 @Component({
   selector: 'app-room-manage',
   templateUrl: './room-manage.component.html',
   styleUrls: ['./room-manage.component.css']
 })
 
-export class RoomManageComponent implements OnInit {
+export class RoomManageComponent {
+
   /** Route information to be used in Room Routing Module */
   public static Route = {
     path: 'rooms/room-manage',
+    //path: ':id/edit',
     title: 'Create New/Edit Room',
     component: RoomManageComponent,
     canActivate: [],
@@ -26,24 +33,45 @@ export class RoomManageComponent implements OnInit {
   };
 
   /** Store the room.  */
-  public room: Room;
+  public the_room: Room;
 
   /** Store the currently-logged-in user's profile.  */
   public profile: Profile;
 
   /** Store the room id. */
-  //room_id: string = 'new';
+  room_id: string = 'new';
 
+  /** Add validators to the form */
+  //id = new FormControl('', [Validators.required]);
+  id = new FormControl('');
+  nickname = new FormControl('');
+  building = new FormControl('');
+  room = new FormControl('');
+  capacity = new FormControl(0);
+  reservable = new FormControl(false);
+  //seats = new FormControl(null);
+
+  /** Create a Room Editor Form */
   public roomForm = this.formBuilder.group({
-    id: '',
-    nickname: '',
-    building: '',
-    room: '',
-    capacity: null,
-    reservable: null,
-    seats: null
+    id: this.id,
+    nickname: this.nickname,
+    building: this.building,
+    room: this.room,
+    //room: '',
+    capacity: this.capacity,
+    reservable: this.reservable
+    //seats: this.seats
+
+    // id: '',
+    // nickname: '',
+    // building: '',
+    // room: '',
+    // capacity: null,
+    // reservable: null,
+    // seats: null
   });
 
+  /** Constructs the room editor component */
   constructor(
     //private or protected?
     private route: ActivatedRoute,
@@ -52,43 +80,87 @@ export class RoomManageComponent implements OnInit {
     protected snackBar: MatSnackBar,
     private router: Router
   ) {
-    // const form = this.roomForm;
-    // form.get('id')?.addValidators(Validators.required);
-    // form.get('nickname')?.addValidators(Validators.required);
-
-    const data = route.snapshot.data as { profile: Profile; room: Room };
+    /** Initialize data from resolvers. */
+    const data = this.route.snapshot.data as {
+      profile: Profile;
+      the_room: Room;
+    };
     this.profile = data.profile;
-    this.room = data.room;
-  }
+    this.the_room = data.the_room;
 
-  ngOnInit(): void {
-    let room = this.room;
+    if (data.the_room) {
+      this.the_room = data.the_room;
+    } else {
+      this.the_room = {
+        id: '',
+        nickname: '',
+        building: '',
+        room: '',
+        capacity: 0,
+        reservable: false
+        // seats: null
+      };
+    }
+
+    /** Set room form data */
+    //do I need this??
     this.roomForm.setValue({
-      id: room.id,
-      nickname: room.nickname,
-      building: null,
-      room: null,
-      capacity: null,
-      reservable: null,
-      seats: null
+      id: this.the_room.id,
+      nickname: this.the_room.nickname,
+      building: this.the_room.building,
+      room: this.the_room.room,
+      capacity: this.the_room.capacity,
+      reservable: this.the_room.reservable
+      //seats: this.the_room.seats
+      //seats: null
     });
+
+    /** Get id from the url */
+    // let room_id = this.route.snapshot.params['id'];
+    // this.room_id = room_id;
   }
 
+  // ngOnInit(): void {
+  //   let room = this.room;
+  //   this.roomForm.setValue({
+  //     id: room.id,
+  //     nickname: room.nickname,
+  //     building: null,
+  //     room: null,
+  //     capacity: null,
+  //     reservable: null,
+  //     seats: null
+  //   });
+  // }
+
+  /** Event handler to handle submitting the Update Organization Form.
+   * @returns {void}
+   */
   onSubmit(): void {
     if (this.roomForm.valid) {
-      Object.assign(this.room, this.roomForm.value);
-      this.roomService.createRoom(this.room).subscribe({
-        next: (room) => this.onSuccess(room),
+      Object.assign(this.the_room, this.roomForm.value);
+      this.roomService.createRoom(this.the_room).subscribe({
+        next: (the_room) => this.onSuccess(the_room),
         error: (err) => this.onError(err)
       });
     }
   }
 
-  private onSuccess(room: Room) {
-    this.snackBar.open('Room Saved', '', { duration: 2000 });
+  /** Opens a confirmation snackbar when a room is successfully updated.
+   * @returns {void}
+   */
+  private onSuccess(room: Room): void {
+    //this.router.navigate(['/room/', room.id]);
+    this.snackBar.open('Room Created', '', { duration: 2000 });
   }
 
-  private onError(err: any) {
-    console.error('How to handle this?');
+  /** Opens a snackbar when there is an error updating a room.
+   * @returns {void}
+   */
+  private onError(err: any): void {
+    console.error('Error: Room Not Created');
+    this.snackBar.open('Error: Room Not Created', '', {
+      duration: 2000
+    });
   }
 }

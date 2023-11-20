@@ -116,7 +116,7 @@ class UserService:
 
         return Paginated(
             items=[entity.to_model() for entity in entities],
-            length=length,
+            length=length,  # type: ignore
             params=pagination_params,
         )
 
