@@ -24,6 +24,7 @@ class RoomService:
         """Initializes the `RoomService` session"""
         self._session = session
 
+        
     def all(self) -> list[Room]:
         """
         Retrieves all rooms from the table
@@ -37,6 +38,7 @@ class RoomService:
 
         # Convert entries to a model and return
         return [entity.to_model() for entity in entities]
+
 
     def create(self, room: Room) -> Room:  # type: ignore
         """
