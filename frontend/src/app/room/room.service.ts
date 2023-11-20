@@ -35,8 +35,6 @@ export class RoomService {
    * @returns {Observable<Room>}
    */
   createRoom(room: Room): Observable<Room> {
-    console.log('creating room');
-    console.log(room);
     return this.http.post<Room>('/api/rooms', room);
   }
 

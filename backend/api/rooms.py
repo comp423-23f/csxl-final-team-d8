@@ -58,8 +58,6 @@ def new_room(
         HTTPException 422 if create() raises an Exception
     """
     try:
-        # Try to create and return new room
-        print("in api")
         return room_service.create(room)  # type: ignore
         # return RoomDetails(
         #     id="nome",
