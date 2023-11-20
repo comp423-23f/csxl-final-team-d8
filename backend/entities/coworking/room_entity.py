@@ -4,6 +4,7 @@ from sqlalchemy import Integer, String, Boolean
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from ..entity_base import EntityBase
 from ...models.coworking import Room, RoomDetails
+from ...models.coworking.room_details import NewRoom
 from typing import Self
 
 __authors__ = ["Kris Jordan"]
@@ -18,11 +19,11 @@ class RoomEntity(EntityBase):
 
     # Room Model Fields
     id: Mapped[str] = mapped_column(String, primary_key=True)
-    capacity: Mapped[int] = mapped_column(Integer, index=True)
     # RoomDetails Model Fields Follow
     building: Mapped[str] = mapped_column(String)
     room: Mapped[str] = mapped_column(String)
     nickname: Mapped[str] = mapped_column(String)
+    capacity: Mapped[int] = mapped_column(Integer, index=True)
     reservable: Mapped[bool] = mapped_column(Boolean)
 
     seats: Mapped[list["SeatEntity"]] = relationship(  # type: ignore
@@ -48,7 +49,7 @@ class RoomEntity(EntityBase):
             room=self.room,
             capacity=self.capacity,
             reservable=self.reservable,
-            seats=[seat.to_model() for seat in self.seats],
+            # seats=[seat.to_model() for seat in self.seats],
         )
 
     @classmethod
@@ -67,4 +68,15 @@ class RoomEntity(EntityBase):
             room=model.room,
             capacity=model.capacity,
             reservable=model.reservable,
+        )
+
+    @classmethod
+    def from_new_model(cls, new_model: NewRoom) -> Self:
+        return cls(
+            id=new_model.id,
+            nickname=new_model.nickname,
+            building=new_model.building,
+            room=new_model.room,
+            capacity=new_model.capacity,
+            reservable=new_model.reservable,
         )

@@ -4,10 +4,12 @@
 <form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
   <!-- Header -->
   <mat-card>
-    <mat-card-header *ngIf="profile.id; else roomregistration">
+    <!--<mat-card-header *ngIf="profile.id; else roomregistration"> -->
+    <mat-card-header>
       <mat-card-title>Create Room</mat-card-title>
     </mat-card-header>
 
+    <!--
     <ng-template #roomregistration>
       <mat-card-header>
         <mat-card-title>Hello!! Please create a new room below.</mat-card-title>
@@ -16,6 +18,7 @@
         </mat-card-subtitle>
       </mat-card-header>
     </ng-template>
+    -->
 
     <!-- Room Input Fields -->
     <mat-card-content>
@@ -46,12 +49,18 @@
           matInput
           placeholder="Building"
           formControlName="building"
-          name="building" />
+          name="building"
+          required />
       </mat-form-field>
       <!-- Room Field -->
       <mat-form-field appearance="outline" color="accent">
         <mat-label>Room</mat-label>
-        <input matInput placeholder="Room" formControlName="room" name="room" />
+        <input
+          matInput
+          placeholder="Room"
+          formControlName="room"
+          name="room"
+          required />
       </mat-form-field>
       <!-- Capacity Field -->
       <mat-form-field appearance="outline" color="accent">
@@ -60,8 +69,7 @@
           matInput
           placeholder="Capacity"
           formControlName="capacity"
-          name="capacity"
-          required />
+          name="capacity" />
       </mat-form-field>
       <!-- Reservable Field -->
       <mat-form-field appearance="outline" color="accent">
@@ -70,19 +78,19 @@
           matInput
           placeholder="Reservable"
           formControlName="reservable"
-          name="reservable"
-          required />
+          name="reservable" />
       </mat-form-field>
       <!-- Seats Field -->
+      <!-- 
       <mat-form-field appearance="outline" color="accent">
         <mat-label>Seats</mat-label>
         <input
           matInput
           placeholder="Seats"
           formControlName="seats"
-          name="seats"
-          required />
+          name="seats" />
       </mat-form-field>
+      -->
     </mat-card-content>
 
     <!-- Submit Button -->

@@ -28,6 +28,5 @@ export class RoomCard {
   isTooltipDisabled(element: HTMLElement): boolean {
     return element.scrollHeight <= element.clientHeight;
   }
-
   constructor() {}
 }

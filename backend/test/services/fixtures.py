@@ -3,6 +3,7 @@
 import pytest
 from unittest.mock import create_autospec
 from sqlalchemy.orm import Session
+
 from ...services import (
     PermissionService,
     UserService,

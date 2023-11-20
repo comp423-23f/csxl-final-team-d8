@@ -3,9 +3,14 @@
 Room route used to create Rooms."""
 
 from fastapi import APIRouter, Depends, HTTPException
+from pytest import console_main
 
 from backend.models.coworking.room import Room
-from backend.services.room import RoomService
+from backend.models.coworking.room import Test
+from backend.models.coworking.room_details import RoomDetails
+from backend.models.coworking.room_details import NewRoom
+from backend.services.coworking.room import RoomDetails
+from backend.services.coworking.room import RoomService
 from ..api.authentication import registered_user
 from ..models.user import User
 
@@ -16,10 +21,10 @@ openapi_tags = {
 }
 
 
-@api.get("", response_model=list[Room], tags=["Rooms"])
+@api.get("", response_model=list[RoomDetails], tags=["Rooms"])
 def get_rooms(
     room_service: RoomService = Depends(),
-) -> list[Room]:
+) -> list[RoomDetails]:
     """
     Get all rooms
 
@@ -29,13 +34,13 @@ def get_rooms(
     Returns:
         list[Room]: All Rooms in the Room database table
     """
-    return room_service.all()
+    return room_service.list()
 
   
 @api.post("", response_model=Room, tags=["Rooms"])
 def new_room(
-    room: Room,
-    subject: User = Depends(registered_user),
+    # room: NewRoom,
+    room: RoomDetails,
     room_service: RoomService = Depends(),
 ) -> Room:
     """
@@ -52,10 +57,17 @@ def new_room(
     Raises:
         HTTPException 422 if create() raises an Exception
     """
-
     try:
-        # Try to create and return new room
-        return room_service.create(subject, room)
+        return room_service.create(room)  # type: ignore
+        # return RoomDetails(
+        #     id="nome",
+        #     nickname="str",
+        #     building="str",
+        #     capacity=0,
+        #     reservable=False,
+        #     room="somethign",
+        # )
+        # return "something"
     except Exception as e:
         # Raise 422 exception if creation fails (request body is shaped incorrectly / not authorized)
         raise HTTPException(status_code=422, detail=str(e))
