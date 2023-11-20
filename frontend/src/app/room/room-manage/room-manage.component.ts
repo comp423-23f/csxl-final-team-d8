@@ -19,6 +19,7 @@ import { permissionGuard } from 'src/app/permission.guard';
   templateUrl: './room-manage.component.html',
   styleUrls: ['./room-manage.component.css']
 })
+
 export class RoomManageComponent {
   /** Route information to be used in Room Routing Module */
   public static Route = {
