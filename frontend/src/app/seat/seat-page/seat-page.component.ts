@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
   templateUrl: './seat-page.component.html',
   styleUrls: ['./seat-page.component.css']
 })
-
 export class SeatPageComponent {
   public seats: Observable<Seat[]>;
   constructor(
