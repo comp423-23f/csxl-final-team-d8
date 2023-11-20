@@ -40,6 +40,8 @@ import { ProfileEditorComponent } from './profile/profile-editor/profile-editor.
 import { EventFilterPipe } from './event/event-filter/event-filter.pipe';
 import { SeatModule } from './seat/seat.module';
 import { RoomModule } from './room/room.module';
+import { RoomPageComponent } from './room/room-page/room-page.component';
+import { RoomManageComponent } from './room/room-manage/room-manage.component';
 
 @NgModule({
   declarations: [

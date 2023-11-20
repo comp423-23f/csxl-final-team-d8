@@ -19,9 +19,7 @@ import { permissionGuard } from 'src/app/permission.guard';
   templateUrl: './room-manage.component.html',
   styleUrls: ['./room-manage.component.css']
 })
-
 export class RoomManageComponent {
-
   /** Route information to be used in Room Routing Module */
   public static Route = {
     path: 'rooms/room-manage',
@@ -42,14 +40,12 @@ export class RoomManageComponent {
   room_id: string = 'new';
 
   /** Add validators to the form */
-  //id = new FormControl('', [Validators.required]);
-  id = new FormControl('');
-  nickname = new FormControl('');
-  building = new FormControl('');
-  room = new FormControl('');
-  capacity = new FormControl(0);
-  reservable = new FormControl(false);
-  //seats = new FormControl(null);
+  id = new FormControl('', [Validators.required]);
+  nickname = new FormControl('', [Validators.required]);
+  building = new FormControl('', [Validators.required]);
+  room = new FormControl('', [Validators.required]);
+  capacity = new FormControl(0, [Validators.required]);
+  reservable = new FormControl(false, [Validators.required]);
 
   /** Create a Room Editor Form */
   public roomForm = this.formBuilder.group({
@@ -57,18 +53,8 @@ export class RoomManageComponent {
     nickname: this.nickname,
     building: this.building,
     room: this.room,
-    //room: '',
     capacity: this.capacity,
     reservable: this.reservable
-    //seats: this.seats
-
-    // id: '',
-    // nickname: '',
-    // building: '',
-    // room: '',
-    // capacity: null,
-    // reservable: null,
-    // seats: null
   });
 
   /** Constructs the room editor component */
@@ -103,7 +89,6 @@ export class RoomManageComponent {
     }
 
     /** Set room form data */
-    //do I need this??
     this.roomForm.setValue({
       id: this.the_room.id,
       nickname: this.the_room.nickname,
@@ -111,8 +96,6 @@ export class RoomManageComponent {
       room: this.the_room.room,
       capacity: this.the_room.capacity,
       reservable: this.the_room.reservable
-      //seats: this.the_room.seats
-      //seats: null
     });
 
     /** Get id from the url */
@@ -120,20 +103,7 @@ export class RoomManageComponent {
     // this.room_id = room_id;
   }
 
-  // ngOnInit(): void {
-  //   let room = this.room;
-  //   this.roomForm.setValue({
-  //     id: room.id,
-  //     nickname: room.nickname,
-  //     building: null,
-  //     room: null,
-  //     capacity: null,
-  //     reservable: null,
-  //     seats: null
-  //   });
-  // }
-
-  /** Event handler to handle submitting the Update Organization Form.
+  /** Event handler to handle submitting the New Room Form.
    * @returns {void}
    */
   onSubmit(): void {
