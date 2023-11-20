@@ -1,0 +1,56 @@
+mat-card {
+    display: flex;
+    flex-direction: column;
+    width: 325px;
+    height: 175px;
+    padding: 0 1rem;
+    margin: 0;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 0.6rem;
+}
+
+.mdc-card__media:first-child {
+    border-radius: 100%;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.name {
+    height: 2.5rem;
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 2.5rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    padding-bottom: 14px;
+}
+
+mat-card-actions {
+    padding: 0;
+}
+
+/* Override Mat UI's preset z-index for button */
+.mat-mdc-outlined-button {
+    z-index: 0 !important;
+}
+
+.buttons {
+    text-decoration: none;
+}

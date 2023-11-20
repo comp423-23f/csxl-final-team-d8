@@ -4,16 +4,8 @@ import { SeatRoutingModule } from './seat-routing.module';
 import { SeatPageComponent } from './seat-page/seat-page.component';
 import { SeatManageComponent } from './seat-manage/seat-manage.component';
 
-
-
 @NgModule({
-  declarations: [
-    SeatPageComponent,
-    SeatManageComponent
-  ],
-  imports: [
-    CommonModule,
-    SeatRoutingModule
-  ]
+  declarations: [SeatPageComponent, SeatManageComponent],
+  imports: [CommonModule, SeatRoutingModule]
 })
-export class SeatModule { }
+export class SeatModule {}

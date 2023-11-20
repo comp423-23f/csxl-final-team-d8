@@ -1,5 +1,19 @@
-<h1>Rooms</h1>
+<!-- HTML Structure of Rooms Page -->
 
-<!-- Search Bar -->
+<div class="page-container">
+  <!-- Search Bar -->
+  <search-bar [(searchBarQuery)]="searchBarQuery" />
 
-<!-- Display card for each room, potentially filtered based on the search query. -->
+  <!-- Button to be routed to room-manage page -->
+  <div class="add-room">
+    <a [routerLink]="['rooms/room-manage']">
+      <button>ADD ROOM</button>
+    </a>
+  </div>
+
+  <!-- Rooms -->
+  <div class="room-cards">
+    <!-- Display card for each room, potentially filtered based on the search query. -->
+    <room-card class="room" [room]="room" *ngFor="let room of rooms" />
+  </div>
+</div>
