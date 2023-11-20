@@ -2,7 +2,7 @@
 
 Importantly, it includes a room's seats, if seats are reservable as in the XL collab.
 """
-
+from pydantic import BaseModel
 from .room import Room
 from .seat import Seat
 

@@ -37,12 +37,12 @@ def get_rooms(
     return room_service.list()
 
 
-@api.post("", response_model=RoomDetails, tags=["Rooms"])
+@api.post("", response_model=Room, tags=["Rooms"])
 def new_room(
     # room: NewRoom,
     room: RoomDetails,
     room_service: RoomService = Depends(),
-) -> RoomDetails:
+) -> Room:
     """
     Create room
 

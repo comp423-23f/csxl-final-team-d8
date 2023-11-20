@@ -9,6 +9,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { roomResolver } from '../room.resolver';
 import { Profile } from 'src/app/profile/profile.service';
 
+//not sure if need below
+import { Observable } from 'rxjs';
+import { PermissionService } from 'src/app/permission.service';
+import { permissionGuard } from 'src/app/permission.guard';
+
 @Component({
   selector: 'app-room-manage',
   templateUrl: './room-manage.component.html',
@@ -35,10 +40,11 @@ export class RoomManageComponent {
   room_id: string = 'new';
 
   /** Add validators to the form */
-  id = new FormControl('', [Validators.required]);
-  nickname = new FormControl('', [Validators.required]);
-  building = new FormControl('', [Validators.required]);
-  room = new FormControl('', [Validators.required]);
+  //id = new FormControl('', [Validators.required]);
+  id = new FormControl('');
+  nickname = new FormControl('');
+  building = new FormControl('');
+  room = new FormControl('');
   capacity = new FormControl(0);
   reservable = new FormControl(false);
   //seats = new FormControl(null);
@@ -129,17 +135,8 @@ export class RoomManageComponent {
    * @returns {void}
    */
   onSubmit(): void {
-    console.log('hi');
-    console.log(this.roomForm.value);
-    //console.log(this.room);
-    // make new room object using form vals above
-    // pass room object into roomService.createRoom below
-
     if (this.roomForm.valid) {
-      console.log(this.the_room);
-      console.log('reached onsubmit');
       Object.assign(this.the_room, this.roomForm.value);
-      console.log(this.the_room);
       this.roomService.createRoom(this.the_room).subscribe({
         next: (the_room) => this.onSuccess(the_room),
         error: (err) => this.onError(err)
