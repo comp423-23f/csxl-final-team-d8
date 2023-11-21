@@ -11,6 +11,7 @@ import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule } from '@angular/forms';
+import { RoomFilterPipe } from './room-filter/room-filter.pipe';
 //not sure if need below
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -26,9 +27,15 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { RoomCard } from './widgets/room-card.widget';
 import { SharedModule } from '../shared/shared.module';
 import { MatInputModule } from '@angular/material/input';
+//import { RoomFilterPipe } from './room-filter.pipe';
 
 @NgModule({
-  declarations: [RoomManageComponent, RoomPageComponent, RoomCard],
+  declarations: [
+    RoomManageComponent,
+    RoomPageComponent,
+    RoomCard,
+    RoomFilterPipe
+  ],
   imports: [
     CommonModule,
     RoomRoutingModule,

@@ -14,6 +14,9 @@
   <!-- Rooms -->
   <div class="room-cards">
     <!-- Display card for each room, potentially filtered based on the search query. -->
-    <room-card class="room" [room]="room" *ngFor="let room of rooms" />
+    <room-card
+      class="room"
+      [room]="room"
+      *ngFor="let room of rooms | roomFilter: searchBarQuery" />
   </div>
 </div>
