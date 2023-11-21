@@ -2,6 +2,8 @@
 
 from fastapi import Depends
 from sqlalchemy.orm import Session
+
+from backend.services.exceptions import RoomNotFoundException
 from ...database import db_session
 from ...models.coworking import RoomDetails
 from ...entities.coworking import RoomEntity
@@ -55,3 +57,28 @@ class RoomService:
 
         # Return added object
         return room_entity.to_model()
+
+    def delete(self, id: str) -> None:
+        """
+        Delete the room based on the provided id.
+        If no item exists to delete, a debug description is displayed.
+
+        Parameters:
+            id: a string representing a unique room id
+
+        Raises:
+            RoomNotFoundException: If no room is found with the corresponding id
+        """
+
+        # Find object to delete
+        obj = self._session.query(RoomEntity).filter(RoomEntity.id == id).one_or_none()
+
+        # Ensure object exists
+        if obj:
+            # Delete object and commit
+            self._session.delete(obj)
+            # Save changes
+            self._session.commit()
+        else:
+            # Raise exception
+            raise RoomNotFoundException(id)

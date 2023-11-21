@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationService } from '../authentication.service';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Room } from './room.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
+// import { RxRoom } from './rx-room';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomService {
+  // private rooms: RxRoom = new RxRoom();
+  // public rooms$: Observable<Room[]> = this.rooms.value$;
+
   constructor(
     //protected snackBar: MatSnackBar
     protected http: HttpClient,
@@ -46,5 +50,19 @@ export class RoomService {
     return this.http.put<Room>('/api/rooms', room);
   }
 
-  //added testing branch
+  /** Deletes a room
+   * @param room_id: id of the room object to delete
+   * @returns {Observable<Room>}
+   */
+  // deleteRoom(roomToRemove: Room): Observable<Room> {
+  //   return this.http.delete<Room>(`/api/rooms/${roomToRemove.id}`).pipe(
+  //     tap((_) => {
+  //       this.rooms.removeRoom(roomToRemove);
+  //     })
+  //   );
+  // }
+
+  deleteRoom(room: Room): Observable<Room> {
+    return this.http.delete<Room>('/api/rooms/' + room.id);
+  }
 }

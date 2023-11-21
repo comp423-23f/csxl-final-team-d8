@@ -6,13 +6,13 @@ from fastapi import APIRouter, Depends, HTTPException
 from pytest import console_main
 
 from backend.models.coworking.room import Room
-from backend.models.coworking.room import Test
 from backend.models.coworking.room_details import RoomDetails
 from backend.models.coworking.room_details import NewRoom
 from backend.services.coworking.room import RoomDetails
 from backend.services.coworking.room import RoomService
 from ..api.authentication import registered_user
 from ..models.user import User
+from ..services.exceptions import RoomNotFoundException
 
 api = APIRouter(prefix="/api/rooms")
 openapi_tags = {
@@ -36,7 +36,7 @@ def get_rooms(
     """
     return room_service.list()
 
-  
+
 @api.post("", response_model=Room, tags=["Rooms"])
 def new_room(
     # room: NewRoom,
@@ -71,3 +71,27 @@ def new_room(
     except Exception as e:
         # Raise 422 exception if creation fails (request body is shaped incorrectly / not authorized)
         raise HTTPException(status_code=422, detail=str(e))
+
+
+@api.delete("/{id}", response_model=None, tags=["Rooms"])
+def delete_room(
+    id: str,
+    room_service: RoomService = Depends(),
+):
+    """
+    Delete room based on id
+
+    Parameters:
+        id: a string representing a unique identifier for a Room
+        room_service: a valid RoomService
+
+    Raises:
+        HTTPException 404 if delete() raises an Exception
+    """
+
+    try:
+        # Try to delete room
+        room_service.delete(id)
+    except RoomNotFoundException as e:
+        # Raise 404 exception if delete fails (room does not exist / not authorized)
+        raise HTTPException(status_code=404, detail=str(e))

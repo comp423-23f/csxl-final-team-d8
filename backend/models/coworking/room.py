@@ -11,12 +11,3 @@ __license__ = "MIT"
 class Room(BaseModel):
     id: str
     nickname: str = ""
-
-
-class Test(BaseModel):
-    id: str
-    nickname: str
-    building: str
-    room: str
-    capacity: int
-    reservable: bool
