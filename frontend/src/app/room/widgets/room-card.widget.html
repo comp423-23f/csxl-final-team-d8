@@ -23,7 +23,13 @@
     </a>
     <!-- Link to Delete Room -->
     <a class="delete-room">
-      <button mat-stroked-button>Delete Room</button>
+      <button
+        mat-icon-button
+        [routerLink]="['rooms']"
+        [relativeTo]="null"
+        (click)="deleteRoom(room)">
+        <mat-icon>delete</mat-icon>
+      </button>
     </a>
   </mat-card-actions></mat-card
 >
