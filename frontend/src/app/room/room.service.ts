@@ -45,4 +45,6 @@ export class RoomService {
   updateRoom(room: Room): Observable<Room> {
     return this.http.put<Room>('/api/rooms', room);
   }
+
+  //added testing branch
 }
