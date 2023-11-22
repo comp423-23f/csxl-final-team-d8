@@ -22,7 +22,9 @@ export class RoomFilterPipe implements PipeTransform {
       return rooms.filter(
         (room) =>
           room.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          room.nickname.toLowerCase().includes(searchQuery.toLowerCase())
+          room.nickname.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          room.building.toLowerCase().includes(searchQuery.toLowerCase())
+        //can figure out how to filter by capacity later
       );
     } else {
       // Otherwise, return the original list.
