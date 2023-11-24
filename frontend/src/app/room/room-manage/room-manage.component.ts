@@ -128,7 +128,7 @@ export class RoomManageComponent {
    * @returns {void}
    */
   private onSuccess(room: Room): void {
-    //this.router.navigate(['/room/', room.id]);
+    this.router.navigate(['/rooms']);
     this.snackBar.open('Room Created', '', { duration: 2000 });
   }
 

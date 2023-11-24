@@ -12,7 +12,7 @@ from backend.services.coworking.room import RoomDetails
 from backend.services.coworking.room import RoomService
 from ..api.authentication import registered_user
 from ..models.user import User
-from ..services.exceptions import RoomNotFoundException
+from ..services.exceptions import RoomNotFoundException, UserPermissionException
 
 api = APIRouter(prefix="/api/rooms")
 openapi_tags = {
@@ -94,4 +94,35 @@ def delete_room(
         room_service.delete(id)
     except RoomNotFoundException as e:
         # Raise 404 exception if delete fails (room does not exist / not authorized)
+        raise HTTPException(status_code=404, detail=str(e))
+
+
+@api.put(
+    "",
+    responses={404: {"model": None}},
+    response_model=Room,
+    tags=["Rooms"],
+)
+def update_room(
+    room: RoomDetails,
+    room_service: RoomService = Depends(),
+) -> Room:
+    """
+    Update room
+
+    Parameters:
+        room: a valid Room model
+        room_service: a valid RoomService
+
+    Returns:
+        Room: Updated room
+
+    Raises:
+        HTTPException 404 if update() raises an Exception
+    """
+    try:
+        # Return updated room
+        return room_service.update(room)
+    except RoomNotFoundException as e:
+        # Raise 404 exception if update fails (room does not exist / not authorized)
         raise HTTPException(status_code=404, detail=str(e))
