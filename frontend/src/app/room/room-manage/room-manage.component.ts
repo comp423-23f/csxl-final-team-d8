@@ -19,12 +19,11 @@ import { permissionGuard } from 'src/app/permission.guard';
   templateUrl: './room-manage.component.html',
   styleUrls: ['./room-manage.component.css']
 })
-
 export class RoomManageComponent {
   /** Route information to be used in Room Routing Module */
   public static Route = {
-    path: 'rooms/room-manage',
-    //path: ':id/edit',
+    //path: 'rooms/room-manage',
+    path: ':id/edit',
     title: 'Create New/Edit Room',
     component: RoomManageComponent,
     canActivate: [],
@@ -100,8 +99,8 @@ export class RoomManageComponent {
     });
 
     /** Get id from the url */
-    // let room_id = this.route.snapshot.params['id'];
-    // this.room_id = room_id;
+    let room_id = this.route.snapshot.params['id'];
+    this.room_id = room_id;
   }
 
   /** Event handler to handle submitting the New Room Form.
@@ -110,10 +109,18 @@ export class RoomManageComponent {
   onSubmit(): void {
     if (this.roomForm.valid) {
       Object.assign(this.the_room, this.roomForm.value);
-      this.roomService.createRoom(this.the_room).subscribe({
-        next: (the_room) => this.onSuccess(the_room),
-        error: (err) => this.onError(err)
-      });
+
+      if (this.room_id == 'new') {
+        this.roomService.createRoom(this.the_room).subscribe({
+          next: (the_room) => this.onSuccess(the_room),
+          error: (err) => this.onError(err)
+        });
+      } else {
+        this.roomService.updateRoom(this.the_room).subscribe({
+          next: (room) => this.onSuccess(room),
+          error: (err) => this.onError(err)
+        });
+      }
     }
   }
 
