@@ -66,6 +66,14 @@ export class RoomManageComponent {
     protected snackBar: MatSnackBar,
     private router: Router
   ) {
+    // const form = this.roomForm;
+    // form.get('id')?.addValidators(Validators.required);
+    // form.get('nickname')?.addValidators(Validators.required);
+    // form.get('building')?.addValidators([Validators.required]);
+    // form.get('room')?.addValidators(Validators.required);
+    // form.get('capacity')?.addValidators([Validators.required]);
+    // form.get('reservable')?.addValidators(Validators.required);
+
     /** Initialize data from resolvers. */
     const data = this.route.snapshot.data as {
       profile: Profile;
@@ -129,7 +137,7 @@ export class RoomManageComponent {
    */
   private onSuccess(room: Room): void {
     this.router.navigate(['/rooms']);
-    this.snackBar.open('Room Created', '', { duration: 2000 });
+    this.snackBar.open('Room Created/Updated', '', { duration: 2000 });
   }
 
   /** Opens a snackbar when there is an error updating a room.
