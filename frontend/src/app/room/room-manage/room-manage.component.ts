@@ -6,7 +6,7 @@ import { RoomService } from '../room.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { roomResolver } from '../room.resolver';
+import { roomDetailResolver, roomResolver } from '../room.resolver';
 import { Profile } from 'src/app/profile/profile.service';
 
 //not sure if need below
@@ -27,7 +27,7 @@ export class RoomManageComponent {
     title: 'Create New/Edit Room',
     component: RoomManageComponent,
     canActivate: [],
-    resolve: { profile: profileResolver, rooms: roomResolver }
+    resolve: { profile: profileResolver, rooms: roomDetailResolver }
   };
 
   /** Store the room.  */
@@ -82,6 +82,8 @@ export class RoomManageComponent {
     this.profile = data.profile;
     this.the_room = data.the_room;
 
+    //console.log(data.the_room);
+
     if (data.the_room) {
       this.the_room = data.the_room;
     } else {
@@ -95,6 +97,7 @@ export class RoomManageComponent {
         // seats: null
       };
     }
+    console.log(data.the_room);
 
     /** Set room form data */
     this.roomForm.setValue({
@@ -117,7 +120,7 @@ export class RoomManageComponent {
   onSubmit(): void {
     if (this.roomForm.valid) {
       Object.assign(this.the_room, this.roomForm.value);
-
+      console.log(this.room_id);
       if (this.room_id == 'new') {
         this.roomService.createRoom(this.the_room).subscribe({
           next: (the_room) => this.onSuccess(the_room),

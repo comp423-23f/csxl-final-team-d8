@@ -126,3 +126,33 @@ def update_room(
     except RoomNotFoundException as e:
         # Raise 404 exception if update fails (room does not exist / not authorized)
         raise HTTPException(status_code=404, detail=str(e))
+
+
+@api.get(
+    "/{id}",
+    responses={404: {"model": None}},
+    response_model=RoomDetails,
+    tags=["Rooms"],
+)
+def get_room_from_id(id: str, room_service: RoomService = Depends()) -> RoomDetails:
+    """
+    Get room with matching id
+
+    Parameters:
+        id: a string representing a unique identifier for a Room
+        room_service: a valid RoomService
+
+    Returns:
+        Room: Room with matching id
+
+    Raises:
+        HTTPException 404 if get_from_id() raises an Exception
+    """
+
+    # Try to get room with matching id
+    try:
+        # Return room
+        return room_service.get_from_id(id)
+    except RoomNotFoundException as e:
+        # Raise 404 exception if search fails (no response)
+        raise HTTPException(status_code=404, detail=str(e))

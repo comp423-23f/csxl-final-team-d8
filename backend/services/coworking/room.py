@@ -119,3 +119,30 @@ class RoomService:
         else:
             # Raise exception
             raise RoomNotFoundException(room.id)
+
+    def get_from_id(self, id: str) -> RoomDetails:
+        """
+        Get the room from an id
+        If none retrieved, a debug description is displayed.
+
+        Parameters:
+            id: a string representing a unique room id
+
+        Returns:
+            Room: Object with corresponding id
+
+        Raises:
+
+            RoomNotFoundException if no room is found with the corresponding id
+        """
+
+        # Query the room with matching id
+        room = self._session.query(RoomEntity).filter(RoomEntity.id == id).one_or_none()
+
+        # Check if result is null
+        if room:
+            # Convert entry to a model and return
+            return room.to_details_model()
+        else:
+            # Raise exception
+            raise RoomNotFoundException(id)
