@@ -19,7 +19,6 @@ import { permissionGuard } from 'src/app/permission.guard';
   templateUrl: './room-manage.component.html',
   styleUrls: ['./room-manage.component.css']
 })
-
 export class RoomManageComponent {
   /** Route information to be used in Room Routing Module */
   public static Route = {
@@ -121,7 +120,7 @@ export class RoomManageComponent {
    * @returns {void}
    */
   private onSuccess(room: Room): void {
-    //this.router.navigate(['/room/', room.id]);
+    this.router.navigate(['/rooms']);
     this.snackBar.open('Room Created', '', { duration: 2000 });
   }
 
