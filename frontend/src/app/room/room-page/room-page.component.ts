@@ -46,8 +46,4 @@ export class RoomPageComponent {
     this.profile = data.profile;
     this.rooms = data.rooms;
   }
-
-  //TODO createRoom()
-
-  //TODO deleteRoom()
 }

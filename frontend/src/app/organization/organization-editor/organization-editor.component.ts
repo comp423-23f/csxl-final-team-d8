@@ -103,6 +103,8 @@ export class OrganizationEditorComponent {
     this.profile = data.profile;
     this.organization = data.organization;
 
+    console.log(data.organization);
+
     /** Set organization form data */
     this.organizationForm.setValue({
       name: this.organization.name,

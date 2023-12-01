@@ -19,6 +19,7 @@ export const roomDetailResolver: ResolveFn<Room | undefined> = (
   state
 ) => {
   if (route.paramMap.get('id')! != 'new') {
+    console.log(inject(RoomService).getRoom(route.paramMap.get('id')!));
     return inject(RoomService).getRoom(route.paramMap.get('id')!);
   } else {
     return {

@@ -18,10 +18,13 @@
       <button mat-stroked-button>View Seats</button>
     </a>
     <!-- Link to Edit Room -->
-    <a class="edit-room">
-      <button mat-stroked-button>Edit Room</button>
+    <!--[routerLink]="['rooms/room-manage']"-->
+    <a class="edit-room" [routerLink]="['/rooms', room.id, 'edit']">
+      <button mat-icon-button color="basic">
+        <mat-icon>edit</mat-icon>
+      </button>
     </a>
-    <!-- Link to Delete Room -->
+    <!-- Button to Delete Room -->
     <a class="delete-room">
       <button
         mat-icon-button

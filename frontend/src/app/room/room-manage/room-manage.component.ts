@@ -6,7 +6,7 @@ import { RoomService } from '../room.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { roomResolver } from '../room.resolver';
+import { roomDetailResolver, roomResolver } from '../room.resolver';
 import { Profile } from 'src/app/profile/profile.service';
 
 //not sure if need below
@@ -22,12 +22,12 @@ import { permissionGuard } from 'src/app/permission.guard';
 export class RoomManageComponent {
   /** Route information to be used in Room Routing Module */
   public static Route = {
-    path: 'rooms/room-manage',
-    //path: ':id/edit',
+    //path: 'rooms/room-manage',
+    path: ':id/edit',
     title: 'Create New/Edit Room',
     component: RoomManageComponent,
     canActivate: [],
-    resolve: { profile: profileResolver, rooms: roomResolver }
+    resolve: { profile: profileResolver, rooms: roomDetailResolver }
   };
 
   /** Store the room.  */
@@ -66,6 +66,14 @@ export class RoomManageComponent {
     protected snackBar: MatSnackBar,
     private router: Router
   ) {
+    // const form = this.roomForm;
+    // form.get('id')?.addValidators(Validators.required);
+    // form.get('nickname')?.addValidators(Validators.required);
+    // form.get('building')?.addValidators([Validators.required]);
+    // form.get('room')?.addValidators(Validators.required);
+    // form.get('capacity')?.addValidators([Validators.required]);
+    // form.get('reservable')?.addValidators(Validators.required);
+
     /** Initialize data from resolvers. */
     const data = this.route.snapshot.data as {
       profile: Profile;
@@ -73,6 +81,8 @@ export class RoomManageComponent {
     };
     this.profile = data.profile;
     this.the_room = data.the_room;
+
+    //console.log(data.the_room);
 
     if (data.the_room) {
       this.the_room = data.the_room;
@@ -87,6 +97,7 @@ export class RoomManageComponent {
         // seats: null
       };
     }
+    console.log(data.the_room);
 
     /** Set room form data */
     this.roomForm.setValue({
@@ -99,8 +110,8 @@ export class RoomManageComponent {
     });
 
     /** Get id from the url */
-    // let room_id = this.route.snapshot.params['id'];
-    // this.room_id = room_id;
+    let room_id = this.route.snapshot.params['id'];
+    this.room_id = room_id;
   }
 
   /** Event handler to handle submitting the New Room Form.
@@ -109,10 +120,18 @@ export class RoomManageComponent {
   onSubmit(): void {
     if (this.roomForm.valid) {
       Object.assign(this.the_room, this.roomForm.value);
-      this.roomService.createRoom(this.the_room).subscribe({
-        next: (the_room) => this.onSuccess(the_room),
-        error: (err) => this.onError(err)
-      });
+      console.log(this.room_id);
+      if (this.room_id == 'new') {
+        this.roomService.createRoom(this.the_room).subscribe({
+          next: (the_room) => this.onSuccess(the_room),
+          error: (err) => this.onError(err)
+        });
+      } else {
+        this.roomService.updateRoom(this.the_room).subscribe({
+          next: (room) => this.onSuccess(room),
+          error: (err) => this.onError(err)
+        });
+      }
     }
   }
 
@@ -121,7 +140,7 @@ export class RoomManageComponent {
    */
   private onSuccess(room: Room): void {
     this.router.navigate(['/rooms']);
-    this.snackBar.open('Room Created', '', { duration: 2000 });
+    this.snackBar.open('Room Created/Updated', '', { duration: 2000 });
   }
 
   /** Opens a snackbar when there is an error updating a room.

@@ -82,3 +82,67 @@ class RoomService:
         else:
             # Raise exception
             raise RoomNotFoundException(id)
+
+    def update(self, room: RoomDetails) -> Room:
+        """
+        Update the room
+        If none found with that id, a debug description is displayed.
+
+        Parameters:
+            room (Room): Room to add to table
+
+        Returns:
+            Room: Updated room object
+
+        Raises:
+            RoomNotFoundException: If no room is found with the corresponding ID
+        """
+
+        # Query the room with matching id
+        obj = self._session.get(RoomEntity, room.id)
+
+        # Check if result is null
+        if obj:
+            # Update room object
+            obj.id = room.id
+            obj.nickname = room.nickname
+            obj.building = room.building
+            obj.room = room.room
+            obj.capacity = room.capacity
+            obj.reservable = room.reservable
+
+            # Save changes
+            self._session.commit()
+
+            # Return updated object
+            return obj.to_model()
+        else:
+            # Raise exception
+            raise RoomNotFoundException(room.id)
+
+    def get_from_id(self, id: str) -> RoomDetails:
+        """
+        Get the room from an id
+        If none retrieved, a debug description is displayed.
+
+        Parameters:
+            id: a string representing a unique room id
+
+        Returns:
+            Room: Object with corresponding id
+
+        Raises:
+
+            RoomNotFoundException if no room is found with the corresponding id
+        """
+
+        # Query the room with matching id
+        room = self._session.query(RoomEntity).filter(RoomEntity.id == id).one_or_none()
+
+        # Check if result is null
+        if room:
+            # Convert entry to a model and return
+            return room.to_details_model()
+        else:
+            # Raise exception
+            raise RoomNotFoundException(id)

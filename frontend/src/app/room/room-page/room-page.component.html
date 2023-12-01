@@ -5,8 +5,9 @@
   <search-bar [(searchBarQuery)]="searchBarQuery" />
 
   <!-- Button to be routed to room-manage page -->
+  <!--[routerLink]="['rooms/room-manage']"-->
   <div class="add-room">
-    <a [routerLink]="['rooms/room-manage']">
+    <a [routerLink]="['/rooms/new/edit']">
       <button>ADD ROOM</button>
     </a>
   </div>
