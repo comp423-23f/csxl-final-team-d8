@@ -140,15 +140,15 @@ export class RoomManageComponent {
    */
   private onSuccess(room: Room): void {
     this.router.navigate(['/rooms']);
-    this.snackBar.open('Room Created/Updated', '', { duration: 2000 });
+    this.snackBar.open('Room Saved', '', { duration: 2000 });
   }
 
   /** Opens a snackbar when there is an error updating a room.
    * @returns {void}
    */
   private onError(err: any): void {
-    console.error('Error: Room Not Created');
-    this.snackBar.open('Error: Room Not Created', '', {
+    console.error('Error: Room Not Saved');
+    this.snackBar.open('Error: Room Not Saved', '', {
       duration: 2000
     });
   }
