@@ -5,9 +5,8 @@ from sqlalchemy.orm import Session
 
 from backend.services.exceptions import RoomNotFoundException
 from ...database import db_session
-from ...models.coworking import RoomDetails
+from ...models.coworking import RoomDetails, Room, Seat
 from ...entities.coworking import RoomEntity
-from ...models.coworking import Room
 
 __authors__ = ["Kris Jordan"]
 __copyright__ = "Copyright 2023"
@@ -25,7 +24,7 @@ class RoomService:
         """
         self._session = session
 
-    def list(self) -> list[RoomDetails]:
+    def rooms(self) -> list[RoomDetails]:
         """Returns all rooms in the coworking space.
 
         Returns:
@@ -79,6 +78,53 @@ class RoomService:
             self._session.delete(obj)
             # Save changes
             self._session.commit()
+        else:
+            # Raise exception
+            raise RoomNotFoundException(id)
+
+    def get_from_id(self, id: str) -> RoomDetails:
+        """
+        Get the room from an id
+        If none retrieved, a debug description is displayed.
+
+        Parameters:
+            id: a string representing a unique room id
+
+        Returns:
+            Room: Object with corresponding id
+
+        Raises:
+
+            RoomNotFoundException if no room is found with the corresponding id
+        """
+
+        # Query the room with matching id
+        room = self._session.query(RoomEntity).filter(RoomEntity.id == id).one_or_none()
+
+        # Check if result is null
+        if room:
+            # Convert entry to a model and return
+            return room.to_details_model()
+        else:
+            # Raise exception
+            raise RoomNotFoundException(id)
+
+    def room_seats(self, id: str) -> list[Seat]:
+        """
+        List the seats within a room.
+
+        Parameters:
+            id: a string representing a unique room id
+
+        Raises:
+            RoomNotFoundException: If no room is found with the corresponding id
+        """
+        # Find given room
+        obj = self._session.query(RoomEntity).filter(RoomEntity.id == id).one_or_none()
+
+        # Ensure room exists
+        if obj:
+            return obj.to_details_model().seats
         else:
             # Raise exception
             raise RoomNotFoundException(id)

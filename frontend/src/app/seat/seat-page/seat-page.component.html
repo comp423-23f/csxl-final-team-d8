@@ -1,1 +1,11 @@
-<p>seat-page works!</p>
+<p>Seats</p>
+
+  <!-- Seats -->
+  <div class="seat-cards">
+    <!-- Display card for each seat -->
+    <seat-card
+      class="seat"
+      [seat]="seat"
+      *ngFor="let seat of seats/>
+  </div>
+</div>

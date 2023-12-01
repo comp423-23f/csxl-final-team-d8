@@ -8,8 +8,10 @@ from pytest import console_main
 from backend.models.coworking.room import Room
 from backend.models.coworking.room_details import RoomDetails
 from backend.models.coworking.room_details import NewRoom
+from backend.models.coworking.seat import Seat
 from backend.services.coworking.room import RoomDetails
 from backend.services.coworking.room import RoomService
+from backend.services.coworking.seat import SeatService
 from ..api.authentication import registered_user
 from ..models.user import User
 from ..services.exceptions import RoomNotFoundException
@@ -34,7 +36,7 @@ def get_rooms(
     Returns:
         list[Room]: All Rooms in the Room database table
     """
-    return room_service.list()
+    return room_service.rooms()
 
 
 @api.post("", response_model=Room, tags=["Rooms"])
@@ -94,4 +96,28 @@ def delete_room(
         room_service.delete(id)
     except RoomNotFoundException as e:
         # Raise 404 exception if delete fails (room does not exist / not authorized)
+        raise HTTPException(status_code=404, detail=str(e))
+
+
+@api.get("/{id}", response_model=list[Seat], tags=["Seats"])
+def get_room_seats(
+    id: str,
+    room_service: RoomService = Depends(),
+) -> list[Seat]:
+    """
+    Get all seats in a room
+
+    Parameters:
+        id: a string unique identifier for Room
+        room_service: a valid RoomService
+
+    Returns:
+        list[Seat]: All Seats in a given room
+    """
+    # Try to get room with matching id
+    try:
+        # Return room
+        return room_service.get_from_id(id).seats
+    except RoomNotFoundException as e:
+        # Raise 404 exception if search fails (no response)
         raise HTTPException(status_code=404, detail=str(e))
