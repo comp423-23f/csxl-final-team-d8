@@ -1,6 +1,6 @@
 """Room API
 
-Room route used to create Rooms."""
+Room routes used to create, update, get, and delete Rooms."""
 
 from fastapi import APIRouter, Depends, HTTPException
 from pytest import console_main
@@ -39,7 +39,6 @@ def get_rooms(
 
 @api.post("", response_model=Room, tags=["Rooms"])
 def new_room(
-    # room: NewRoom,
     room: RoomDetails,
     room_service: RoomService = Depends(),
 ) -> Room:
@@ -59,15 +58,6 @@ def new_room(
     """
     try:
         return room_service.create(room)  # type: ignore
-        # return RoomDetails(
-        #     id="nome",
-        #     nickname="str",
-        #     building="str",
-        #     capacity=0,
-        #     reservable=False,
-        #     room="somethign",
-        # )
-        # return "something"
     except Exception as e:
         # Raise 422 exception if creation fails (request body is shaped incorrectly / not authorized)
         raise HTTPException(status_code=422, detail=str(e))
