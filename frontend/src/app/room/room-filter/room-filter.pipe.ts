@@ -1,3 +1,5 @@
+//This is the pipe used to filter rooms on the rooms page.
+
 import { Pipe, PipeTransform } from '@angular/core';
 import { Room } from '../room.model';
 
@@ -12,7 +14,6 @@ export class RoomFilterPipe implements PipeTransform {
    */
   transform(rooms: Room[], searchQuery: String): Room[] {
     // Sort the rooms list alphabetically by name
-    //will this work with numbers??
     rooms = rooms.sort((a: Room, b: Room) => {
       return a.id.toLowerCase().localeCompare(b.id.toLowerCase());
     });
@@ -24,7 +25,6 @@ export class RoomFilterPipe implements PipeTransform {
           room.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
           room.nickname.toLowerCase().includes(searchQuery.toLowerCase()) ||
           room.building.toLowerCase().includes(searchQuery.toLowerCase())
-        //can figure out how to filter by capacity later
       );
     } else {
       // Otherwise, return the original list.
