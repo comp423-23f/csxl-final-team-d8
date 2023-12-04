@@ -1,3 +1,80 @@
-<p>seat-manage works!</p>
+<!-- HTML Structure of Create Seat Page -->
 
-<a routerLink="/">seat-page</a>
+<!-- Create Seat Form -->
+<form [formGroup]="seatForm" (ngSubmit)="onSubmit()">
+  <!-- Header -->
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Create Seat</mat-card-title>
+    </mat-card-header>
+    <!-- Seat Input Fields -->
+    <mat-card-content>
+      <!-- Title Field -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Seat Title</mat-label>
+        <input
+          matInput
+          placeholder="Title"
+          formControlName="title"
+          name="title"
+          required />
+      </mat-form-field>
+      <!-- Shorthand Field -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Shorthand</mat-label>
+        <input
+          matInput
+          placeholder="Shorthand"
+          formControlName="shorthand"
+          name="shorthand"
+          required />
+      </mat-form-field>
+      <!-- Reservable Field -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Reservable</mat-label>
+        <input
+          matInput
+          placeholder="Reservable"
+          formControlName="reservable"
+          name="reservable"
+          required />
+      </mat-form-field>
+      <!-- Has Monitor Field -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Has Monitor</mat-label>
+        <input
+          matInput
+          placeholder="Has Monitor"
+          formControlName="has_monitor"
+          name="has_monitor"
+          required />
+      </mat-form-field>
+      <!-- Sit Stand Field -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Sit Stand</mat-label>
+        <input
+          matInput
+          placeholder="Sit Stand"
+          formControlName="sit_stand"
+          name="sit_stand" />
+      </mat-form-field>
+      <!-- x Field -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>X</mat-label>
+        <input matInput placeholder="X" formControlName="x" name="x" />
+      </mat-form-field>
+      <!-- y Field -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Y</mat-label>
+        <input matInput placeholder="Y" formControlName="y" name="y" />
+      </mat-form-field>
+    </mat-card-content>
+
+    <!-- Submit Button -->
+    <mat-card-actions>
+      <button mat-stroked-button type="submit" [disabled]="seatForm.invalid">
+        SAVE
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

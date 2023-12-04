@@ -7,7 +7,7 @@ import { SeatPageComponent } from './seat-page/seat-page.component';
 
 /* Angular Material Modules */
 import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule } from '@angular/forms';

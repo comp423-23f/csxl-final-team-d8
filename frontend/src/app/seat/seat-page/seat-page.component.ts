@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Seat } from '../seat.model';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { profileResolver } from 'src/app/profile/profile.resolver';
 import { Profile } from '/workspace/frontend/src/app/profile/profile.service';
 import { MatSnackBar } from '@angular/material/snack-bar';

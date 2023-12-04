@@ -10,5 +10,5 @@ import { SeatService } from './seat.service';
 
 /** This resolver injects the list of seats into the seat component. */
 export const seatResolver: ResolveFn<Seat[] | undefined> = (route, state) => {
-  return inject(SeatService).getSeats();
+  return inject(SeatService).getSeats(route.paramMap.get('id')!);
 };

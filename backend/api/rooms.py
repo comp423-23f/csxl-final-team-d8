@@ -97,27 +97,3 @@ def delete_room(
     except RoomNotFoundException as e:
         # Raise 404 exception if delete fails (room does not exist / not authorized)
         raise HTTPException(status_code=404, detail=str(e))
-
-
-@api.get("/{id}", response_model=list[Seat], tags=["Seats"])
-def get_room_seats(
-    id: str,
-    room_service: RoomService = Depends(),
-) -> list[Seat]:
-    """
-    Get all seats in a room
-
-    Parameters:
-        id: a string unique identifier for Room
-        room_service: a valid RoomService
-
-    Returns:
-        list[Seat]: All Seats in a given room
-    """
-    # Try to get room with matching id
-    try:
-        # Return room
-        return room_service.get_from_id(id).seats
-    except RoomNotFoundException as e:
-        # Raise 404 exception if search fails (no response)
-        raise HTTPException(status_code=404, detail=str(e))

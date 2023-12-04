@@ -108,23 +108,3 @@ class RoomService:
         else:
             # Raise exception
             raise RoomNotFoundException(id)
-
-    def room_seats(self, id: str) -> list[Seat]:
-        """
-        List the seats within a room.
-
-        Parameters:
-            id: a string representing a unique room id
-
-        Raises:
-            RoomNotFoundException: If no room is found with the corresponding id
-        """
-        # Find given room
-        obj = self._session.query(RoomEntity).filter(RoomEntity.id == id).one_or_none()
-
-        # Ensure room exists
-        if obj:
-            return obj.to_details_model().seats
-        else:
-            # Raise exception
-            raise RoomNotFoundException(id)

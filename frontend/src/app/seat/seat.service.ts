@@ -16,8 +16,8 @@ export class SeatService {
   /** Returns all seat entries from the backend database table using the backend HTTP get request.
    * @returns {Observable<Seat[]>}
    */
-  getSeats(): Observable<Seat[]> {
-    return this.http.get<Seat[]>('/api/seats');
+  getSeats(id: String): Observable<Seat[]> {
+    return this.http.get<Seat[]>('/api/seats/' + id);
   }
 
   /** Returns the seat object from the backend database table using the backend HTTP get request.
