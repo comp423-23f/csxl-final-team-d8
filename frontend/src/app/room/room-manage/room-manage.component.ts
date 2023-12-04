@@ -1,18 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+//The Room Manage Component allows ambassadors and admins to edit rooms and allows admins to create a new room.
+
+import { Component } from '@angular/core';
 import { profileResolver } from 'src/app/profile/profile.resolver';
 import { Room } from '../room.model';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { RoomService } from '../room.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { roomDetailResolver, roomResolver } from '../room.resolver';
+import { roomDetailResolver } from '../room.resolver';
 import { Profile } from 'src/app/profile/profile.service';
-
-//not sure if need below
-import { Observable } from 'rxjs';
-import { PermissionService } from 'src/app/permission.service';
-import { permissionGuard } from 'src/app/permission.guard';
 
 @Component({
   selector: 'app-room-manage',
@@ -22,7 +18,6 @@ import { permissionGuard } from 'src/app/permission.guard';
 export class RoomManageComponent {
   /** Route information to be used in Room Routing Module */
   public static Route = {
-    //path: 'rooms/room-manage',
     path: ':id/edit',
     title: 'Create New/Edit Room',
     component: RoomManageComponent,
@@ -59,21 +54,12 @@ export class RoomManageComponent {
 
   /** Constructs the room editor component */
   constructor(
-    //private or protected?
     private route: ActivatedRoute,
     protected formBuilder: FormBuilder,
     protected roomService: RoomService,
     protected snackBar: MatSnackBar,
     private router: Router
   ) {
-    // const form = this.roomForm;
-    // form.get('id')?.addValidators(Validators.required);
-    // form.get('nickname')?.addValidators(Validators.required);
-    // form.get('building')?.addValidators([Validators.required]);
-    // form.get('room')?.addValidators(Validators.required);
-    // form.get('capacity')?.addValidators([Validators.required]);
-    // form.get('reservable')?.addValidators(Validators.required);
-
     /** Initialize data from resolvers. */
     const data = this.route.snapshot.data as {
       profile: Profile;
@@ -81,8 +67,6 @@ export class RoomManageComponent {
     };
     this.profile = data.profile;
     this.the_room = data.the_room;
-
-    //console.log(data.the_room);
 
     if (data.the_room) {
       this.the_room = data.the_room;
@@ -94,7 +78,6 @@ export class RoomManageComponent {
         room: '',
         capacity: 0,
         reservable: false
-        // seats: null
       };
     }
     console.log(data.the_room);

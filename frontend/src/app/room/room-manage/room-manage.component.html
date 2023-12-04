@@ -1,15 +1,15 @@
-<!-- HTML Structure of Create Room Page -->
+<!-- HTML Structure of Room Manage Page -->
 
-<!-- Update Room Form -->
-
-<!-- Create Room Form -->
+<!-- Create/Update Room Form -->
 <form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
   <!-- Header -->
   <mat-card>
     <mat-card-header *ngIf="room_id !== 'new'; else roomregistration">
+      <!-- Header for update room-->
       <mat-card-title>Update your room</mat-card-title>
     </mat-card-header>
 
+    <!-- Header for new room registration-->
     <ng-template #roomregistration>
       <mat-card-header>
         <mat-card-title>Hello!! Please create a new room below.</mat-card-title>
