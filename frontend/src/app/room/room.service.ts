@@ -1,20 +1,16 @@
+//The Room Service abstracts HTTP requests to the backend from the components.
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationService } from '../authentication.service';
 import { Observable, tap } from 'rxjs';
 import { Room } from './room.model';
-import { MatSnackBar } from '@angular/material/snack-bar';
-// import { RxRoom } from './rx-room';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomService {
-  // private rooms: RxRoom = new RxRoom();
-  // public rooms$: Observable<Room[]> = this.rooms.value$;
-
   constructor(
-    //protected snackBar: MatSnackBar
     protected http: HttpClient,
     protected auth: AuthenticationService
   ) {}
@@ -27,7 +23,7 @@ export class RoomService {
   }
 
   /** Returns the room object from the backend database table using the backend HTTP get request.
-   * @param id: String representing the organization id
+   * @param id: String representing the room id
    * @returns {Observable<Room[]>}
    */
   getRoom(id: String): Observable<Room> {
@@ -50,18 +46,10 @@ export class RoomService {
     return this.http.put<Room>('/api/rooms', room);
   }
 
-  /** Deletes a room
+  /** Deletes a room from the backend database table using the backend HTTP delete request.
    * @param room_id: id of the room object to delete
    * @returns {Observable<Room>}
    */
-  // deleteRoom(roomToRemove: Room): Observable<Room> {
-  //   return this.http.delete<Room>(`/api/rooms/${roomToRemove.id}`).pipe(
-  //     tap((_) => {
-  //       this.rooms.removeRoom(roomToRemove);
-  //     })
-  //   );
-  // }
-
   deleteRoom(room: Room): Observable<Room> {
     return this.http.delete<Room>('/api/rooms/' + room.id);
   }
