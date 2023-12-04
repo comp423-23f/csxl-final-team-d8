@@ -1,12 +1,12 @@
 <mat-card class="seat" appearance="outlined">
-  <!-- Card Header Row (Room Name) -->
+  <!-- Card Header Row (Seat Name) -->
   <mat-card-header class="header">
     <mat-card-title
       class="name"
-      [matTooltip]="seat.id"
+      [matTooltip]="seat.title"
       matTooltipPosition="above"
-      [matTooltipDisabled]="seat.id.length < 25">
-      {{ seat.id.length < 25 ? seat.id : seat.nickname }}
+      [matTooltipDisabled]="seat.title.length < 25">
+      {{ seat.title.length < 25 ? seat.title : seat.shorthand }}
     </mat-card-title>
   </mat-card-header>
 
@@ -19,7 +19,7 @@
     </a>
     <!-- Link to Delete Seat -->
     <a class="delete-seat">
-      <button mat-stroked-button>Edit Seat</button>
+      <button mat-stroked-button>Delete Seat</button>
     </a>
   </mat-card-actions></mat-card
 >

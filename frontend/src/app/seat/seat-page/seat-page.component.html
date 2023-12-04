@@ -1,11 +1,9 @@
-<p>Seats</p>
+<!-- HTML Structure of Seats Page -->
 
+<div class="page-container">
   <!-- Seats -->
   <div class="seat-cards">
     <!-- Display card for each seat -->
-    <seat-card
-      class="seat"
-      [seat]="seat"
-      *ngFor="let seat of seats/>
+    <seat-card class="seat" [seat]="seat" *ngFor="let seat of seats" />
   </div>
 </div>

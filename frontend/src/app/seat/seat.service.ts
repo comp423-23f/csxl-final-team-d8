@@ -3,48 +3,53 @@ import { HttpClient } from '@angular/common/http';
 import { AuthenticationService } from '../authentication.service';
 import { Observable } from 'rxjs';
 import { Seat } from './seat.model';
-// ^^ should this be from a new model file in seat directory?
 
 @Injectable({
   providedIn: 'root'
 })
 export class SeatService {
-  /*private seats: RxSeat = new RxSeat();
-  public seats$: Observable<Seat[]> = this.seats.value$;*/
-
-  //^^ above can be added/moved to new service in admin directory once figure out permissions
   constructor(
     protected http: HttpClient,
     protected auth: AuthenticationService
   ) {}
 
-  //need to understand how to check user has permissions-organization.service.ts vs admin-organization.service.ts
-
+  /** Returns all seat entries from the backend database table using the backend HTTP get request.
+   * @returns {Observable<Seat[]>}
+   */
   getSeats(): Observable<Seat[]> {
     return this.http.get<Seat[]>('/api/seats');
   }
 
+  /** Returns the seat object from the backend database table using the backend HTTP get request.
+   * @param title: String representing the seat's name
+   * @returns {Observable<Seat[]>}
+   */
   getSeat(title: String): Observable<Seat> {
     return this.http.get<Seat>('/api/seats/' + title);
   }
 
+  /** Returns the new seat object from the backend database table using the backend HTTP post request.
+   * @param seat: SeatSummary representing the new seat
+   * @returns {Observable<Seat>}
+   */
   createSeat(seat: Seat): Observable<Seat> {
     return this.http.post<Seat>('/api/seats', seat);
   }
 
+  /** Returns the updated seat object from the backend database table using the backend HTTP put request.
+   * @param seat: SeatSummary representing the updated room
+   * @returns {Observable<Seat>}
+   */
   updateSeat(seat: Seat): Observable<Seat> {
     return this.http.put<Seat>('/api/seats', seat);
   }
 
-  /*deleteSeat(seatToRemove: Seat): Observable<Seat> {
-    return this.http
-      .delete<Seat>(`/api/seats/${seatToRemove.title}`)
-      .pipe(
-        tap((_) => {
-          this.seats.removeSeat(seatToRemove);
-        })
-      );
-  }*/
+  /** Deletes a seat
+   * @param seat: seat object to delete
+   * @returns {Observable<Seat>}
+   */
 
-  //^^ above can be added/moved to new service in admin directory once figure out permissions
+  deleteSeat(seat: Seat): Observable<Seat> {
+    return this.http.delete<Seat>('/api/rooms/' + seat.title);
+  }
 }
