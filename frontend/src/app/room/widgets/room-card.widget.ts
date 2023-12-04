@@ -1,9 +1,4 @@
-/**
- * The Room Card widget abstracts the implementation of each
- * individual room card from the whole room page.
- *
- *
- */
+//The Room Card widget abstracts the implementation of each individual room card from the whole room page.
 
 import { Component, Input } from '@angular/core';
 import { Room } from '../room.model';
@@ -36,7 +31,7 @@ export class RoomCard {
   ) {}
 
   /** Delete the given room object using the Room Service's deleteRoom method
-   * @param room: Room representing the updated room
+   * @param room: Room representing the room to delete
    * @returns void
    */
   deleteRoom(room: Room): void {

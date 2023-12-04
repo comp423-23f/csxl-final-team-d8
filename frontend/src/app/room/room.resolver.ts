@@ -1,7 +1,4 @@
-/**
- * The Room Resolver allows the room to be injected into the routes
- * of components.
- */
+//The Room Resolver allows the room to be injected into the routes of components.
 
 import { inject } from '@angular/core';
 import { ResolveFn } from '@angular/router';
@@ -30,7 +27,6 @@ export const roomDetailResolver: ResolveFn<Room | undefined> = (
       capacity: 0,
       reservable: false,
       seats: null
-      //includes fields from both room model and room details model, which are separated right now
     };
   }
 };
