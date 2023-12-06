@@ -18,17 +18,50 @@ The following RESTful API routes are exposed in the backend, which enables the f
 
 #### `GET` `/api/rooms` - Retrieve a list of rooms
 
+Example response:
+
+```
+  {
+    "id": "SN156",
+    "nickname": "The XL",
+    "building": "Sitterson",
+    "room": "156",
+    "capacity": 40,
+    "reservable": False,
+    "seats": []
+  }
+```
+
 `get_rooms` is used to return a list of all the existing rooms in the database.
 
 #### `GET` `/api/rooms/{id}` - Retrieve room by ID
+
+(The example response is identical to previous route)
 
 `get_room_from_id` is used to return a `Room` with a matching ID. If a `Room` cannot be found based on the id, an exception is raised which will cause a `HTTPException 404` error.
 
 #### `POST` `/api/rooms` - Create a room
 
+Example response:
+
+```
+{
+  "id": "SN135",
+  "nickname": "Group A"
+}
+```
+
 `new_room` is used to return a `Room` that is to be added to the database. If the `Room` cannot be created, an exception is raised which will cause a `HTPPException 422` error.
 
 #### `DELETE` `/api/rooms/{id}` - Delete a room by ID
+
+Example of unsuccessful response:
+
+```
+{
+  "detail": "No room found matching id: SN135"
+}
+```
 
 `delete_room` is used to delete a `Room` with a matching ID in the database. If the `Room` cannot be deleted based on the id, an exception is raised which will cause a `HTTPException 404` error.
 
@@ -37,6 +70,8 @@ The following RESTful API routes are exposed in the backend, which enables the f
 `update_room` is used to return an updated `Room`. If the `Room` cannot be updated because it does not exist or is not found, an exception is raised which will cause a `HTTPException 404` error.
 
 ### Service Functions
+
+The following service functions are all in `RoomService`, which is used by the API routes and essential for the functionality of being able to delete, edit, and add rooms.
 
 #### `list()` returns list of rooms in database
 
@@ -48,6 +83,12 @@ The following RESTful API routes are exposed in the backend, which enables the f
 
 #### `get_from_id()` retrieves a room from a unique id
 
-## Technical/ User Experience Design
+## Frontend
 
-The button in the room page that routes the user to a room manage page where they can add and edit rooms. The alternative would be to have this link in the navigation sidebar, which would not be as user friendly.
+![Alt text](images/room-view-page.png)
+
+![Alt text](images/room-form.png)
+
+## Technical/User Experience Design
+
+The button in the room page that routes the user to a room manage page where they can add and edit rooms. The alternative would be to have this link in the navigation sidebar, which would not be as user friendly. Each widget card that represents a `Room` in the database, has a trash icon to delete the room and a pencil icon to update the room, ensuring a friendly user experience. To ensure a smooth experience for finding a specific room, the page has a search bar that filters the room based on a given query.
