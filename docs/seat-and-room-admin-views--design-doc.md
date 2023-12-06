@@ -34,9 +34,11 @@ This project is brought to you by our amazing team D8:
 
   - select any given room and view its list of seats, so that I can quickly see all seats and their accompanying features in that room.
 
-  - edit a room, so that I can easily update a room's information (ID number, nickname, building, room, capacity, reservable).
+  - edit a room, so that I can easily update a room's information (nickname, building, room, capacity, reservable).
 
   - edit a seat, so that I can easily make changes to a seat's information (various features).
+
+- As Rhonda Root **only**, I want to be able to:
 
   - add a room to the list of rooms, so that I can easily keep track of any new CSXL spaces.
 
