@@ -85,9 +85,15 @@ The following service functions are all in `RoomService`, which is used by the A
 
 ## Frontend
 
+#### Room Page Component
+
 ![Alt text](images/room-view-page.png)
+This component is responsible for displaying the existing rooms in the database. The feature of the button that is titled `ADD ROOM` navigates you to the Room Manage component where Rhonda Root or the XL Ambassador can add a new `Room` to the current database.
+
+#### Room Manage Component
 
 ![Alt text](images/room-form.png)
+This page displays the form that you as the XL Ambassador or Rhonda Root must fill out when creating a new `Room` that will be added to the database.
 
 ## Technical/User Experience Design
 
