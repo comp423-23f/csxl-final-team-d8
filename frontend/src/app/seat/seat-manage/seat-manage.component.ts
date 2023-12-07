@@ -17,8 +17,7 @@ export class SeatManageComponent {
   /** Route information to be used in Seat Routing Module */
   public static Route = {
     path: 'seats/seat-manage',
-    //path: ':id/edit',
-    the_title: 'Create New/Edit Seat',
+    title: 'Create New/Edit Seat',
     component: SeatManageComponent,
     canActivate: [],
     resolve: { profile: profileResolver, seats: seatResolver }

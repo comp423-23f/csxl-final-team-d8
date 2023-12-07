@@ -6,6 +6,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from pytest import console_main
 
 from backend.models.coworking.seat import Seat
+from backend.models.coworking.seat_details import SeatDetails
 from backend.services.coworking.seat import SeatService
 from ..api.authentication import registered_user
 from ..models.user import User
@@ -16,6 +17,22 @@ openapi_tags = {
     "name": "Seats",
     "description": "Create and retrieve CSXL Seats.",
 }
+
+
+@api.get("", response_model=list[SeatDetails], tags=["Seats"])
+def get_seats(
+    seat_service: SeatService = Depends(),
+) -> list[SeatDetails]:
+    """
+    Get all seats
+
+    Parameters:
+        seat_service: a valid SeatService
+
+    Returns:
+        list[SeatDetails]: All Seats in the Seat database table
+    """
+    return seat_service.seats()
 
 
 @api.get("/{id}", response_model=list[Seat], tags=["Seats"])
@@ -40,3 +57,29 @@ def get_room_seats(
     except RoomNotFoundException as e:
         # Raise 404 exception if search fails (no response)
         raise HTTPException(status_code=404, detail=str(e))
+
+
+@api.post("", response_model=Seat, tags=["Seats"])
+def new_seat(
+    seat: Seat,
+    seat_service: SeatService = Depends(),
+) -> Seat:
+    """
+    Create seat
+
+    Parameters:
+        seat: a valid seat model
+        subject: a valid User model representing the currently logged in User
+        seat_service: a valid SeatService
+
+    Returns:
+        Seat: Created seat
+
+    Raises:
+        HTTPException 422 if create() raises an Exception
+    """
+    try:
+        return seat_service.create(seat)  # type: ignore
+    except Exception as e:
+        # Raise 422 exception if creation fails (request body is shaped incorrectly / not authorized)
+        raise HTTPException(status_code=422, detail=str(e))

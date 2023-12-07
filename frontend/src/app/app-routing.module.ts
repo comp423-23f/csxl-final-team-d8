@@ -47,6 +47,11 @@ const routes: Routes = [
     path: 'rooms',
     title: 'Room Admin View',
     loadChildren: () => import('./room/room.module').then((m) => m.RoomModule)
+  },
+  {
+    path: 'seats',
+    title: 'Seat Admin View',
+    loadChildren: () => import('./seat/seat.module').then((m) => m.SeatModule)
   }
 ];
 

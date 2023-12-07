@@ -36,5 +36,5 @@ class RoomNotFoundException(Exception):
 class SeatNotFoundException(Exception):
     """SeatNotFoundException is raised when trying to access a seat that does not exist."""
 
-    def __init__(self, title: str):
-        super().__init__(f"No room found matching title: {title}")
+    def __init__(self, id: int):
+        super().__init__(f"No room found matching title: {id}")

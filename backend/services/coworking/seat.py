@@ -45,7 +45,7 @@ class SeatService:
             # Raise exception
             raise RoomNotFoundException(id)
 
-    def list(self) -> list[SeatDetails]:
+    def seats(self) -> list[SeatDetails]:
         """Returns all seats in the coworking space.
 
         Returns:
@@ -78,24 +78,20 @@ class SeatService:
         # Return added object
         return seat_entity.to_model()
 
-    def delete(self, title: str) -> None:
+    def delete(self, id: int) -> None:
         """
-        Delete the seat based on the provided title.
+        Delete the seat based on the provided id.
         If no item exists to delete, a debug description is displayed.
 
         Parameters:
-            title: a string representing a unique seat title
+            id: an int representing a unique seat ID
 
         Raises:
-            SeatNotFoundException: If no seat is found with the corresponding title
+            SeatNotFoundException: If no seat is found with the corresponding id
         """
 
         # Find object to delete
-        obj = (
-            self._session.query(SeatEntity)
-            .filter(SeatEntity.title == title)
-            .one_or_none()
-        )
+        obj = self._session.query(SeatEntity).filter(SeatEntity.id == id).one_or_none()
 
         # Ensure object exists
         if obj:
@@ -105,4 +101,4 @@ class SeatService:
             self._session.commit()
         else:
             # Raise exception
-            raise SeatNotFoundException(title)
+            raise SeatNotFoundException(id)

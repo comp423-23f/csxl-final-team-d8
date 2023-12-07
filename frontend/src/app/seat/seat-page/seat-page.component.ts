@@ -14,10 +14,9 @@ import { seatResolver } from '../seat.resolver';
 export class SeatPageComponent {
   /** Route information to be used in app-routing module */
   public static Route = {
-    path: '',
+    path: ':id',
     title: 'Seats',
     component: SeatPageComponent,
-
     canActivate: [],
     resolve: { profile: profileResolver, seats: seatResolver }
   };
