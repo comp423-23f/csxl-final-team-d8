@@ -1,15 +1,15 @@
-<!-- HTML Structure of Create Room Page -->
+<!-- HTML Structure of Room Manage Page -->
 
-<!-- Create Room Form -->
+<!-- Create/Update Room Form -->
 <form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
   <!-- Header -->
   <mat-card>
-    <!--<mat-card-header *ngIf="profile.id; else roomregistration"> -->
-    <mat-card-header>
-      <mat-card-title>Create Room</mat-card-title>
+    <mat-card-header *ngIf="room_id !== 'new'; else roomregistration">
+      <!-- Header for update room-->
+      <mat-card-title>Update your room</mat-card-title>
     </mat-card-header>
 
-    <!--
+    <!-- Header for new room registration-->
     <ng-template #roomregistration>
       <mat-card-header>
         <mat-card-title>Hello!! Please create a new room below.</mat-card-title>
@@ -18,12 +18,14 @@
         </mat-card-subtitle>
       </mat-card-header>
     </ng-template>
-    -->
 
     <!-- Room Input Fields -->
     <mat-card-content>
       <!-- ID Field -->
-      <mat-form-field appearance="outline" color="accent">
+      <mat-form-field
+        hintLabel="Cannot be changed once created"
+        appearance="outline"
+        color="accent">
         <mat-label>Room ID</mat-label>
         <input
           matInput
@@ -80,17 +82,6 @@
           formControlName="reservable"
           name="reservable" />
       </mat-form-field>
-      <!-- Seats Field -->
-      <!-- 
-      <mat-form-field appearance="outline" color="accent">
-        <mat-label>Seats</mat-label>
-        <input
-          matInput
-          placeholder="Seats"
-          formControlName="seats"
-          name="seats" />
-      </mat-form-field>
-      -->
     </mat-card-content>
 
     <!-- Submit Button -->

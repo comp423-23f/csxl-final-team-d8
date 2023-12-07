@@ -27,18 +27,3 @@ class RoomDetails(NewRoom):
         Returns:
             Room: The model representation of the entity."""
         return Room(id=self.id, nickname=self.nickname)
-
-
-# class RoomDetails(Room):
-#     building: str
-#     room: str
-#     capacity: int
-#     reservable: bool
-#     seats: list[Seat] = []
-
-#     def to_room(self) -> Room:
-#         """Converts the details model to a room model.
-
-#         Returns:
-#             Room: The model representation of the entity."""
-#         return Room(id=self.id, nickname=self.nickname)
