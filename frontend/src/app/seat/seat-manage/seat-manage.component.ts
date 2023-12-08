@@ -16,7 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SeatManageComponent {
   /** Route information to be used in Seat Routing Module */
   public static Route = {
-    path: 'seats/seat-manage',
+    path: ':id/edit',
     title: 'Create New/Edit Seat',
     component: SeatManageComponent,
     canActivate: [],
@@ -30,7 +30,7 @@ export class SeatManageComponent {
   public profile: Profile;
 
   /** Store the string title. */
-  seat_title: string = 'new';
+  seat_id: string = 'new';
 
   /** Add validators to the form */
   title = new FormControl('', [Validators.required]);
@@ -100,10 +100,18 @@ export class SeatManageComponent {
   onSubmit(): void {
     if (this.seatForm.valid) {
       Object.assign(this.the_seat, this.seatForm.value);
-      this.seatService.createSeat(this.the_seat).subscribe({
-        next: (the_seat) => this.onSuccess(the_seat),
-        error: (err) => this.onError(err)
-      });
+      console.log(this.seat_id);
+      if (this.seat_id == 'new') {
+        this.seatService.createSeat(this.the_seat).subscribe({
+          next: (the_seat) => this.onSuccess(the_seat),
+          error: (err) => this.onError(err)
+        });
+      } else {
+        this.seatService.updateSeat(this.the_seat).subscribe({
+          next: (room) => this.onSuccess(room),
+          error: (err) => this.onError(err)
+        });
+      }
     }
   }
 
@@ -111,8 +119,8 @@ export class SeatManageComponent {
    * @returns {void}
    */
   private onSuccess(seat: Seat): void {
-    this.router.navigate(['/seats']);
-    this.snackBar.open('Seat Created', '', { duration: 2000 });
+    this.router.navigate(['/rooms']);
+    this.snackBar.open('Seat Created/Updated', '', { duration: 2000 });
   }
 
   /** Opens a snackbar when there is an error updating a seat.

@@ -1,9 +1,4 @@
-/**
- * The Seat Card widget abstracts the implementation of each
- * individual seat card from the whole seats page.
- *
- *
- */
+//The Seat Card widget abstracts the implementation of each individual seat card from the whole seats page.
 
 import { Component, Input } from '@angular/core';
 import { Seat } from '../seat.model';
@@ -39,7 +34,7 @@ export class SeatCard {
    * @param seat: Seat representing the updated seat
    * @returns void
    */
-  /* deleteSeat(seat: Seat): void {
+  deleteSeat(seat: Seat): void {
     let confirmDelete = this.snackBar.open(
       'Are you sure you want to delete this seat?',
       'Delete'
@@ -49,6 +44,6 @@ export class SeatCard {
         this.snackBar.open('Seat Deleted', '', { duration: 2000 });
         location.reload();
       });
-    }); 
-  } */
+    });
+  }
 }

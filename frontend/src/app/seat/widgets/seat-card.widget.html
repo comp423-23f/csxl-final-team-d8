@@ -21,7 +21,11 @@
     </a>
     <!-- Link to Delete Seat -->
     <a class="delete-seat">
-      <button mat-icon-button color="basic">
+      <button
+        mat-icon-button
+        [routerLink]="['seats']"
+        [relativeTo]="null"
+        (click)="deleteSeat(seat)">
         <mat-icon>delete</mat-icon>
       </button>
     </a>
