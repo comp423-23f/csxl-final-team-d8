@@ -12,8 +12,8 @@
 
   <!-- View Seats, Edit Room, and Delete Room Buttons -->
   <mat-card-actions class="buttons">
-    <!-- Button to View Seats -->
-    <a class="view-seats">
+    <!-- Link to View Seats -->
+    <a class="view-seats" [routerLink]="['/seats', room.id]">
       <button mat-stroked-button>View Seats</button>
     </a>
     <!-- Button to Edit Room -->

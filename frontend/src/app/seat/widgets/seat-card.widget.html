@@ -1,0 +1,29 @@
+<mat-card class="seat" appearance="outlined">
+  <!-- Card Header Row (Seat Name) -->
+  <mat-card-header class="header">
+    <mat-card-title
+      class="name"
+      [matTooltip]="seat.title"
+      matTooltipPosition="above"
+      [matTooltipDisabled]="seat.title.length < 25">
+      {{ seat.title.length < 25 ? seat.title : seat.shorthand }}
+    </mat-card-title>
+  </mat-card-header>
+
+  <!-- Edit Seat, and Delete Seat Buttons -->
+  <!-- Will need to add router links later -->
+  <mat-card-actions class="buttons">
+    <!-- Link to Edit Seat -->
+    <a class="edit-seat">
+      <button mat-icon-button color="basic">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </a>
+    <!-- Link to Delete Seat -->
+    <a class="delete-seat">
+      <button mat-icon-button color="basic">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </a>
+  </mat-card-actions>
+</mat-card>

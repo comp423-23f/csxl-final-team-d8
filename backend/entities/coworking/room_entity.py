@@ -49,7 +49,7 @@ class RoomEntity(EntityBase):
             room=self.room,
             capacity=self.capacity,
             reservable=self.reservable,
-            # seats=[seat.to_model() for seat in self.seats],
+            seats=[seat.to_model() for seat in self.seats],
         )
 
     @classmethod

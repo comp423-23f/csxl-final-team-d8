@@ -5,9 +5,8 @@ from sqlalchemy.orm import Session
 
 from backend.services.exceptions import RoomNotFoundException
 from ...database import db_session
-from ...models.coworking import RoomDetails
+from ...models.coworking import RoomDetails, Room, Seat
 from ...entities.coworking import RoomEntity
-from ...models.coworking import Room
 
 __authors__ = ["Kris Jordan"]
 __copyright__ = "Copyright 2023"
@@ -25,7 +24,7 @@ class RoomService:
         """
         self._session = session
 
-    def list(self) -> list[RoomDetails]:
+    def rooms(self) -> list[RoomDetails]:
         """Returns all rooms in the coworking space.
 
         Returns:

@@ -8,9 +8,8 @@ describe('SeatManageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SeatManageComponent ]
-    })
-    .compileComponents();
+      declarations: [SeatManageComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SeatManageComponent);
     component = fixture.componentInstance;

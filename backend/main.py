@@ -14,6 +14,7 @@ from .api import (
     authentication,
     user,
     rooms,
+    seats,
 )
 from .api.coworking import status, reservation, ambassador
 from .api.admin import users as admin_users
@@ -41,6 +42,7 @@ app = FastAPI(
         reservation.openapi_tags,
         reservation.openapi_tags,
         rooms.openapi_tags,
+        seats.openapi_tags,
         health.openapi_tags,
         admin_users.openapi_tags,
         admin_roles.openapi_tags,
@@ -61,6 +63,7 @@ feature_apis = [
     authentication,
     admin_users,
     admin_roles,
+    seats,
 ]
 
 for feature_api in feature_apis:
