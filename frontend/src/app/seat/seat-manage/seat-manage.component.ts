@@ -16,7 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SeatManageComponent {
   /** Route information to be used in Seat Routing Module */
   public static Route = {
-    path: ':id/edit',
+    path: ':id/:seatid',
     title: 'Create New/Edit Seat',
     component: SeatManageComponent,
     canActivate: [],
@@ -29,10 +29,11 @@ export class SeatManageComponent {
   /** Store the currently-logged-in user's profile.  */
   public profile: Profile;
 
-  /** Store the string title. */
+  /** Store the string id. */
   seat_id: string = 'new';
 
   /** Add validators to the form */
+  id = new FormControl(0, [Validators.required]);
   title = new FormControl('', [Validators.required]);
   shorthand = new FormControl('', [Validators.required]);
   reservable = new FormControl(false, [Validators.required]);
@@ -43,6 +44,7 @@ export class SeatManageComponent {
 
   /** Create a Seat Editor Form */
   public seatForm = this.formBuilder.group({
+    id: this.id,
     title: this.title,
     shorthand: this.shorthand,
     reservable: this.reservable,
@@ -72,18 +74,31 @@ export class SeatManageComponent {
       this.the_seat = data.the_seat;
     } else {
       this.the_seat = {
+        id: 0,
         title: '',
         shorthand: '',
         reservable: false,
         has_monitor: false,
         sit_stand: false,
         x: 0,
-        y: 0
+        y: 0,
+        room: {
+          id: '',
+          nickname: '',
+          building: '',
+          room: '',
+          capacity: 0,
+          reservable: false
+        }
       };
     }
+    this.the_seat.room = this.seatService.getRoom(
+      this.route.snapshot.params['id']
+    );
 
     /** Set seat form data */
     this.seatForm.setValue({
+      id: this.the_seat.id,
       title: this.the_seat.title,
       shorthand: this.the_seat.shorthand,
       reservable: this.the_seat.reservable,
@@ -92,6 +107,9 @@ export class SeatManageComponent {
       x: this.the_seat.x,
       y: this.the_seat.y
     });
+
+    /** set seat id */
+    this.seat_id = this.route.snapshot.params['seatid'];
   }
 
   /** Event handler to handle submitting the New Seat Form.

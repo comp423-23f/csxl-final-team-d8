@@ -24,6 +24,8 @@ export class SeatPageComponent {
   /** Store list of Seats */
   public seats: Seat[];
 
+  /** Store room from ID */
+
   /** Store searchBarQuery */
   public searchBarQuery = '';
 

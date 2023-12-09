@@ -18,7 +18,7 @@ class SeatService:
     """SeatService is the access layer to coworking seats."""
 
     def __init__(self, session: Session = Depends(db_session)):
-        """Initializes a new RoomService.
+        """Initializes a new SeatService.
 
         Args:
             session (Session): The database session to use, typically injected by FastAPI.

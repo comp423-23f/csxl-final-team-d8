@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthenticationService } from '../authentication.service';
 import { Observable } from 'rxjs';
 import { Seat } from './seat.model';
+import { Room, RoomDetails } from '../models.module';
 
 @Injectable({
   providedIn: 'root'
@@ -20,13 +21,20 @@ export class SeatService {
     return this.http.get<Seat[]>('/api/seats/' + id);
   }
 
+  /** Returns the room belonging to a given ID from the backend database table using the backend HTTP get request.
+   * @returns {Observable<RoomDetails>}
+   */
+  getRoom(id: String): Observable<RoomDetails> {
+    return this.http.get<RoomDetails>('/api/room/' + id);
+  }
+
   /** Returns the seat object from the backend database table using the backend HTTP get request.
    * @param title: String representing the seat's name
    * @returns {Observable<Seat[]>}
-   */
+   
   getSeat(title: String): Observable<Seat> {
     return this.http.get<Seat>('/api/seats/' + title);
-  }
+  } */
 
   /** Returns the new seat object from the backend database table using the backend HTTP post request.
    * @param seat: SeatSummary representing the new seat
@@ -50,6 +58,6 @@ export class SeatService {
    */
 
   deleteSeat(seat: Seat): Observable<Seat> {
-    return this.http.delete<Seat>('/api/rooms/' + seat.title);
+    return this.http.delete<Seat>('/api/seats/' + seat.id);
   }
 }

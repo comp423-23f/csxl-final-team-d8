@@ -83,3 +83,27 @@ def new_seat(
     except Exception as e:
         # Raise 422 exception if creation fails (request body is shaped incorrectly / not authorized)
         raise HTTPException(status_code=422, detail=str(e))
+
+
+@api.delete("/{id}", response_model=None, tags=["Seats"])
+def delete_seat(
+    id: int,
+    seat_service: SeatService = Depends(),
+):
+    """
+    Delete seat based on id
+
+    Parameters:
+        id: an integer representing a unique identifier for a Seat
+        seat_service: a valid SeatService
+
+    Raises:
+        HTTPException 404 if delete() raises an Exception
+    """
+
+    try:
+        # Try to delete seat
+        seat_service.delete(id)
+    except RoomNotFoundException as e:
+        # Raise 404 exception if delete fails (seat does not exist / not authorized)
+        raise HTTPException(status_code=404, detail=str(e))

@@ -2,6 +2,7 @@ import { Room } from '../room/room.model';
 
 /** Interface for the Seat Type */
 export interface Seat {
+  id: number;
   title: string;
   shorthand: string;
   reservable: boolean;
@@ -9,9 +10,10 @@ export interface Seat {
   sit_stand: boolean;
   x: number;
   y: number;
-}
-
-/** Interface for the SeatDetails Type */
-export interface SeatDetails {
   room: Room;
 }
+
+/** Interface for the SeatDetails Type
+export interface SeatDetails {
+  room: Room;
+} */
