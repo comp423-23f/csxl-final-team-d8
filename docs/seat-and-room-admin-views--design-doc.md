@@ -11,8 +11,7 @@ This project is brought to you by our amazing team D8:
 
 ## Overview
 
-- CSXL Managers can easily manage and view information regarding rooms and their accompanying seats from a "Rooms" tab on the website's sidebar.
-- This feature enables CSXL managers to add, delete, and edit CSXL spaces with a UI.
+This project addresses issues centered around not enough space for students and admins/ambassadors working in a stressful environment. Implementation of the seat and room view allows for students to save time by viewing which room and seat is available in the CSXL, instead of showing up to a fully booked room and waiting for space to free up. CSXL Managers can easily manage and view information regarding rooms and their accompanying seats from a "Rooms" tab on the website's sidebar. This feature enables CSXL managers to add, delete, and edit CSXL spaces with a UI. Such features alleviate stress for ambassadors and admins by feeling more in control when it comes to checking in students for room and seat availability.
 
 ## Personas
 
