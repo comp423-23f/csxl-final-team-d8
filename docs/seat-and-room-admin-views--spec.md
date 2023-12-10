@@ -16,7 +16,7 @@ The backend serves as the backbone of our application by handling data processin
 
 The following RESTful API routes are exposed in the backend, which enables the frontend to perform operations such as creating, reading, updating, and deleting data.
 
-##### `GET` `/api/rooms` - Retrieve a list of rooms (rooms.py)
+#### `GET` `/api/rooms` - Retrieve a list of rooms (rooms.py)
 
 Example response:
 
