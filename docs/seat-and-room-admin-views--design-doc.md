@@ -43,11 +43,9 @@ This project addresses issues centered around not having enough space for studen
 
 ## Wireframes / Mockups
 
-[Figma Mockup](https://www.figma.com/file/xK2MeKeAjWPKylptcLgjIY/Untitled?type=design&node-id=0-1&mode=design&t=SmvHrcxg7oMe67RO-0) (initial design)
+[Figma Mockup (initial design)](https://www.figma.com/file/xK2MeKeAjWPKylptcLgjIY/Untitled?type=design&node-id=0-1&mode=design&t=SmvHrcxg7oMe67RO-0)
 
-On the Rooms page, managers can see and search through the list of rooms using the search bar. If they click Add Room or Edit Room (now an edit room icon) on a specific room, they will be brought to a new page where they can create a new room/edit the room. If they click Delete Room (now a delete room icon), the room will be deleted. If they click on the room number, they will be redirected to that room’s seats page (in final design, they click on a View Seats button).
-
-On the Seats page, managers can see a list of the seats in a specific room.
+On the Rooms page, managers can see and search through the list of rooms using the search bar. If they click Add Room or Edit Room (now an edit room icon) on a specific room, they will be brought to a new page where they can create a new room/edit the room. If they click Delete Room (now a delete room icon), the room will be deleted. If they click on the room number, they will be redirected to that room’s seats page (in final design, they click on a View Seats button). On the Seats page, managers can see a list of the seats in a specific room.
 
 ## Technical Implementation Opportunities and Planning
 
@@ -65,6 +63,4 @@ To be able to change the available seats whenever there is a seat taken or a sea
 
 ## Additional Docs
 
-For a more in-depth understanding of the technical aspects and specifications of this project, please visit:
-
-- [Technical Specification Document](seat-and-room-admin-views--spec.md)
+For a more in-depth understanding of the technical aspects and specifications of this project, please visit: [Technical Specification Document](seat-and-room-admin-views--spec.md)!
