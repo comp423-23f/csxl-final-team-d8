@@ -2,11 +2,11 @@
 
 ## Important Notice for Developers
 
-Before proceeding with testing the backend and frontend components of the project, it is essential that your development environment is set up. Please refer to the setup guide in [Get Started with Development](https://github.com/comp423-23f/csxl-final-team-d8/blob/086f4b18a582937208cc580dc9c5537fc070fa85/docs/get_started.md), which covers all necessary steps such as installing dependencies, setting environment variables, and other prerequisites.
+Before proceeding with testing the backend and frontend components of the project, it is essential that your development environment is set up. Please refer to the setup guide in [Get Started with Development](https://github.com/comp423-23f/csxl-final-team-d8/blob/086f4b18a582937208cc580dc9c5537fc070fa85/docs/get_started.md), which covers all necessary steps such as installing dependencies, setting up environment variables, and other prerequisites.
 
 ## Overview
 
-This document specifies the functionality and implementation of the project. It is split into two main sections, which is the backend and frontend. This document aims to provide clarity on the application's architecture, data models, and API routes.
+This document specifies the functionality and implementation of the project. It is split into two main sections, the backend and frontend. This document aims to provide clarity on the application's architecture, data models, and API routes.
 
 ## Backend
 
@@ -16,7 +16,7 @@ The backend serves as the backbone of our application by handling data processin
 
 The following RESTful API routes are exposed in the backend, which enables the frontend to perform operations such as creating, reading, updating, and deleting data.
 
-#### `GET` `/api/rooms` - Retrieve a list of rooms
+##### `GET` `/api/rooms` - Retrieve a list of rooms (rooms.py)
 
 Example response:
 
@@ -34,13 +34,13 @@ Example response:
 
 `get_rooms` is used to return a list of all the existing rooms in the database.
 
-#### `GET` `/api/rooms/{id}` - Retrieve room by ID
+#### `GET` `/api/rooms/{id}` - Retrieve room by ID (rooms.py)
 
 (The example response is identical to previous route)
 
-`get_room_from_id` is used to return a `Room` with a matching ID. If a `Room` cannot be found based on the id, an exception is raised which will cause a `HTTPException 404` error.
+`get_room_from_id` is used to return a `RoomDetails` with a matching ID. If it cannot be found based on the id, an exception is raised which will cause an `HTTPException 404` error.
 
-#### `POST` `/api/rooms` - Create a room
+#### `POST` `/api/rooms` - Create a room (rooms.py)
 
 Example response:
 
@@ -51,9 +51,9 @@ Example response:
 }
 ```
 
-`new_room` is used to return a `Room` that is to be added to the database. If the `Room` cannot be created, an exception is raised which will cause a `HTPPException 422` error.
+`new_room` is used to return a `Room` that is to be added to the database. If the `Room` cannot be created, an exception is raised which will cause an `HTPPException 422` error.
 
-#### `DELETE` `/api/rooms/{id}` - Delete a room by ID
+#### `DELETE` `/api/rooms/{id}` - Delete a room by ID (rooms.py)
 
 Example of unsuccessful response:
 
@@ -63,11 +63,20 @@ Example of unsuccessful response:
 }
 ```
 
-`delete_room` is used to delete a `Room` with a matching ID in the database. If the `Room` cannot be deleted based on the id, an exception is raised which will cause a `HTTPException 404` error.
+`delete_room` is used to delete a `Room` with a matching ID in the database. If the `Room` cannot be deleted based on the id, an exception is raised which will cause an `HTTPException 404` error.
 
-#### `PUT` `/api/rooms` - Update a room
+#### `PUT` `/api/rooms` - Update a room (rooms.py)
 
-`update_room` is used to return an updated `Room`. If the `Room` cannot be updated because it does not exist or is not found, an exception is raised which will cause a `HTTPException 404` error.
+Example response:
+
+```
+{
+  "id": "SN135",
+  "nickname": "Group A"
+}
+```
+
+`update_room` is used to return an updated `Room`. If the `Room` cannot be updated because it does not exist or is not found, an exception is raised which will cause an `HTTPException 404` error.
 
 ### Service Functions
 
