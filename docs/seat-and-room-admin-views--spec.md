@@ -78,6 +78,42 @@ Example response:
 
 `update_room` is used to return an updated `Room`. If the `Room` cannot be updated because it does not exist or is not found, an exception is raised which will cause an `HTTPException 404` error.
 
+#### `GET` `/api/rooms` - Retrieves list of all seats (seats.py)
+
+Example response:
+
+```
+  {
+    "id": "SN156",
+    "nickname": "The XL",
+    "building": "Sitterson",
+    "room": "156",
+    "capacity": 40,
+    "reservable": False,
+    "seats": []
+  }
+```
+
+`get_seats` is used to return a list of all the existing seats in the database.
+
+#### `GET` `/api/rooms` - Retrieves list of all seats in a room (seats.py)
+
+Example response:
+
+```
+  {
+    "id": "SN156",
+    "nickname": "The XL",
+    "building": "Sitterson",
+    "room": "156",
+    "capacity": 40,
+    "reservable": False,
+    "seats": []
+  }
+```
+
+`get_room_seats` is used to return a list of all the seats in a room in the database.
+
 ### Service Functions
 
 The following service functions are all in `RoomService`, which is used by the API routes and essential for the functionality of being able to delete, edit, and add rooms.
