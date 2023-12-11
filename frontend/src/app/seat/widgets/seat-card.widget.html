@@ -8,5 +8,19 @@
       [matTooltipDisabled]="seat.title.length < 25">
       {{ seat.title.length < 25 ? seat.title : seat.shorthand }}
     </mat-card-title>
+    <mat-card-subtitle
+      class="name"
+      [matTooltip]="seat.shorthand"
+      matTooltipPosition="above"
+      [matTooltipDisabled]="seat.shorthand.length < 25">
+      Shorthand:
+      {{ seat.shorthand.length < 25 ? seat.shorthand : seat.shorthand }}
+    </mat-card-subtitle>
+    <mat-card-subtitle class="name">
+      Reservable: {{ seat.reservable }}
+    </mat-card-subtitle>
+    <mat-card-subtitle class="name">
+      Location: ({{ seat.x }}, {{ seat.y }})
+    </mat-card-subtitle>
   </mat-card-header>
 </mat-card>
