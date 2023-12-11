@@ -151,12 +151,28 @@ The following service functions are all in `SeatService`, which is used by the A
 #### Room Page Component
 
 ![Alt text](images/room-view-page.png)
-This component is responsible for displaying the existing rooms in the database. The feature of the button that is titled `ADD ROOM` navigates you to the Room Manage component where Rhonda Root or the XL Ambassador can add a new `Room` to the current database.
+This component is responsible for displaying the existing rooms in the database. At the top of the page is the search bar, which allows you to search for a specific room. The feature of the button that is titled `ADD ROOM` navigates you to the Room Manage component where Rhonda Root can add a new `Room` to the current database. Below that are room cards for all the rooms in the database.
 
 #### Room Manage Component
 
 ![Alt text](images/room-form.png)
-This page displays the form that you as the XL Ambassador or Rhonda Root must fill out when creating a new `Room` that will be added to the database.
+This page displays the form that you as Rhonda Root must fill out when creating a new `Room` that will be added to the database, or you as an XL Ambassador or Rhonda Root must fill out when editing an existing `Room` in the database. The heading text is different based on if you are creating or editing.
+
+#### Room Card Widget
+
+This widget displays the `Room` id and has buttons to view its seats, view its info, edit the room, and delete it. The `View Seats` button routes you to the Seat Page component, the details button routes you to the Room Info component, and the edit room button takes you to the Room Manage component.
+
+#### Room Info Component
+
+This component displays all of the information for a specific `Room`.
+
+#### Seat Page Component
+
+This component is responsible for displaying the existing seats for a room from the database. At the top of the page is the search bar, which allows you to search for a specific `Seat`. The seats are displayed using the seat card widget.
+
+#### Seat Card Widget
+
+This widget displays the `Seat` title for all the seats in a specific `Room`.
 
 ## Technical/User Experience Design
 
