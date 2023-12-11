@@ -16,6 +16,12 @@
     <a class="view-seats" [routerLink]="['/seats', room.id]">
       <button mat-stroked-button>View Seats</button>
     </a>
+    <!-- Button to View Room Info -->
+    <a class="view-info" [routerLink]="['/rooms', room.id, 'info']">
+      <button mat-icon-button>
+        <mat-icon>info_outline</mat-icon>
+      </button>
+    </a>
     <!-- Button to Edit Room -->
     <a class="edit-room" [routerLink]="['/rooms', room.id, 'edit']">
       <button mat-icon-button color="basic">

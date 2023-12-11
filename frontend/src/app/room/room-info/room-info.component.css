@@ -1,0 +1,44 @@
+.room-info-container {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .room-info-container h2 {
+    color: #333;
+    font-size: 26px;
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .room-info-container p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+  .room-info-container p strong {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .room-info-container p span {
+    font-weight: normal;
+    color: #555;
+  }
+  
+  /* Styles for Reservable status */
+  .reservable-yes {
+    color: green !important;
+  }
+  
+  .reservable-no {
+    color: red !important;
+  }
+  
+  
