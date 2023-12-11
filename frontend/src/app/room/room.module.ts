@@ -31,13 +31,15 @@ import { RoomPageComponent } from './room-page/room-page.component';
 import { RoomCard } from './widgets/room-card.widget';
 import { SharedModule } from '../shared/shared.module';
 import { MatInputModule } from '@angular/material/input';
+import { RoomInfoComponent } from './room-info/room-info.component';
 
 @NgModule({
   declarations: [
     RoomManageComponent,
     RoomPageComponent,
     RoomCard,
-    RoomFilterPipe
+    RoomFilterPipe,
+    RoomInfoComponent
   ],
   imports: [
     CommonModule,

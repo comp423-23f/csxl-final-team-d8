@@ -8,22 +8,19 @@
       [matTooltipDisabled]="seat.title.length < 25">
       {{ seat.title.length < 25 ? seat.title : seat.shorthand }}
     </mat-card-title>
+    <mat-card-subtitle
+      class="name"
+      [matTooltip]="seat.shorthand"
+      matTooltipPosition="above"
+      [matTooltipDisabled]="seat.shorthand.length < 25">
+      Shorthand:
+      {{ seat.shorthand.length < 25 ? seat.shorthand : seat.shorthand }}
+    </mat-card-subtitle>
+    <mat-card-subtitle class="name">
+      Reservable: {{ seat.reservable }}
+    </mat-card-subtitle>
+    <mat-card-subtitle class="name">
+      Location: ({{ seat.x }}, {{ seat.y }})
+    </mat-card-subtitle>
   </mat-card-header>
-
-  <!-- Edit Seat, and Delete Seat Buttons -->
-  <!-- Will need to add router links later -->
-  <mat-card-actions class="buttons">
-    <!-- Link to Edit Seat -->
-    <a class="edit-seat">
-      <button mat-icon-button color="basic">
-        <mat-icon>edit</mat-icon>
-      </button>
-    </a>
-    <!-- Link to Delete Seat -->
-    <a class="delete-seat">
-      <button mat-icon-button color="basic">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </a>
-  </mat-card-actions>
 </mat-card>

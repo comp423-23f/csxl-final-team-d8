@@ -1,9 +1,8 @@
 /** 
-* room-page.component.css 
-* 
-* Room cards should be displayed in a simple way that displays the
-* basic information of the room. It should be searchable with an
-* easy to use search bar. Some mat ui preset styles are overridden.
+room-page.component.css
+Room cards should be displayed in a simple way that displays the
+basic information of the room. It should be searchable with an
+easy to use search bar. Some mat ui preset styles are overridden.
 *
 */
 
@@ -28,7 +27,7 @@
     border: 2px solid #d1d1d1;
     border-radius: 5px;
   }
-  
+
   .add-room button:hover {
     background-color: #4c4c4c;
   }

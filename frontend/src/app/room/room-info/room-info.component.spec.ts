@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SeatManageComponent } from './seat-manage.component';
+import { RoomInfoComponent } from './room-info.component';
 
-describe('SeatManageComponent', () => {
-  let component: SeatManageComponent;
-  let fixture: ComponentFixture<SeatManageComponent>;
+describe('RoomInfoComponent', () => {
+  let component: RoomInfoComponent;
+  let fixture: ComponentFixture<RoomInfoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SeatManageComponent]
+      declarations: [RoomInfoComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SeatManageComponent);
+    fixture = TestBed.createComponent(RoomInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
