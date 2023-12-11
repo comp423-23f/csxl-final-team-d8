@@ -21,6 +21,7 @@ The following RESTful API routes are exposed in the backend, which enables the f
 Example response:
 
 ```
+[
   {
     "id": "SN156",
     "nickname": "The XL",
@@ -30,6 +31,7 @@ Example response:
     "reservable": False,
     "seats": []
   }
+]
 ```
 
 `get_rooms` is used to return a list of all the existing rooms in the database.
@@ -78,41 +80,51 @@ Example response:
 
 `update_room` is used to return an updated `Room`. If the `Room` cannot be updated because it does not exist or is not found, an exception is raised which will cause an `HTTPException 404` error.
 
-#### `GET` `/api/rooms` - Retrieves list of all seats (seats.py)
+#### `GET` `/api/seats` - Retrieves list of all seats (seats.py)
 
 Example response:
 
 ```
+[
   {
-    "id": "SN156",
-    "nickname": "The XL",
-    "building": "Sitterson",
-    "room": "156",
-    "capacity": 40,
-    "reservable": False,
-    "seats": []
+    "id": 0,
+    "title": "string",
+    "shorthand": "string",
+    "reservable": true,
+    "has_monitor": true,
+    "sit_stand": true,
+    "x": 0,
+    "y": 0,
+    "room": {
+      "id": "string",
+      "nickname": ""
+    }
   }
+]
 ```
 
 `get_seats` is used to return a list of all the existing seats in the database.
 
-#### `GET` `/api/rooms` - Retrieves list of all seats in a room (seats.py)
+#### `GET` `/api/seats/{id}` - Retrieves list of all seats in a room (seats.py)
 
 Example response:
 
 ```
+[
   {
-    "id": "SN156",
-    "nickname": "The XL",
-    "building": "Sitterson",
-    "room": "156",
-    "capacity": 40,
-    "reservable": False,
-    "seats": []
+    "id": 0,
+    "title": "string",
+    "shorthand": "string",
+    "reservable": true,
+    "has_monitor": true,
+    "sit_stand": true,
+    "x": 0,
+    "y": 0
   }
+]
 ```
 
-`get_room_seats` is used to return a list of all the seats in a room in the database.
+`get_room_seats` is used to return a list of all the seats in a room from the database.
 
 ### Service Functions
 
