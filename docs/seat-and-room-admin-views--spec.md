@@ -123,29 +123,34 @@ The following service function is in `SeatService`, which is used by the API rou
 
 #### Room Page Component
 
-![Alt text](images/room-view-page.png)
+![Alt text](images/room-page.png)
 This component is responsible for displaying the existing rooms in the database. At the top of the page is the search bar, which allows you to search for a specific room. The feature of the button that is titled `ADD ROOM` navigates you to the Room Manage component where Rhonda Root can add a new `Room` to the current database. Below that are room cards for all the rooms in the database.
 
 #### Room Manage Component
 
-![Alt text](images/room-form.png)
+![Alt text](images/room-manage-new.png)
+![Alt text](images/room-manage-edit.png)
 This page displays the form that you as Rhonda Root must fill out when creating a new `Room` that will be added to the database, or you as an XL Ambassador or Rhonda Root must fill out when editing an existing `Room` in the database. The heading text is different based on if you are creating or editing.
 
 #### Room Card Widget
 
+![Alt text](images/room-card.png)
 This widget displays the `Room` id and has buttons to view its seats, view its info, edit the room, and delete it. The `View Seats` button routes you to the Seat Page component, the details button routes you to the Room Info component, and the edit room button takes you to the Room Manage component.
 
 #### Room Info Component
 
+![Alt text](images/room-info.png)
 This component displays all of the information for a specific `Room`.
 
 #### Seat Page Component
 
+![Alt text](images/seat-page.png)
 This component is responsible for displaying the existing seats for a room from the database. The seats are displayed using the seat card widget.
 
 #### Seat Card Widget
 
-This widget displays the `Seat` title for all the seats in a specific `Room`.
+![Alt text](images/seat-card.png)
+This widget displays the `Seat` title and some other information for all the seats in a specific `Room`.
 
 ## Technical/User Experience Design
 
