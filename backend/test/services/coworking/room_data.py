@@ -73,6 +73,16 @@ add_to = RoomDetails(
     seats=[],
 )
 
+add_to_updated = RoomDetails(
+    id="SN150",
+    building="Sitterson",
+    room="150",
+    nickname="UPD8TED",
+    capacity=10,
+    reservable=False,
+    seats=[],
+)
+
 
 def insert_fake_data(session: Session):
     for room in rooms:

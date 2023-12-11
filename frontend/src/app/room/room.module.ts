@@ -1,9 +1,10 @@
+/* The Room Module couples all features of the Room feature
+into a single unit that can be loaded at once. This decreases load time
+for the overall application and decouples this feature from other features
+in the application.*/
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { RoomRoutingModule } from './room-routing.module';
-import { RoomManageComponent } from './room-manage/room-manage.component';
-import { RoomPageComponent } from './room-page/room-page.component';
 
 /* Angular Material Modules */
 import { MatCardModule } from '@angular/material/card';
@@ -11,7 +12,7 @@ import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule } from '@angular/forms';
-//not sure if need below
+import { RoomFilterPipe } from './room-filter/room-filter.pipe';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -22,13 +23,24 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+import { RoomRoutingModule } from './room-routing.module';
+import { RoomManageComponent } from './room-manage/room-manage.component';
+import { RoomPageComponent } from './room-page/room-page.component';
+
 /* UI Widgets */
 import { RoomCard } from './widgets/room-card.widget';
 import { SharedModule } from '../shared/shared.module';
 import { MatInputModule } from '@angular/material/input';
+import { RoomInfoComponent } from './room-info/room-info.component';
 
 @NgModule({
-  declarations: [RoomManageComponent, RoomPageComponent, RoomCard],
+  declarations: [
+    RoomManageComponent,
+    RoomPageComponent,
+    RoomCard,
+    RoomFilterPipe,
+    RoomInfoComponent
+  ],
   imports: [
     CommonModule,
     RoomRoutingModule,
@@ -39,7 +51,6 @@ import { MatInputModule } from '@angular/material/input';
     MatTooltipModule,
     MatInputModule,
     FormsModule,
-    //not sure if need below
     MatTabsModule,
     MatTableModule,
     MatDialogModule,
@@ -49,8 +60,6 @@ import { MatInputModule } from '@angular/material/input';
     MatListModule,
     MatAutocompleteModule,
     MatIconModule
-    //OrganizationRoutingModule,
-    //RouterModule
   ]
 })
 export class RoomModule {}

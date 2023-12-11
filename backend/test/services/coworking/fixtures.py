@@ -33,13 +33,13 @@ def operating_hours_svc(session: Session):
 @pytest.fixture()
 def room_svc(session: Session):
     """RoomService fixture."""
-    return RoomService(session)
+    return RoomService(session, PermissionService(session))
 
 
 @pytest.fixture()
 def seat_svc(session: Session):
     """SeatService fixture."""
-    return SeatService(session)
+    return SeatService(session, PermissionService(session))
 
 
 @pytest.fixture()

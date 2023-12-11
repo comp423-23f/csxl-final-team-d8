@@ -1,16 +1,16 @@
+//The Room Service abstracts HTTP requests to the backend from the components.
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationService } from '../authentication.service';
 import { Observable } from 'rxjs';
 import { Room } from './room.model';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomService {
   constructor(
-    //protected snackBar: MatSnackBar
     protected http: HttpClient,
     protected auth: AuthenticationService
   ) {}
@@ -23,7 +23,7 @@ export class RoomService {
   }
 
   /** Returns the room object from the backend database table using the backend HTTP get request.
-   * @param id: String representing the organization id
+   * @param id: String representing the room id
    * @returns {Observable<Room[]>}
    */
   getRoom(id: String): Observable<Room> {
@@ -44,5 +44,13 @@ export class RoomService {
    */
   updateRoom(room: Room): Observable<Room> {
     return this.http.put<Room>('/api/rooms', room);
+  }
+
+  /** Deletes a room from the backend database table using the backend HTTP delete request.
+   * @param room_id: id of the room object to delete
+   * @returns {Observable<Room>}
+   */
+  deleteRoom(room: Room): Observable<Room> {
+    return this.http.delete<Room>('/api/rooms/' + room.id);
   }
 }

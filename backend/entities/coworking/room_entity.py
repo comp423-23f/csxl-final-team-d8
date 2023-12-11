@@ -49,12 +49,12 @@ class RoomEntity(EntityBase):
             room=self.room,
             capacity=self.capacity,
             reservable=self.reservable,
-            # seats=[seat.to_model() for seat in self.seats],
+            seats=[seat.to_model() for seat in self.seats],
         )
 
     @classmethod
     def from_model(cls, model: RoomDetails) -> Self:
-        """Create an RoomEntity from a Room model.
+        """Create a RoomEntity from a Room model.
 
         Args:
             model (Room): The model to create the entity from.
@@ -72,6 +72,13 @@ class RoomEntity(EntityBase):
 
     @classmethod
     def from_new_model(cls, new_model: NewRoom) -> Self:
+        """Create a RoomEntity from a NewRoom model.
+
+        Args:
+            model (NewRoom): The model to create the entity from.
+
+        Returns:
+            Self: The entity (not yet persisted)."""
         return cls(
             id=new_model.id,
             nickname=new_model.nickname,

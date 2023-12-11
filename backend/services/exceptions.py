@@ -24,3 +24,17 @@ class OrganizationNotFoundException(Exception):
 
     def __init__(self, id: str):
         super().__init__(f"No organization found matching slug/id: {id}")
+
+
+class RoomNotFoundException(Exception):
+    """RoomNotFoundException is raised when trying to access a room that does not exist."""
+
+    def __init__(self, id: str):
+        super().__init__(f"No room found matching id: {id}")
+
+
+class SeatNotFoundException(Exception):
+    """SeatNotFoundException is raised when trying to access a seat that does not exist."""
+
+    def __init__(self, id: int):
+        super().__init__(f"No room found matching title: {id}")

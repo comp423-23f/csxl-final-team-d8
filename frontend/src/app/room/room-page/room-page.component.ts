@@ -1,3 +1,5 @@
+//The Room Page Component serves as a way for ambassadors and admin to view all of the rooms in Sitterson/FB.
+
 import { Component } from '@angular/core';
 import { profileResolver } from 'src/app/profile/profile.resolver';
 import { roomResolver } from '../room.resolver';
@@ -46,8 +48,4 @@ export class RoomPageComponent {
     this.profile = data.profile;
     this.rooms = data.rooms;
   }
-
-  //TODO createRoom()
-
-  //TODO deleteRoom()
 }

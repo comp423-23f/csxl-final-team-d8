@@ -1,13 +1,10 @@
-/**
- * The Room Card widget abstracts the implementation of each
- * individual room card from the whole room page.
- *
- *
- */
+//The Room Card widget abstracts the implementation of each individual room card from the whole room page.
 
 import { Component, Input } from '@angular/core';
 import { Room } from '../room.model';
 import { Profile } from '/workspace/frontend/src/app/profile/profile.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { RoomService } from '../room.service';
 
 @Component({
   selector: 'room-card',
@@ -28,5 +25,25 @@ export class RoomCard {
   isTooltipDisabled(element: HTMLElement): boolean {
     return element.scrollHeight <= element.clientHeight;
   }
-  constructor() {}
+  constructor(
+    protected snackBar: MatSnackBar,
+    private roomService: RoomService
+  ) {}
+
+  /** Delete the given room object using the Room Service's deleteRoom method
+   * @param room: Room representing the room to delete
+   * @returns void
+   */
+  deleteRoom(room: Room): void {
+    let confirmDelete = this.snackBar.open(
+      'Are you sure you want to delete this room?',
+      'Delete'
+    );
+    confirmDelete.onAction().subscribe(() => {
+      this.roomService.deleteRoom(room).subscribe(() => {
+        this.snackBar.open('Room Deleted', '', { duration: 2000 });
+        location.reload();
+      });
+    });
+  }
 }
