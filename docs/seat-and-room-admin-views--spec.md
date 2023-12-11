@@ -128,17 +128,23 @@ Example response:
 
 ### Service Functions
 
-The following service functions are all in `RoomService`, which is used by the API routes and essential for the functionality of being able to delete, edit, and add rooms.
+The following service functions are all in `RoomService`, which is used by the API routes and is essential for the functionality of deleting, editing, and adding rooms.
 
 #### `list()` returns list of rooms in database
 
-#### `create()` creates a room and add it to database
+#### `create()` creates a room and adds it to database
 
 #### `delete()` deletes a room based on a provided id
 
-#### `update()` updates a room based on provided id
+#### `update()` updates a room based on room id
 
 #### `get_from_id()` retrieves a room from a unique id
+
+The following service functions are all in `SeatService`, which is used by the API routes and is essential for the functionality of listing seats.
+
+#### `room_seats()` returns list of seats in a room based on provided id
+
+#### `seats()` returns all seats in
 
 ## Frontend
 
