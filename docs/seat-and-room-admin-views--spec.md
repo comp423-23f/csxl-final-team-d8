@@ -80,31 +80,6 @@ Example response:
 
 `update_room` is used to return an updated `Room`. If the `Room` cannot be updated because it does not exist or is not found, an exception is raised which will cause an `HTTPException 404` error.
 
-#### `GET` `/api/seats` - Retrieves list of all seats (seats.py)
-
-Example response:
-
-```
-[
-  {
-    "id": 0,
-    "title": "string",
-    "shorthand": "string",
-    "reservable": true,
-    "has_monitor": true,
-    "sit_stand": true,
-    "x": 0,
-    "y": 0,
-    "room": {
-      "id": "string",
-      "nickname": ""
-    }
-  }
-]
-```
-
-`get_seats` is used to return a list of all the existing seats in the database.
-
 #### `GET` `/api/seats/{id}` - Retrieves list of all seats in a room (seats.py)
 
 Example response:
@@ -124,7 +99,7 @@ Example response:
 ]
 ```
 
-`get_room_seats` is used to return a list of all the seats in a room from the database.
+`get_room_seats` is used to return a list of all the seats in a `Room` from the database.
 
 ### Service Functions
 
@@ -140,11 +115,9 @@ The following service functions are all in `RoomService`, which is used by the A
 
 #### `get_from_id()` retrieves a room from a unique id
 
-The following service functions are all in `SeatService`, which is used by the API routes and is essential for the functionality of listing seats.
+The following service function is in `SeatService`, which is used by the API routes and is essential for the functionality of listing seats.
 
 #### `room_seats()` returns list of seats in a room based on provided id
-
-#### `seats()` returns all seats in
 
 ## Frontend
 
@@ -168,7 +141,7 @@ This component displays all of the information for a specific `Room`.
 
 #### Seat Page Component
 
-This component is responsible for displaying the existing seats for a room from the database. At the top of the page is the search bar, which allows you to search for a specific `Seat`. The seats are displayed using the seat card widget.
+This component is responsible for displaying the existing seats for a room from the database. The seats are displayed using the seat card widget.
 
 #### Seat Card Widget
 

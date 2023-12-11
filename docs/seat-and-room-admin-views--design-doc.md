@@ -45,19 +45,17 @@ This project addresses issues centered around not having enough space for studen
 
 [Figma Mockup (initial design)](https://www.figma.com/file/xK2MeKeAjWPKylptcLgjIY/Untitled?type=design&node-id=0-1&mode=design&t=SmvHrcxg7oMe67RO-0)
 
-On the Rooms page, managers can see and search through the list of rooms using the search bar. If they click Add Room or Edit Room (now an edit room icon) on a specific room, they will be brought to a new page where they can create a new room/edit the room. If they click Delete Room (now a delete room icon), the room will be deleted. If they click on the room number, they will be redirected to that room’s seats page (in final design, they click on a View Seats button). On the Seats page, managers can see a list of the seats in a specific room. In the final design, we also added an info button where you can see a room's information.
+On the Rooms page, managers can see and search through the list of rooms using the search bar. If they click Add Room or Edit Room (now an edit room icon) on a specific room, they will be brought to a new page where they can create a new room/edit the room. If they click Delete Room (now a delete room icon), the room will be deleted. If they click on the room number, they will be redirected to that room’s seats page (in final design, they click on a View Seats button). On the Seats page, managers can see a list of the seats in a specific room. In the final design, we also added an info button where you are routed to a new page to see a room's information.
 
 ## Technical Implementation Opportunities and Planning
 
 1. This project focuses on areas of the codebase that affect the user interface for displaying available rooms and seats. In the frontend directory, the admin and navigation components are the primary focus for creating views based on the persona and the ability to navigate a user towards a specific view.
 
-2. This project requires the use of a component for the rooms to be listed and searched through (room-page), a component for a new room to be created or an existing room to be edited (room-manage), a component to show room information (room-info), a page for the seats of a room to be listed and searched through (seat-page), and widgets for a room (room-card) and seat (seat-card).
+2. This project requires the use of a component for the rooms to be listed and searched through (room-page), a component for a new room to be created or an existing room to be edited (room-manage), a component to show room information (room-info), a page for the seats of a room to be listed (seat-page), and widgets for a room (room-card) and seat (seat-card).
 
 3. Originally, we foresaw the need for a “Room” model that contains an ID and an integer representing the number of seats, so that an administrator could alter this integer to add or delete seats. Now, taking into account the fact that the room and seat models and entities were provided for us in backend, we added room and seat models to our frontend based off of those provided to us.
 
-4. NEED TO EDIT!! To view the existing rooms and seats for a specific room, GET along with
-
-To be able to change the available seats whenever there is a seat taken or a seat has opened up, use routes such as POST and DELETE to notify the status of a specific room or seat. In terms of seeing the whole list of rooms and seats with their current status, use GET to retrieve the list.
+4. Originally, we wrote that to be able to change the available seats whenever there is a seat taken or a seat has opened up, we need to use routes such as POST and DELETE to notify the status of a specific room or seat. In terms of seeing the whole list of rooms and seats with their current status, use GET to retrieve the list. After the completion of this project, some areas for future modification/improvement could be using POST, PUT, and DELETE to add, edit, and delete seats for rooms.
 
 5. To ensure accurate rooms and seats available for reservation, the ability to view and edit available rooms and view seats should only be available to administrators and ambassadors. Administrators should be the only ones with the ability to add or delete a room. For now, students and other non-administrative users should not be able to add, edit, or delete because it may not be accurate.
 
