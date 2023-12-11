@@ -1,5 +1,7 @@
 # Seat and Room Administration View Design Document
 
+# Seat and Room Administration View Design Document
+
 ## Credits
 
 This project is brought to you by our amazing team D8:
@@ -11,8 +13,7 @@ This project is brought to you by our amazing team D8:
 
 ## Overview
 
-- CSXL Managers can easily manage and view information regarding rooms and their accompanying seats from a "Rooms" tab on the website's sidebar.
-- This feature enables CSXL managers to add, delete, and edit CSXL spaces with a UI.
+This project addresses issues centered around not having enough space for students and admins/ambassadors working in a stressful environment. Implementation of the seat and room view allows time to be saved by providing a view for which rooms and seats are available in the building. CSXL Managers can easily manage and view information regarding rooms and their accompanying seats from a "Rooms" tab on the website's sidebar. This feature enables CSXL managers to add, delete, and edit CSXL spaces with a UI. Such features give admins and ambassadors a stronger feeling of control when it comes to checking in students for room and seat availability, thus alleviating their stress. When a view for students is eventually created, this feature will decrease the frequency of students showing up to a fully booked room and having to waiting for space to free up.
 
 ## Personas
 
@@ -36,40 +37,30 @@ This project is brought to you by our amazing team D8:
 
   - edit a room, so that I can easily update a room's information (nickname, building, room, capacity, reservable).
 
-  - edit a seat, so that I can easily make changes to a seat's information (various features).
-
 - As Rhonda Root **only**, I want to be able to:
 
   - add a room to the list of rooms, so that I can easily keep track of any new CSXL spaces.
 
-  - add a seat to any given room's list of seats, so that I can easily keep track of any new seats added to a room.
-
   - delete a room, so that I can easily update the list of rooms to exclude rooms no longer under CSXL use.
-
-  - delete a seat from a room, so that I can easily update the room's list of seats to exclude seats no longer under CSXL use for that room.
 
 ## Wireframes / Mockups
 
-[Figma Mockup](https://www.figma.com/file/xK2MeKeAjWPKylptcLgjIY/Untitled?type=design&node-id=0-1&mode=design&t=SmvHrcxg7oMe67RO-0)
+[Figma Mockup (initial design)](https://www.figma.com/file/xK2MeKeAjWPKylptcLgjIY/Untitled?type=design&node-id=0-1&mode=design&t=SmvHrcxg7oMe67RO-0)
 
-- On the Rooms page, admins or ambassadors can see and search through the list of rooms. If they click Add Room or Edit Room on a specific room, they will be brought to a new page where they can create a new room/edit the room. If they click Delete Room, the room will be deleted. If they click on the room number, they will be redirected to that room’s seats page.
-
-- On the Seat page, admins or ambassadors can see a list of the seats in a specific room. If they click Add Seat or Edit Seat on a specific seat, they will be taken to a new page where they can create a new seat, add features, and connect it to a room, or edit the seat’s fields. If they click a Delete Seat, the seat will be deleted.
+On the Rooms page, managers can see and search through the list of rooms using the search bar. If they click Add Room or Edit Room (now an edit room icon) on a specific room, they will be brought to a new page where they can create a new room/edit the room. If they click Delete Room (now a delete room icon), the room will be deleted. If they click on the room number, they will be redirected to that room’s seats page (in final design, they click on a View Seats button). On the Seats page, managers can see a list of the seats in a specific room. In the final design, there is now an info button where you are routed to a new page to see a room's information.
 
 ## Technical Implementation Opportunities and Planning
 
-- Focus on areas of the codebase that affect the user interface for displaying available rooms and seats. In the frontend directory, the admin and navigation components is the primary focus for creating views based on the persona and the ability to navigate a user towards a specific view.
+1. This project focuses on areas of the codebase that affect the user interface for displaying available rooms and seats. In the frontend directory, the admin and navigation components are the primary focus for creating views based on the persona and the ability to navigate a user towards a specific view.
 
-- Anticipate using a component for the Admin and a component for the Student, so that based on the component, the persona either has the ability to change the amount of rooms or seats available or only be able to see what is available. Using widgets such as <mat-table> help with displaying a list of rooms and seats by having each row in the table represent a room or seat.
+2. This project requires the use of a component for the rooms to be listed and searched through (room-page), a component for a new room to be created or an existing room to be edited (room-manage), a component to show room information (room-info), a page for the seats of a room to be listed (seat-page), and widgets for a room (room-card) and seat (seat-card).
 
-- Foresee the need for a “Room” model that contains an ID and an integer representing the number of seats, so that an administrator or root can alter this integer to add or delete seats.
+3. Originally, the need for a “Room” model that contains an ID and an integer representing the number of seats was forseen, so that an administrator could alter this integer to add or delete seats. Now, taking into account the fact that the room and seat models and entities were provided for us in backend, room and seat models were added to our frontend based off of those provided to us.
 
-- To be able to change the available seats whenever there is a seat taken or a seat has opened up, use routes such as POST and DELETE to notify the status of a specific room or seat. In terms of seeing the whole list of rooms and seats with their current status, use GET to retrieve the list.
+4. Originally, it was written that to be able to change the available seats whenever there is a seat taken or a seat has opened up, using routes such as POST and DELETE to notify the status of a specific room or seat would be needed. In terms of seeing the whole list of rooms and seats with their current status, use GET to retrieve the list. After the completion of this project, some areas for future modification/improvement could be using POST, PUT, and DELETE to add, edit, and delete seats for rooms.
 
-- To ensure accurate rooms and seats available for reservation, the ability to edit available rooms and seat amounts should only be available to administrators and the root. Students and other non-administrative users should not be able to edit room and seat availability because it may not be accurate.
+5. To ensure accurate rooms and seats available for reservation, the ability to view and edit available rooms and view seats should only be available to administrators and ambassadors. Administrators should be the only ones with the ability to add or delete a room. For now, students and other non-administrative users should not be able to add, edit, or delete because it may not be accurate.
 
 ## Additional Docs
 
-For a more in-depth understanding of the technical aspects and specifications of this project, please visit:
-
-- [Technical Specification Document](seat-and-room-admin-views--spec.md)
+For a more in-depth understanding of the technical aspects and specifications of this project, please visit: [Technical Specification Document](seat-and-room-admin-views--spec.md)!
