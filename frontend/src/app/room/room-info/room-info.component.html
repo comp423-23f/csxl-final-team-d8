@@ -1,0 +1,15 @@
+<div class="room-info-container">
+  <h2>{{ room.nickname }} Details</h2>
+  <p><strong>ID:</strong> {{ room.id }}</p>
+  <p><strong>Building:</strong> {{ room.building }}</p>
+  <p><strong>Room:</strong> {{ room.room }}</p>
+  <p><strong>Capacity:</strong> {{ room.capacity }}</p>
+  <p>
+    <strong>Reservable:</strong>
+    <span
+      [class.reservable-yes]="room.reservable"
+      [class.reservable-no]="!room.reservable">
+      {{ room.reservable ? 'True' : 'False' }}
+    </span>
+  </p>
+</div>
