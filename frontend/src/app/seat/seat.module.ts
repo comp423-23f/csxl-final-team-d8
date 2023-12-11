@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SeatRoutingModule } from './seat-routing.module';
-import { SeatManageComponent } from './seat-manage/seat-manage.component';
 import { SeatPageComponent } from './seat-page/seat-page.component';
 
 /* Angular Material Modules */
@@ -11,7 +10,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule } from '@angular/forms';
-//not sure if need below
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -28,7 +26,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  declarations: [SeatManageComponent, SeatPageComponent, SeatCard],
+  declarations: [SeatPageComponent, SeatCard],
   imports: [
     CommonModule,
     SeatRoutingModule,
@@ -39,7 +37,6 @@ import { MatInputModule } from '@angular/material/input';
     MatTooltipModule,
     MatInputModule,
     FormsModule,
-    //not sure if need below
     MatTabsModule,
     MatTableModule,
     MatDialogModule,

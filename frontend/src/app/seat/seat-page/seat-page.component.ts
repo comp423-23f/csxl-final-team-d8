@@ -24,9 +24,6 @@ export class SeatPageComponent {
   /** Store list of Seats */
   public seats: Seat[];
 
-  /** Store searchBarQuery */
-  public searchBarQuery = '';
-
   /** Store the currently-logged-in user's profile.  */
   public profile: Profile;
 
