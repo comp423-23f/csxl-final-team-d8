@@ -8,7 +8,9 @@ import { RoomService } from '../room.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { roomDetailResolver } from '../room.resolver';
-import { Profile } from 'src/app/profile/profile.service';
+import { Profile, ProfileService } from 'src/app/profile/profile.service';
+import { Observable, Subscription } from 'rxjs';
+import { PermissionService } from 'src/app/permission.service';
 
 @Component({
   selector: 'app-room-manage',
@@ -24,6 +26,9 @@ export class RoomManageComponent {
     canActivate: [],
     resolve: { profile: profileResolver, rooms: roomDetailResolver }
   };
+
+  public profile$: Observable<Profile | undefined>;
+  public adminPermission$: Observable<boolean>;
 
   /** Store the room.  */
   public the_room: Room;
@@ -57,9 +62,13 @@ export class RoomManageComponent {
     private route: ActivatedRoute,
     protected formBuilder: FormBuilder,
     protected roomService: RoomService,
+    private permission: PermissionService,
+    private profileService: ProfileService,
     protected snackBar: MatSnackBar,
     private router: Router
   ) {
+    this.profile$ = this.profileService.profile$;
+    this.adminPermission$ = this.permission.check('admin.view', 'admin/');
     /** Initialize data from resolvers. */
     const data = this.route.snapshot.data as {
       profile: Profile;

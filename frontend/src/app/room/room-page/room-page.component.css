@@ -20,6 +20,19 @@
     padding: 1.5rem;
 }
 
+.add-room button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #383838;
+    color: white;
+    border: 2px solid #d1d1d1;
+    border-radius: 5px;
+  }
+  
+  .add-room button:hover {
+    background-color: #4c4c4c;
+  }
+
 .room-cards {
     display: flex;
     flex-direction: row;

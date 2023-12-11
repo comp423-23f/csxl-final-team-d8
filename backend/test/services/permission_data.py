@@ -18,10 +18,21 @@ ambassador_permission = Permission(id=2, action="checkin.create", resource="chec
 ambassador_permission_coworking_reservation = Permission(
     id=3, action="coworking.reservation.*", resource="*"
 )
+ambassador_permission_room_view = Permission(
+    id=4, action="room.rooms", resource="rooms"
+)
+ambassador_permission_room_update = Permission(id=5, action="room.update", resource="*")
+ambassador_permission_seat_view = Permission(
+    id=6, action="seat.room_seats", resource="*"
+)
+
 permissions = [
     root_role_permission,
     ambassador_permission,
     ambassador_permission_coworking_reservation,
+    ambassador_permission_room_view,
+    ambassador_permission_room_update,
+    ambassador_permission_seat_view,
 ]
 
 

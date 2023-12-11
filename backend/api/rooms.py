@@ -25,32 +25,38 @@ openapi_tags = {
 
 @api.get("", response_model=list[RoomDetails], tags=["Rooms"])
 def get_rooms(
-    room_service: RoomService = Depends(),
+    room_service: RoomService = Depends(), subject: User = Depends(registered_user)
 ) -> list[RoomDetails]:
     """
     Get all rooms
 
     Parameters:
         room_service: a valid RoomService
+        subject: a valid User model representing the currently logged in User
 
     Returns:
         list[Room]: All Rooms in the Room database table
     """
-    return room_service.rooms()
+    try:
+        return room_service.rooms(subject)
+    except Exception as e:
+        # Raise 422 exception if listing fails (request body is shaped incorrectly / not authorized)
+        raise HTTPException(status_code=422, detail=str(e))
 
 
 @api.post("", response_model=Room, tags=["Rooms"])
 def new_room(
     room: RoomDetails,
     room_service: RoomService = Depends(),
+    subject: User = Depends(registered_user),
 ) -> Room:
     """
     Create room
 
     Parameters:
         room: a valid Room model
-        subject: a valid User model representing the currently logged in User
         room_service: a valid RoomService
+        subject: a valid User model representing the currently logged in User
 
     Returns:
         Room: Created room
@@ -59,7 +65,7 @@ def new_room(
         HTTPException 422 if create() raises an Exception
     """
     try:
-        return room_service.create(room)  # type: ignore
+        return room_service.create(subject, room)  # type: ignore
     except Exception as e:
         # Raise 422 exception if creation fails (request body is shaped incorrectly / not authorized)
         raise HTTPException(status_code=422, detail=str(e))
@@ -69,6 +75,7 @@ def new_room(
 def delete_room(
     id: str,
     room_service: RoomService = Depends(),
+    subject: User = Depends(registered_user),
 ):
     """
     Delete room based on id
@@ -76,6 +83,7 @@ def delete_room(
     Parameters:
         id: a string representing a unique identifier for a Room
         room_service: a valid RoomService
+        subject: a valid User model representing the currently logged in User
 
     Raises:
         HTTPException 404 if delete() raises an Exception
@@ -83,8 +91,8 @@ def delete_room(
 
     try:
         # Try to delete room
-        room_service.delete(id)
-    except RoomNotFoundException as e:
+        room_service.delete(subject, id)
+    except (RoomNotFoundException, UserPermissionException) as e:
         # Raise 404 exception if delete fails (room does not exist / not authorized)
         raise HTTPException(status_code=404, detail=str(e))
 
@@ -98,6 +106,7 @@ def delete_room(
 def update_room(
     room: RoomDetails,
     room_service: RoomService = Depends(),
+    subject: User = Depends(registered_user),
 ) -> Room:
     """
     Update room
@@ -105,6 +114,7 @@ def update_room(
     Parameters:
         room: a valid Room model
         room_service: a valid RoomService
+        subject: a valid User model representing the currently logged in User
 
     Returns:
         Room: Updated room
@@ -114,8 +124,8 @@ def update_room(
     """
     try:
         # Return updated room
-        return room_service.update(room)
-    except RoomNotFoundException as e:
+        return room_service.update(subject, room)
+    except (RoomNotFoundException, UserPermissionException) as e:
         # Raise 404 exception if update fails (room does not exist / not authorized)
         raise HTTPException(status_code=404, detail=str(e))
 
