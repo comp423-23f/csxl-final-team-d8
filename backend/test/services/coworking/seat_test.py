@@ -19,6 +19,6 @@ __license__ = "MIT"
 
 
 def test_list(seat_svc: SeatService):
-    seats = seat_svc.list()
+    seats = seat_svc.room_seats("SN156")
     assert len(seats) == len(seat_data.seats)
     assert isinstance(seats[0], SeatDetails)
