@@ -8,10 +8,8 @@ from pytest import console_main
 from backend.models.coworking.room import Room
 from backend.models.coworking.room_details import RoomDetails
 from backend.models.coworking.room_details import NewRoom
-from backend.models.coworking.seat import Seat
 from backend.services.coworking.room import RoomDetails
 from backend.services.coworking.room import RoomService
-from backend.services.coworking.seat import SeatService
 from ..api.authentication import registered_user
 from ..models.user import User
 from ..services.exceptions import RoomNotFoundException, UserPermissionException

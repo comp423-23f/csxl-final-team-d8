@@ -7,7 +7,6 @@ import { Room } from '../room.model';
 import { Profile } from '/workspace/frontend/src/app/profile/profile.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-room-page',

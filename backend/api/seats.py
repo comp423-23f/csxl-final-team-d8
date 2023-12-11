@@ -35,7 +35,7 @@ def get_room_seats(
     Returns:
         list[Seat]: All Seats in a given room
     """
-    # Try to get seats with matching id
+    # Try to get seats with room's matching id
     try:
         # Return room seats
         return seat_service.room_seats(subject, id)

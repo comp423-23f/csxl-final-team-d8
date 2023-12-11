@@ -2,9 +2,7 @@ import { Component, Input } from '@angular/core';
 import { profileResolver } from 'src/app/profile/profile.resolver';
 import { roomDetailResolver } from '../room.resolver';
 import { Room } from '../room.model';
-import { RoomService } from '../room.service';
 import { ActivatedRoute } from '@angular/router';
-import { RoomDetails } from 'src/app/models.module';
 import { Profile, ProfileService } from 'src/app/profile/profile.service';
 import { PermissionService } from 'src/app/permission.service';
 import { Observable } from 'rxjs';
@@ -16,7 +14,6 @@ import { Observable } from 'rxjs';
 })
 export class RoomInfoComponent {
   public static Route = {
-    //path: 'rooms/room-manage',
     path: ':id/info',
     title: 'Room Details',
     component: RoomInfoComponent,

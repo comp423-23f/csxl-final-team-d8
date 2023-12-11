@@ -6,7 +6,7 @@ from backend.entities.coworking.room_entity import RoomEntity
 
 from backend.services.exceptions import RoomNotFoundException, SeatNotFoundException
 from ...database import db_session
-from ...models.coworking import Seat, SeatDetails
+from ...models.coworking import Seat
 from ...models import User
 from ...entities.coworking import SeatEntity
 from ..permission import PermissionService

@@ -1,7 +1,5 @@
 # Seat and Room Administration View Design Document
 
-# Seat and Room Administration View Design Document
-
 ## Credits
 
 This project is brought to you by our amazing team D8:

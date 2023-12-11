@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { roomDetailResolver } from '../room.resolver';
 import { Profile, ProfileService } from 'src/app/profile/profile.service';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { PermissionService } from 'src/app/permission.service';
 
 @Component({

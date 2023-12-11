@@ -3,7 +3,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationService } from '../authentication.service';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Room } from './room.model';
 
 @Injectable({

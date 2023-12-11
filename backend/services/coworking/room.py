@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 
 from backend.services.exceptions import RoomNotFoundException
 from ...database import db_session
-from ...models.coworking import RoomDetails, Room, Seat
+from ...models.coworking import RoomDetails, Room
 from ...models import User
 from ...entities.coworking import RoomEntity
 from ..permission import PermissionService
