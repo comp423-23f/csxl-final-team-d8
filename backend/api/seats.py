@@ -10,7 +10,7 @@ from backend.models.coworking.seat_details import SeatDetails
 from backend.services.coworking.seat import SeatService
 from ..api.authentication import registered_user
 from ..models.user import User
-from ..services.exceptions import RoomNotFoundException
+from ..services.exceptions import RoomNotFoundException, UserPermissionException
 
 api = APIRouter(prefix="/api/seats")
 openapi_tags = {
@@ -23,6 +23,7 @@ openapi_tags = {
 def get_room_seats(
     id: str,
     seat_service: SeatService = Depends(),
+    subject: User = Depends(registered_user),
 ) -> list[Seat]:
     """
     Get all seats in a room
@@ -37,7 +38,7 @@ def get_room_seats(
     # Try to get seats with matching id
     try:
         # Return room seats
-        return seat_service.room_seats(id)
-    except RoomNotFoundException as e:
-        # Raise 404 exception if search fails (no response)
+        return seat_service.room_seats(subject, id)
+    except (RoomNotFoundException, UserPermissionException) as e:
+        # Raise 404 exception if search fails (no response / not authorized)
         raise HTTPException(status_code=404, detail=str(e))

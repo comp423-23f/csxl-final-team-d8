@@ -7,7 +7,7 @@ Moving forward, we'll aim to have some parity between tests and dev reset.
 This way, we both avoid duplication and make it easier to interact with
 the state of the system we are writing tests for.
 
-Usage: python3 -m script.reset_demo
+Usage: python3 -m backend.script.reset_demo
 """
 
 import sys
