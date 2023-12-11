@@ -5,7 +5,9 @@ import { Room } from '../room.model';
 import { RoomService } from '../room.service';
 import { ActivatedRoute } from '@angular/router';
 import { RoomDetails } from 'src/app/models.module';
-import { Profile } from 'src/app/profile/profile.service';
+import { Profile, ProfileService } from 'src/app/profile/profile.service';
+import { PermissionService } from 'src/app/permission.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-room-info',
@@ -22,14 +24,25 @@ export class RoomInfoComponent {
     resolve: { profile: profileResolver, room: roomDetailResolver }
   };
 
+  public profile$: Observable<Profile | undefined>;
+  public ambassadorPermission$: Observable<boolean>;
+
   /** Store the currently-logged-in user's profile.  */
   public profile: Profile;
 
-  /** The organization to show */
   public room: Room;
 
-  /** Constructs the Organization Detail component */
-  constructor(private route: ActivatedRoute) {
+  /** Constructs the Room Info component */
+  constructor(
+    private route: ActivatedRoute,
+    private permission: PermissionService,
+    private profileService: ProfileService
+  ) {
+    this.profile$ = this.profileService.profile$;
+    this.ambassadorPermission$ = this.permission.check(
+      'coworking.reservation.*',
+      '*'
+    );
     /** Initialize data from resolvers. */
     const data = this.route.snapshot.data as {
       profile: Profile;
