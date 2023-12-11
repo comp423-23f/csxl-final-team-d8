@@ -10,7 +10,7 @@ This document specifies the functionality and implementation of the project. It 
 
 ## Backend
 
-The backend serves as the backbone of our application by handling data processing and database interactions. Its purpose is to provide support to the frontend through API routes and service functions.
+The backend serves act as the backbone of the application by handling data processing and database interactions. Its purpose is to provide support to the frontend through API routes and service functions.
 
 ### API Routes
 
@@ -105,7 +105,7 @@ Example response:
 
 The following service functions are all in `RoomService`, which is used by the API routes and is essential for the functionality of deleting, editing, and adding rooms.
 
-#### `list()` returns list of rooms in database
+#### `rooms()` returns list of rooms in database
 
 #### `create()` creates a room and adds it to database
 
@@ -154,4 +154,4 @@ This widget displays the `Seat` title and some other information for all the sea
 
 ## Technical/User Experience Design
 
-The button in the room page that routes the user to a room manage page where they can add and edit rooms. The alternative would be to have this link in the navigation sidebar, which would not be as user friendly. Each widget card that represents a `Room` in the database, has a trash icon to delete the room and a pencil icon to update the room, ensuring a friendly user experience. To ensure a smooth experience for finding a specific room, the page has a search bar that filters the room based on a given query.
+As for technical/user experience design choices, there is the button in the room page that routes the user to a room manage page where they can add and edit rooms. The alternative would be to have this link in the navigation sidebar, which would not be as user friendly. Each widget card that represents a `Room` in the database has a trash icon to delete the room, a pencil icon to update the room, and a details button, ensuring a friendly user experience. To ensure a smooth experience for finding a specific room, the page has a search bar that filters the room based on a given query.
